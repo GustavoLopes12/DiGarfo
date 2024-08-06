@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">DiGarfo</string>
+    <string name="titleEscrever">✏ Escreva sua receita</string>
+    <string name="titleEscrever2">Escreva sua receita</string>
+    <string name="ttImagem">Imagem:</string>
+    <string name="ttTempo">Tempo:</string>
+    <string name="ttTitulo">"Título: "</string>
+    <string name="ttIngredientes">"Ingredientes: "</string>
+    <string name="ttPeparo">Modo de Preparo:</string>
+    <string name="btnEnviar">Envir para análise</string>
+    <string name="btnEnviar2">Enviar para análise</string>
+    <string name="ttDificuld">"Dificuldade: "</string>
+    <string name="username">Chefe Jacão</string>
+    <string name="recipes">1 Receitas</string>
+    <string name="recipes2" />
+    <string name="numb_recip">1</string>
+    <string name="receitas">Receitas</string>
+    <string name="numb_favs">0</string>
+    <string name="user_descrpt">chef de cozinha francês no BR\naprendiz do ilustre Jacquin</string>
+    <string name="favrts">Favoritos</string>
+    <string name="coments">Comentários</string>
+    <string name="sectn_recipe">RECEITAS</string>
+    <string name="sctn_favs">FAVORITOS</string>
+    <string name="sctn_coments">COMENTÁRIOS</string>
+    <string name="title_recipe">Esfiha de Carne Chinesa</string>
+    <string name="time">1h</string>
+    <string name="dificuldade">Fácil</string>
+    <string name="custo">Custo Baixo</string>
+    <string name="pvw_favs">Favoritos</string>
+</resources>
