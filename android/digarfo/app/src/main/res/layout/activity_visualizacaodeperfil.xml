@@ -87,7 +87,7 @@
         tools:layout_editor_absoluteY="521dp" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/button_perfil_home"
         android:layout_width="15dp"
         android:layout_height="13dp"
         app:layout_constraintEnd_toStartOf="@+id/textView7"
@@ -229,8 +229,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.355"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/menu" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView10"

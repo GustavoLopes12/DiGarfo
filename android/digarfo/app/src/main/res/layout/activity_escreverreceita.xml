@@ -52,7 +52,7 @@
         android:layout_width="373dp"
         android:layout_height="37dp"
         android:backgroundTint="#FFCA88"
-        android:text="@string/btnEnviar2"
+        android:text="bbbbb"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -216,8 +216,7 @@
         app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065"
-        app:srcCompat="@drawable/menu" />
+        app:layout_constraintVertical_bias="0.065" />
 
     <ImageView
         android:id="@+id/imageView5"
