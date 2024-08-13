@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">digarfo</string>
+    <string name="name">Name</string>
+    <string name="rcp_numb">\?</string>
+    <string name="fav_numb">\?</string>
+    <string name="coment_numb">\?</string>
+    <string name="coment_number">\?</string>
+    <string name="descricao_content">text</string>
+    <string name="srch_result_text">resultados para \"?\"</string>
 </resources>
