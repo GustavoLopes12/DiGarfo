@@ -13,6 +13,24 @@
         android:theme="@style/Theme.Digarfo"
         tools:targetApi="31">
         <activity
+            android:name=".adapter_listausuariosbanidos"
+            android:exported="false" />
+        <activity
+            android:name=".adapter_denunciarusuario"
+            android:exported="false" />
+        <activity
+            android:name=".adapter_denunciareceita"
+            android:exported="false" />
+        <activity
+            android:name=".listausuariosbanidos"
+            android:exported="false" />
+        <activity
+            android:name=".denunciausuario"
+            android:exported="false" />
+        <activity
+            android:name=".denunciareceita"
+            android:exported="false" />
+        <activity
             android:name=".receitavisualizacao"
             android:exported="false" />
         <activity
