@@ -1,6 +1,9 @@
 package com.example.digarfo;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.window.SplashScreen;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
