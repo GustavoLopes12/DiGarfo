@@ -7,4 +7,9 @@
     <string name="coment_number">\?</string>
     <string name="descricao_content">text</string>
     <string name="srch_result_text">resultados para \"?\"</string>
+    <string name="btn_rct_analise">Receitas para Análise (?)</string>
+    <string name="btn_users_denunciados">Usuários Denunciados</string>
+    <string name="btn_rct_denunciadas">Receitas Denunciadas</string>
+    <string name="btn_user_ban">Usuários Banidos</string>
+    <string name="title_rct_analise">Receitas para Análise (?)</string>
 </resources>
