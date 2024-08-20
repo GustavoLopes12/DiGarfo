@@ -21,19 +21,19 @@
             app:layout_row="0">
 
             <ImageView
-                android:id="@+id/imageView35"
+                android:id="@+id/rct_result_img"
                 android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/rct_result_name"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <RatingBar
-                android:id="@+id/ratingBar"
+                android:id="@+id/rct_result_ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
