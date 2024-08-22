@@ -24,8 +24,20 @@ public class home extends AppCompatActivity {
             return insets;
         });
     }
+<<<<<<< HEAD
 
     public void notificacaofavoritosdeslogado(View view){//indo para outra pagina
         Toast.makeText(this,"Você ainda não esta logado", Toast.LENGTH_SHORT).show();
+=======
+    //botao de usuario
+    public void usuariodeslogado(View view){//indo para pagina de login
+        Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
+        Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(outraTela);
+    }
+    //botao home
+    public void botaohome(View view){//indo para pagina de login
+        Toast.makeText(this, "Você já está na home", Toast.LENGTH_SHORT).show();
+>>>>>>> a3fe1a6df5d91ceda22c21306391d982310c5177
     }
 }
