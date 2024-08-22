@@ -600,6 +600,7 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="right|center_vertical|end"
+            android:onClick="notificacaofavoritosdeslogado"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"

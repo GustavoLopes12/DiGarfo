@@ -26,10 +26,15 @@ public class home extends AppCompatActivity {
     }
 <<<<<<< HEAD
 
+<<<<<<< HEAD
     public void inserir_rct_deslog(View view){
         Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
     }
 
+=======
+    public void notificacaofavoritosdeslogado(View view){//indo para outra pagina
+        Toast.makeText(this,"Você ainda não esta logado", Toast.LENGTH_SHORT).show();
+>>>>>>> 3800cdb106394c2366d4405714a6f22254e317ad
 =======
     //botao de usuario
     public void usuariodeslogado(View view){//indo para pagina de login
@@ -40,6 +45,7 @@ public class home extends AppCompatActivity {
     //botao home
     public void botaohome(View view){//indo para pagina de login
         Toast.makeText(this, "Você já está na home", Toast.LENGTH_SHORT).show();
+>>>>>>> a3fe1a6df5d91ceda22c21306391d982310c5177
     }
 >>>>>>> a3fe1a6df5d91ceda22c21306391d982310c5177
 }
