@@ -3,6 +3,7 @@ package com.example.digarfo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,4 +24,9 @@ public class home extends AppCompatActivity {
             return insets;
         });
     }
+
+    public void inserir_rct_deslog(View view){
+        Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
+    }
+
 }

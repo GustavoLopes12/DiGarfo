@@ -583,14 +583,15 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginRight="116dp"
+            android:onClick="inserir_rct_deslog"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.536"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.933"
-            app:srcCompat="@drawable/botao_adicionar__1_"
-            android:layout_marginRight="116dp"/>
+            app:srcCompat="@drawable/botao_adicionar__1_" />
 
 
         <ImageView
