@@ -24,28 +24,20 @@ public class home extends AppCompatActivity {
             return insets;
         });
     }
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-    public void inserir_rct_deslog(View view){
+    public void inserir_rct_deslog(View view){//botao notificacao inserir receita deslogado
         Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
     }
-
-=======
-    public void notificacaofavoritosdeslogado(View view){//indo para outra pagina
-        Toast.makeText(this,"Você ainda não esta logado", Toast.LENGTH_SHORT).show();
->>>>>>> 3800cdb106394c2366d4405714a6f22254e317ad
-=======
+    public void notificacaofavoritosdeslogado(View view) {//notificacao botao favoritos deslogado
+        Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
+    }
     //botao de usuario
-    public void usuariodeslogado(View view){//indo para pagina de login
+    public void usuariodeslogado(View view){//notificacao deslogado botao usuario
         Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
         Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(outraTela);
     }
     //botao home
-    public void botaohome(View view){//indo para pagina de login
+    public void botaohome(View view){//botao home na home
         Toast.makeText(this, "Você já está na home", Toast.LENGTH_SHORT).show();
->>>>>>> a3fe1a6df5d91ceda22c21306391d982310c5177
     }
->>>>>>> a3fe1a6df5d91ceda22c21306391d982310c5177
 }

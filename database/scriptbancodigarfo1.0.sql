@@ -4,6 +4,7 @@ create table if not exists receita(
 	id_receita bigint auto_increment PRIMARY KEY,
     nome_receita VARCHAR(40) NOT NULL,
     custo varchar(30) NOT NULL,
+    categoria varchar(40) NOT NULL,
     dificuldade varchar(30) NOT NULL,
     tempo_prep varchar(30) NOT NULL,
     ingredientes text NOT NULL,
