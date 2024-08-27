@@ -8,11 +8,17 @@
     android:layout_height="match_parent"
     tools:context=".resultadopesquisa">
 
+
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/pao"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="horizontal">
+        android:layout_marginStart="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageView
             android:id="@+id/imageView12"
@@ -58,25 +64,6 @@
             app:srcCompat="@drawable/user" />
     </LinearLayout>
 
-
-    <androidx.gridlayout.widget.GridLayout
-        android:layout_width="391dp"
-        android:layout_height="480dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="370dp"
-            android:layout_height="350dp"
-            app:layout_column="1"
-            app:layout_row="1">
-        </androidx.recyclerview.widget.RecyclerView>
-    </androidx.gridlayout.widget.GridLayout>
-
     <LinearLayout
         android:id="@+id/imageView9"
         android:layout_width="match_parent"
@@ -94,14 +81,15 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginRight="120dp"
+            android:onClick="botaohome"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.085"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.933"
-            app:srcCompat="@drawable/botao_de_inicio__1_"
-            android:layout_marginRight="120dp"/>
+            app:srcCompat="@drawable/botao_de_inicio__1_" />
 
         <ImageView
             android:id="@+id/imageView13"
@@ -138,22 +126,40 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/srch_result_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.187" />
 
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="340dp"
         android:layout_height="30dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/search_view_border"
-        android:queryHint="Buscar"
         android:iconifiedByDefault="false"
+        android:queryHint="Buscar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1">
+
+    </SearchView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="393dp"
+        android:layout_height="532dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.676"></androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

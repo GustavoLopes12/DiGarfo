@@ -40,4 +40,10 @@ public class home extends AppCompatActivity {
     public void botaohome(View view){//botao home na home
         Toast.makeText(this, "Você já está na home", Toast.LENGTH_SHORT).show();
     }
+
+    //botao pesquisa
+    public void pesquisa(View view){//botao home na home
+        Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
+        startActivity(outraTela);
+    }
 }

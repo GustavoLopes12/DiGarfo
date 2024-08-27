@@ -68,15 +68,15 @@
 
 
     <LinearLayout
-        android:layout_width="393dp"
-        android:layout_height="595dp"
+        android:layout_width="392dp"
+        android:layout_height="632dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.497">
+        app:layout_constraintVertical_bias="0.619">
 
         <TextView
             android:id="@+id/textView6"
@@ -170,7 +170,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -201,7 +202,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -232,7 +234,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -263,7 +266,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -294,7 +298,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -325,7 +330,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -357,7 +363,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -388,7 +395,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -420,7 +428,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -451,7 +460,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -482,7 +492,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -514,7 +525,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
@@ -544,7 +556,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/botao_carrosel"></Button>
+                        android:background="@drawable/botao_carrosel"
+                        android:onClick="pesquisa"></Button>
 
                 </LinearLayout>
 
