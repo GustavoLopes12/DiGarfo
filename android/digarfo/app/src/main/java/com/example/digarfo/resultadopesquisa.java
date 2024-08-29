@@ -42,9 +42,6 @@ public class resultadopesquisa extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_resultadopesquisa);
 
-
-
-        //------------------------------------------------------------
         //******** código que ja estava aqui
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -52,5 +49,10 @@ public class resultadopesquisa extends AppCompatActivity {
             return insets;
         });
         //------------------------------------------------------------
+
+
+
+        //------------------------------------------------------------
+
     }
 }

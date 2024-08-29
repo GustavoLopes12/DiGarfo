@@ -58,7 +58,7 @@
             android:layout_width="49dp"
             android:layout_height="57dp"
             android:layout_gravity="center_vertical"
-            android:onClick="abrirOutraInterface"
+            android:onClick="irparaperfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -85,28 +85,30 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginRight="120dp"
+            android:onClick="botaohome"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.085"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.933"
-            app:srcCompat="@drawable/botao_de_inicio__1_"
-            android:layout_marginRight="120dp"/>
+            app:srcCompat="@drawable/botao_de_inicio__1_" />
 
         <ImageView
             android:id="@+id/imageView13"
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginRight="116dp"
+            android:onClick="irparainserir"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.536"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.933"
-            app:srcCompat="@drawable/botao_adicionar__1_"
-            android:layout_marginRight="116dp"/>
+            app:srcCompat="@drawable/botao_adicionar__1_" />
 
 
         <ImageView
@@ -114,6 +116,7 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="right|center_vertical|end"
+            android:onClick="irparafavoritos"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"

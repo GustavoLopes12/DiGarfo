@@ -24,28 +24,67 @@ public class home extends AppCompatActivity {
             return insets;
         });
     }
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-    public void inserir_rct_deslog(View view){
-        Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
+    boolean usuariologado = true; //variavel usada em todas as funções
+
+
+    //***************************************************************
+    //****************** BOTAO USUÁRIO **********************
+    public void irparaperfil(View view){
+        if(usuariologado){
+            Intent outraTela = new Intent(getApplicationContext(), visualizacaodeperfil.class);
+            startActivity(outraTela);
+        }else{
+            Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
+            Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(outraTela);
+        }
     }
+    //****************** FIM-BOTAO USUÁRIO **********************
 
-=======
-    public void notificacaofavoritosdeslogado(View view){//indo para outra pagina
-        Toast.makeText(this,"Você ainda não esta logado", Toast.LENGTH_SHORT).show();
->>>>>>> 3800cdb106394c2366d4405714a6f22254e317ad
-=======
-    //botao de usuario
-    public void usuariodeslogado(View view){//indo para pagina de login
-        Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
-        Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+
+    //***************************************************************
+
+    //****************** BOTAO HOME **********************
+    public void botaohome(View view){
+        Toast.makeText(this, "Você já está na home :)", Toast.LENGTH_SHORT).show();
+    }
+    //****************** FIM-BOTAO HOME **********************
+
+
+    //***************************************************************
+    //****************** BOTAO INSERIR RECEITA **********************
+    public void irparainserir(View view){
+        if(usuariologado){
+            Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
+            startActivity(outraTela);
+        }else{
+            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    //****************** FIM-BOTAO INSERIR RECEITA **********************
+
+
+
+    //***************************************************************
+    //****************** BOTAO FAVORITOS **********************
+    public void irparafavoritos(View view){
+        if (usuariologado){
+            Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
+            startActivity(outraTela);
+        }else{
+            Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
+        }
+    }
+    //****************** FIM-BOTAO FAVORITOS **********************
+
+
+//--------------------------------------------------------------------------------------------------
+
+    //CATEGORIAS IR PARA PAGINA DE PESQUISA [ainda nao funciona]------------------
+    public void categ_to_resultpesq(View view) {
+        Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
         startActivity(outraTela);
     }
-    //botao home
-    public void botaohome(View view){//indo para pagina de login
-        Toast.makeText(this, "Você já está na home", Toast.LENGTH_SHORT).show();
->>>>>>> a3fe1a6df5d91ceda22c21306391d982310c5177
-    }
->>>>>>> a3fe1a6df5d91ceda22c21306391d982310c5177
 }
