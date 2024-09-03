@@ -88,7 +88,7 @@
         app:layout_constraintVertical_bias="0.435" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/j"
         android:layout_width="184dp"
         android:layout_height="31dp"
         android:background="@drawable/custominput"

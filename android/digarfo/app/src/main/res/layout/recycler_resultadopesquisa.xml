@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.gridlayout.widget.GridLayout
-        android:layout_width="391dp"
-        android:layout_height="500dp"
+    <LinearLayout
+        android:layout_width="282dp"
+        android:layout_height="207dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="234dp"
             android:orientation="vertical"
             android:padding="20dp"
             app:layout_column="0"
@@ -39,5 +41,5 @@
 
         </LinearLayout>
 
-    </androidx.gridlayout.widget.GridLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

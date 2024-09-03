@@ -26,34 +26,20 @@ public class visualizacaodeperfil extends AppCompatActivity {
     }
 
     boolean usuariologado = true; //variavel usada em todas as funções
-
-
-    //***************************************************************
-    //****************** BOTAO USUÁRIO **********************
     public void irparaperfil(View view){
         if(usuariologado){
-                Toast.makeText(this, "Você já está no seu perfil :)", Toast.LENGTH_SHORT).show();
+            Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
+            startActivity(outraTela);
         }else{
-                Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
-                Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(outraTela);
-
+            Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
+            Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(outraTela);
         }
     }
-    //****************** FIM-BOTAO USUÁRIO **********************
-
-
-    //***************************************************************
-    //****************** BOTAO HOME **********************
     public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
         startActivity(outraTela);
     }
-    //****************** FIM-BOTAO HOME **********************
-
-
-    //***************************************************************
-    //****************** BOTAO INSERIR RECEITA **********************
     public void irparainserir(View view){
         if(usuariologado){
             Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
@@ -63,12 +49,6 @@ public class visualizacaodeperfil extends AppCompatActivity {
         }
 
     }
-    //****************** FIM-BOTAO INSERIR RECEITA **********************
-
-
-
-    //***************************************************************
-    //****************** BOTAO FAVORITOS **********************
     public void irparafavoritos(View view){
         if (usuariologado){
             Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
@@ -77,5 +57,4 @@ public class visualizacaodeperfil extends AppCompatActivity {
             Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
         }
     }
-    //****************** FIM-BOTAO FAVORITOS **********************
 }

@@ -3,6 +3,7 @@ package com.example.digarfo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +28,18 @@ public class MainActivity extends AppCompatActivity {
         Intent outraTela = new Intent(getApplicationContext(), Cadastro.class);
         startActivity(outraTela);
     }
-    public void home(View view){//indo para outra pagina
+    boolean usuariologado = true; //variavel usada em todas as funções
+    public void irparahomelogado(View view){
+        if(usuariologado){
+            Intent outraTela = new Intent(getApplicationContext(), home.class);
+            startActivity(outraTela);
+        }else{
+            Toast.makeText(this, "Você não está logado, faça login para entrar no app o entre sem login", Toast.LENGTH_SHORT).show();
+            Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(outraTela);
+        }
+    }
+    public void homesemlogin(View view){//indo para outra pagina
         Intent outraTela = new Intent(getApplicationContext(), home.class);
         startActivity(outraTela);
     }
