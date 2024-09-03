@@ -26,6 +26,18 @@ public class Comentario implements Serializable{
 		this.id_comentario = id_comentario;
 		this.conteudo = conteudo;
 	}
+	public int getId_comentario() {
+		return id_comentario;
+	}
+	public void setId_comentario(int id_comentario) {
+		this.id_comentario = id_comentario;
+	}
+	public String getConteudo() {
+		return conteudo;
+	}
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
+	}
 	
 	
 }

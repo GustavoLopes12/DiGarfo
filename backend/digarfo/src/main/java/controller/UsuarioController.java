@@ -14,7 +14,7 @@ import model.Usuario;
 import repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/Usuarios")
+@RequestMapping("/Usuario")
 public class UsuarioController {
 	
 	@Autowired
@@ -26,12 +26,12 @@ public class UsuarioController {
 	}
 	//GET por id	
 	@GetMapping("/{id_usuario}")
-	public Usuario buscaReceitaPorId(@PathVariable int id_usuario) {
+	public Usuario buscaUsuarioPorId(@PathVariable int id_usuario) {
 		return usuarioRepository.findById(id_usuario).orElse(null);
 	}
 	//GET por nome
 	@GetMapping("/nome/{nome_usuario}")
-	public Iterable<Usuario> buscarReceitaPorNome(@PathVariable String nome_usuario) {
+	public Iterable<Usuario> buscarUsuarioPorNome(@PathVariable String nome_usuario) {
 		return usuarioRepository.findByNome(nome_usuario);
 	}
 	//CREATE novo usuario
@@ -47,9 +47,9 @@ public class UsuarioController {
 	}
 	//DELETE receita por id
 	@DeleteMapping("/{id}")
-	public void deletaReceita(@PathVariable int id_receita) {
-		usuarioRepository.deleteById(id_receita);
-		System.out.println("Receita deletada");
+	public void deletaUsuario(@PathVariable int id_usuario) {
+		usuarioRepository.deleteById(id_usuario);
+		System.out.println("Usuario deletado");
 	}
 
 }

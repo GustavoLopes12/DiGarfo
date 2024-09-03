@@ -14,7 +14,7 @@ import model.Receita;
 import repository.ReceitaRepository;
 	
 	@RestController
-	@RequestMapping("/receitas")
+	@RequestMapping("/receita")
 	public class ReceitaController {
 		
 		@Autowired
