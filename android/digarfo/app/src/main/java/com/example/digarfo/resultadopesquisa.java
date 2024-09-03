@@ -1,58 +1,44 @@
 package com.example.digarfo;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class resultadopesquisa extends AppCompatActivity {
-    private String nome_rct;
-    private float rating;
-    private int imagemId; //n° que identifica a imagem
-
-    //construtor
-    public resultadopesquisa(String nome_rct, float rating, int imagemId){
-        this.nome_rct = nome_rct;
-        this.rating = rating;
-        this.imagemId = imagemId;
-    }
-
-    //getters
-    public String getNome_rct() {
-        return nome_rct;
-    }
-    public float getRating() {
-        return rating;
-    }
-    public int getImagemId() {
-        return imagemId;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_resultadopesquisa);
+<<<<<<< HEAD
 
         //******** código que ja estava aqui
+=======
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+<<<<<<< HEAD
         //------------------------------------------------------------
 
 
 
         //------------------------------------------------------------
 
+=======
+    }
+    public void botaohome(View view){//botao home
+        Intent outraTela = new Intent(getApplicationContext(), home.class);
+        startActivity(outraTela);
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
     }
 }

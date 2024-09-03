@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".visualizacaodeperfil">
 
+<<<<<<< HEAD
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -74,6 +75,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/line" />
 
+=======
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
@@ -82,8 +85,17 @@
         android:layout_marginEnd="4dp"
         android:text="RECEITAS"
         android:textColor="#FE9896"
+<<<<<<< HEAD
         app:layout_constraintEnd_toStartOf="@+id/imageView17"
         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.657" />
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 
     <TextView
         android:id="@+id/textView9"
@@ -93,26 +105,53 @@
         android:layout_marginEnd="8dp"
         android:text="FAVORITOS"
         android:textColor="#D8D8D8"
+<<<<<<< HEAD
         app:layout_constraintEnd_toStartOf="@+id/imageView18"
         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.657" />
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 
     <ImageView
         android:id="@+id/imageView16"
         android:layout_width="23dp"
         android:layout_height="22dp"
+<<<<<<< HEAD
         android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView15"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.659"
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
         app:srcCompat="@drawable/lapis_icon" />
 
     <ImageView
         android:id="@+id/imageView18"
         android:layout_width="27dp"
         android:layout_height="31dp"
+<<<<<<< HEAD
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/imageView15"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.707"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.655"
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
         app:srcCompat="@drawable/coment_icon" />
 
     <TextView
@@ -123,16 +162,34 @@
         android:layout_marginEnd="12dp"
         android:text="COMENTARIOS"
         android:textColor="#D8D8D8"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.966"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.657" />
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 
     <ImageView
         android:id="@+id/imageView17"
         android:layout_width="44dp"
         android:layout_height="53dp"
+<<<<<<< HEAD
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/imageView15"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.685"
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
         app:srcCompat="@drawable/heart_icon" />
 
     <TextView
@@ -142,6 +199,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="88dp"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView12"
         tools:text="@string/coment_number" />
@@ -155,10 +213,19 @@
         android:text="@string/descricao_content"
         android:textColor="#7E7D7D"
         android:textSize="12sp"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+=======
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.547"
+        tools:text="@string/coment_number" />
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 
     <TextView
         android:id="@+id/textView5"
@@ -167,10 +234,19 @@
         android:layout_marginTop="448dp"
         android:text="TextView"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintEnd_toStartOf="@+id/textView14"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582"
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
         tools:text="Receitas" />
 
     <ImageView
@@ -204,11 +280,22 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginEnd="96dp"
         android:text="@string/rcp_numb"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         tools:layout_editor_absoluteY="425dp" />
+=======
+        android:text="@string/rcp_numb"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView21"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.553" />
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 
     <TextView
         android:id="@+id/textView13"
@@ -217,18 +304,36 @@
         android:layout_marginTop="32dp"
         android:text="@string/fav_numb"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/imageView12"
         tools:layout_editor_absoluteX="83dp" />
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.553" />
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginTop="448dp"
         android:text="Favoritos"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="173dp" />
+=======
+        android:text="Favoritos"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582" />
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 
     <TextView
         android:id="@+id/textView15"
@@ -237,10 +342,18 @@
         android:layout_marginTop="448dp"
         android:text="Comentarios"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.354"
         app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toTopOf="parent" />
+=======
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.581" />
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 
     <ImageView
         android:id="@+id/imageView19"
@@ -263,10 +376,15 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.393"
+=======
+        app:layout_constraintVertical_bias="0.382"
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
         android:layout_width="300dp"
         android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"

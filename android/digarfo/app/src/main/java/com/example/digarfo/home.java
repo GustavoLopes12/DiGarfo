@@ -24,6 +24,7 @@ public class home extends AppCompatActivity {
             return insets;
         });
     }
+<<<<<<< HEAD
 
     boolean usuariologado = true; //variavel usada em todas as funções
 
@@ -87,4 +88,28 @@ public class home extends AppCompatActivity {
         Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
         startActivity(outraTela);
     }
+=======
+    public void inserir_rct_deslog(View view){//botao notificacao inserir receita deslogado
+        Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
+    }
+    public void notificacaofavoritosdeslogado(View view) {//notificacao botao favoritos deslogado
+        Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
+    }
+    //botao de usuario
+    public void usuariodeslogado(View view){//notificacao deslogado botao usuario
+        Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
+        Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(outraTela);
+    }
+    //botao home
+    public void botaohome(View view){//botao home na home
+        Toast.makeText(this, "Você já está na home", Toast.LENGTH_SHORT).show();
+    }
+
+    //botao pesquisa
+    public void pesquisa(View view){//botao home na home
+        Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
+        startActivity(outraTela);
+    }
+>>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
 }
