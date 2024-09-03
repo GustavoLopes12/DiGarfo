@@ -41,15 +41,19 @@ public class UsuarioController {
 	}
 	//UPDATE usuario por id
 	@PutMapping("/{id}")
-	public Usuario atualizaReceita(@PathVariable int id_usuario, @RequestBody Usuario usuario) {
+	public Usuario atualizaUsuario(@PathVariable int id_usuario, @RequestBody Usuario usuario) {
 		usuario.setId_usuario(id_usuario);
 		return usuarioRepository.save(usuario);
 	}
-	//DELETE receita por id
+	//DELETE usuario receita por id
 	@DeleteMapping("/{id}")
 	public void deletaUsuario(@PathVariable int id_usuario) {
 		usuarioRepository.deleteById(id_usuario);
+<<<<<<< HEAD
+		System.out.println("usuario deletado");
+=======
 		System.out.println("Usuario deletado");
+>>>>>>> 9e14ed5c10f0817dddc818ad216c3c37a4022604
 	}
 
 }
