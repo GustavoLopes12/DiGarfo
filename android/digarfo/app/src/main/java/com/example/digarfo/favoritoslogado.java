@@ -24,15 +24,10 @@ public class favoritoslogado extends AppCompatActivity {
             return insets;
         });
     }
-
     boolean usuariologado = true; //variavel usada em todas as funções
-
-
-    //***************************************************************
-    //****************** BOTAO USUÁRIO **********************
     public void irparaperfil(View view){
         if(usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), visualizacaodeperfil.class);
+            Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
             startActivity(outraTela);
         }else{
             Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
@@ -40,20 +35,10 @@ public class favoritoslogado extends AppCompatActivity {
             startActivity(outraTela);
         }
     }
-    //****************** FIM-BOTAO USUÁRIO **********************
-
-
-    //***************************************************************
-
-    //****************** BOTAO HOME **********************
     public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
-        startActivity(outraTela);    }
-    //****************** FIM-BOTAO HOME **********************
-
-
-    //***************************************************************
-    //****************** BOTAO INSERIR RECEITA **********************
+        startActivity(outraTela);
+    }
     public void irparainserir(View view){
         if(usuariologado){
             Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
@@ -63,17 +48,8 @@ public class favoritoslogado extends AppCompatActivity {
         }
 
     }
-    //****************** FIM-BOTAO INSERIR RECEITA **********************
-
-
-
-    //***************************************************************
-    //****************** BOTAO FAVORITOS **********************
     public void irparafavoritos(View view){
         Toast.makeText(this, "Você já está em favoritos :)", Toast.LENGTH_SHORT).show();
 
     }
-    //****************** FIM-BOTAO FAVORITOS **********************
-
-
 }

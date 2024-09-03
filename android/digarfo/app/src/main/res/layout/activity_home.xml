@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,13 +67,8 @@
 
 
     <LinearLayout
-<<<<<<< HEAD
         android:layout_width="393dp"
         android:layout_height="573dp"
-=======
-        android:layout_width="392dp"
-        android:layout_height="632dp"
->>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,11 +170,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-<<<<<<< HEAD
-                        android:onClick="categ_to_resultpesq"></Button>
-=======
-                        android:onClick="pesquisa"></Button>
->>>>>>> 2570cebc5d946515b23128a7eb35d2699a45ac4d
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -212,7 +202,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -276,7 +266,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -308,7 +298,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -340,7 +330,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -373,7 +363,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -405,7 +395,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -438,7 +428,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -470,7 +460,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -502,7 +492,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -535,7 +525,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
@@ -566,7 +556,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="pesquisa"></Button>
+                        android:onClick="resultadopesquisa"></Button>
 
                 </LinearLayout>
 
