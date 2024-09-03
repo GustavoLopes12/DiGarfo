@@ -104,3 +104,4 @@ create table if not exists adm_avalia_receita(
     foreign key (id_receita) references receita(id_receita)
 );
 
+select*from adm;

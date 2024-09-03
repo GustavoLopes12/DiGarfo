@@ -1,4 +1,4 @@
-package model;
+package com.digarfo.digarfo.model;
 
 import java.io.Serializable;
 

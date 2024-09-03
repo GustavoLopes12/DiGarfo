@@ -1,8 +1,8 @@
-package repository;
+package com.digarfo.digarfo.repository;
 
 import org.springframework.stereotype.Repository;
 
-import model.Comentario;
+import com.digarfo.digarfo.model.Comentario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

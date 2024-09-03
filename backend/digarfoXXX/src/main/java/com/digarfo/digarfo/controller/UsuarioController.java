@@ -1,4 +1,4 @@
-package controller;
+package com.digarfo.digarfo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Usuario;
-import repository.UsuarioRepository;
+import com.digarfo.digarfo.model.Usuario;
+import com.digarfo.digarfo.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/Usuario")

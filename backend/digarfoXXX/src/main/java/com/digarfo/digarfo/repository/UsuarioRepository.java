@@ -1,10 +1,10 @@
-package repository;
+package com.digarfo.digarfo.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import model.Usuario;
+import com.digarfo.digarfo.model.Usuario;
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Integer>{
 

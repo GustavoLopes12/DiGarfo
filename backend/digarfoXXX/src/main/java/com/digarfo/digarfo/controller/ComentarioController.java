@@ -1,4 +1,4 @@
-package controller;
+package com.digarfo.digarfo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import model.Comentario;
-import model.Usuario;
-import repository.ComentarioRepository;
+
+import com.digarfo.digarfo.model.Comentario;
+import com.digarfo.digarfo.model.Usuario;
+import com.digarfo.digarfo.repository.ComentarioRepository;
 
 @RestController
 @RequestMapping("/Comentario")
