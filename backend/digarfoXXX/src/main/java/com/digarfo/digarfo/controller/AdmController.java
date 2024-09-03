@@ -1,4 +1,4 @@
-package controller;
+package com.digarfo.digarfo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Adm;
-import model.Receita;
-import model.Usuario;
-import repository.AdmRepository;
-import repository.ReceitaRepository;
-import repository.UsuarioRepository;
+import com.digarfo.digarfo.model.Adm;
+import com.digarfo.digarfo.model.Receita;
+import com.digarfo.digarfo.model.Usuario;
+import com.digarfo.digarfo.repository.AdmRepository;
+import com.digarfo.digarfo.repository.ReceitaRepository;
+import com.digarfo.digarfo.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/adm")
@@ -34,7 +34,7 @@ public class AdmController {
 			return admRepository.findById(id_adm).orElse(null);
 		}
 		//CREATE adm
-		@PostMapping("/createAdm")
+		@PostMapping
 		public Adm adicionarAdm(@RequestBody Adm adm) {
 			return admRepository.save(adm);
 		}

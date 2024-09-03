@@ -8,10 +8,10 @@
 		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.DiGarfo</groupId>
-	<artifactId>DiGarfo</artifactId>
+	<groupId>com.digarfo</groupId>
+	<artifactId>digarfo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>DiGarfo</name>
+	<name>digarfo</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -37,6 +37,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
 		</dependency>
 
 		<dependency>
