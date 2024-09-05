@@ -1,4 +1,4 @@
-package com.example.digarfo;
+package com.example.digarfo.view;
 
 import android.os.Bundle;
 
@@ -8,8 +8,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class adapter_denunciarusuario extends AppCompatActivity {
+import com.example.digarfo.R;
 
+public class AdapterReceita extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,3 +23,4 @@ public class adapter_denunciarusuario extends AppCompatActivity {
         });
     }
 }
+

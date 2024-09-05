@@ -1,4 +1,4 @@
-package com.example.digarfo;
+package com.example.digarfo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,20 +11,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class visualizacaodeperfil extends AppCompatActivity {
+import com.example.digarfo.R;
+
+public class escreverreceita extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_visualizacaodeperfil);
+        setContentView(R.layout.activity_escreverreceita);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-
     boolean usuariologado = true; //variavel usada em todas as funções
     public void irparaperfil(View view){
         if(usuariologado){
@@ -42,8 +43,7 @@ public class visualizacaodeperfil extends AppCompatActivity {
     }
     public void irparainserir(View view){
         if(usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
-            startActivity(outraTela);
+            Toast.makeText(this, "Você já está em escrever receitas :)", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
         }

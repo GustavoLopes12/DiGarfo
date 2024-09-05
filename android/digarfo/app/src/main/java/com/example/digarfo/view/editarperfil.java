@@ -1,4 +1,4 @@
-package com.example.digarfo;
+package com.example.digarfo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +11,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class favoritoslogado extends AppCompatActivity {
+import com.example.digarfo.R;
+
+public class editarperfil extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_favoritoslogado);
+        setContentView(R.layout.activity_editarperfil);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -25,16 +27,6 @@ public class favoritoslogado extends AppCompatActivity {
         });
     }
     boolean usuariologado = true; //variavel usada em todas as funções
-    public void irparaperfil(View view){
-        if(usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
-            startActivity(outraTela);
-        }else{
-            Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
-            Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(outraTela);
-        }
-    }
     public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
         startActivity(outraTela);
@@ -49,7 +41,11 @@ public class favoritoslogado extends AppCompatActivity {
 
     }
     public void irparafavoritos(View view){
-        Toast.makeText(this, "Você já está em favoritos :)", Toast.LENGTH_SHORT).show();
-
+        if (usuariologado){
+            Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
+            startActivity(outraTela);
+        }else{
+            Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
+        }
     }
 }

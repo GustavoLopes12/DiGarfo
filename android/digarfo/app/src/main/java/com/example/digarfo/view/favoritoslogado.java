@@ -1,4 +1,4 @@
-package com.example.digarfo;
+package com.example.digarfo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,36 +11,47 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.digarfo.R;
+
+public class favoritoslogado extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_favoritoslogado);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-    public void outrapagina(View view){//indo para outra pagina
-        Intent outraTela = new Intent(getApplicationContext(), Cadastro.class);
-        startActivity(outraTela);
-    }
     boolean usuariologado = true; //variavel usada em todas as funções
-    public void irparahomelogado(View view){
+    public void irparaperfil(View view){
         if(usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), home.class);
+            Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
             startActivity(outraTela);
         }else{
-            Toast.makeText(this, "Você não está logado, faça login para entrar no app o entre sem login", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
             Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(outraTela);
         }
     }
-    public void homesemlogin(View view){//indo para outra pagina
+    public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
         startActivity(outraTela);
+    }
+    public void irparainserir(View view){
+        if(usuariologado){
+            Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
+            startActivity(outraTela);
+        }else{
+            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    public void irparafavoritos(View view){
+        Toast.makeText(this, "Você já está em favoritos :)", Toast.LENGTH_SHORT).show();
+
     }
 }
