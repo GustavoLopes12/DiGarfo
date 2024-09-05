@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET"/><!--linha passada pelo prof.-->
+=======
+    <uses-permission android:name="android.permission.INTERNET"/>
+>>>>>>> b68c70daeb08f87d7be3e3bb6a2f6e00e20e4a4f
 
     <application
         android:allowBackup="true"
