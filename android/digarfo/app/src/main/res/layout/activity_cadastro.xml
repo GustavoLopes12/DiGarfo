@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/receitas_removebg_preview__2_" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/email"
         android:layout_width="323dp"
         android:layout_height="68dp"
         android:background="@drawable/custom_input_login"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.393" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress3"
+        android:id="@+id/name"
         android:layout_width="323dp"
         android:layout_height="68dp"
         android:background="@drawable/custom_input_login"
@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="0.284" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/senha"
         android:layout_width="323dp"
         android:layout_height="68dp"
         android:background="@drawable/custom_input_login"
@@ -65,27 +65,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
-    <EditText
-        android:id="@+id/editTextTextPassword3"
-        android:layout_width="323dp"
-        android:layout_height="68dp"
-        android:background="@drawable/custom_input_login"
-        android:ems="10"
-        android:hint="Confirmar senha:"
-        android:inputType="textPassword"
-        android:paddingStart="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.607" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="329dp"
         android:layout_height="62dp"
         android:backgroundTint="#FF9997"
-        android:onClick="outrapagina"
+        android:onClick="cadastrar"
         android:text="Cadastrar"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,5 +78,5 @@
         app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.617" />
 </androidx.constraintlayout.widget.ConstraintLayout>

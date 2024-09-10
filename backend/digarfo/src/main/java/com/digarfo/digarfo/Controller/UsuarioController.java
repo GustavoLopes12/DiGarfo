@@ -35,7 +35,7 @@ public class UsuarioController {
 	}
 	//GET por id(email)	
 	@GetMapping("/{email}")
-	public Usuario buscaUsuarioPorId(@PathVariable String email) {
+	public Usuario buscaUsuarioPorEmail(@PathVariable String email) {
 		return usuarioRepository.findById(email).orElse(null);
 	}
 	
