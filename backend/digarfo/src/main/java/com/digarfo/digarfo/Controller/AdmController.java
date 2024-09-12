@@ -1,4 +1,4 @@
-package com.DiGarfo.DiGarfo.Controller;
+package com.digarfo.digarfo.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.DiGarfo.DiGarfo.Model.Adm;
-import com.DiGarfo.DiGarfo.Repository.AdmRepository;
+import com.digarfo.digarfo.Model.Adm;
+import com.digarfo.digarfo.Repository.AdmRepository;
 
 @RestController
 @RequestMapping("/adm")

@@ -1,4 +1,4 @@
-package com.DiGarfo.DiGarfo.Model;
+package com.digarfo.digarfo.Model;
 
 import java.awt.image.BufferedImage;
 import java.io.Serializable;

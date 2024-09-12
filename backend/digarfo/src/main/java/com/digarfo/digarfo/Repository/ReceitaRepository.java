@@ -1,9 +1,9 @@
-package com.DiGarfo.DiGarfo.Repository;
+package com.digarfo.digarfo.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import com.DiGarfo.DiGarfo.Model.Receita;
+import com.digarfo.digarfo.Model.Receita;
 @Repository
 public interface ReceitaRepository extends CrudRepository<Receita, Long>{
 	/*
