@@ -1,4 +1,4 @@
-package com.DiGarfo.DiGarfo.Model;
+package com.digarfo.digarfo.Model;
 import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

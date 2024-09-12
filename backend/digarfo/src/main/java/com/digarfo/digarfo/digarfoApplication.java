@@ -1,13 +1,13 @@
-package com.DiGarfo.DiGarfo;
+package com.digarfo.digarfo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DiGarfoApplication {
+public class digarfoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DiGarfoApplication.class, args);
+		SpringApplication.run(digarfoApplication.class, args);
 	}
 
 }
