@@ -34,7 +34,7 @@ public class UsuarioController {
 		return usuarioRepository.findAll();
 	}
 	//GET por id(email)	
-	@GetMapping("/email/{email}")
+	@GetMapping("/{email}")
 	public Usuario buscaUsuarioPorEmail(@PathVariable String email) {
 		return usuarioRepository.findById(email).orElse(null);
 	}
@@ -45,13 +45,13 @@ public class UsuarioController {
 		return usuarioRepository.save(usuario);
 	}
 	//UPDATE usuario por id(email)
-	@PutMapping("/{id_usuario}")
+	@PutMapping("/{email}")
 	public Usuario atualizaUsuario(@PathVariable String email, @RequestBody Usuario usuario) {
 		usuario.setEmail(email);
 		return usuarioRepository.save(usuario);
 	}
 	//DELETE usuario receita por id(email)
-	@DeleteMapping("/{id_usuario}")
+	@DeleteMapping("/{email}")
 	public void deletaUsuario(@PathVariable String email) {
 		usuarioRepository.deleteById(email);
 	}
