@@ -59,6 +59,5 @@ public class ApiConnection {
                 usuariocallback.onFailure(new Exception("Request failed"));
             }
         });
-
     }
 }

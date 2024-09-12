@@ -16,10 +16,15 @@ public class Usuario {
     @SerializedName("descricao")
     private String descricao;
 
+    public Usuario() {
+        //default
+    }
+
     public Usuario(String email, String nome_usuario, String senha) {
         this.email = email;
         this.nome_usuario = nome_usuario;
         this.senha = senha;
+        this.banido = false;
     }
 
     public String getEmail() {
