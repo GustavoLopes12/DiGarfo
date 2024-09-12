@@ -21,12 +21,12 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	
-	/*//GET por nome
-	@GetMapping("/{nome_usuario}")
-	public Iterable<Usuario> buscarUsuarioPorNome(@PathVariable String nome_usuario) {
+	/*
+	//GET por nome
+	@GetMapping("/nome/{nome_usuario}")
+	public Iterable<Usuario> buscarUsuarioPorNome(@RequestParam String nome_usuario) {
 	return usuarioRepository.findByNome_usuario(nome_usuario);
-	}*/
+	} */
 	
 	//GET todas os usuarios
 	@GetMapping
@@ -34,7 +34,7 @@ public class UsuarioController {
 		return usuarioRepository.findAll();
 	}
 	//GET por id(email)	
-	@GetMapping("/{email}")
+	@GetMapping("/email/{email}")
 	public Usuario buscaUsuarioPorEmail(@PathVariable String email) {
 		return usuarioRepository.findById(email).orElse(null);
 	}
@@ -55,5 +55,7 @@ public class UsuarioController {
 	public void deletaUsuario(@PathVariable String email) {
 		usuarioRepository.deleteById(email);
 	}
+	
+	
 
 }
