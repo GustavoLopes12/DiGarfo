@@ -26,6 +26,25 @@ public class escreverreceita extends AppCompatActivity {
             return insets;
         });
     }
+
+    //*********************** FAZENDO CAMPOS FUNCIONAREM ***************************
+    //******************************************************************************
+
+    //-campo titulo
+
+
+    //-botao enviar receita
+
+    //*********************** FIM-FAZENDO CAMPOS FUNCIONAREM ***********************
+    //******************************************************************************
+
+
+
+
+
+
+    //************************ PARTE DE BAIXO ********************************************
+    //************************************************************************************
     boolean usuariologado = true; //variavel usada em todas as funções
     public void irparaperfil(View view){
         if(usuariologado){
@@ -57,4 +76,6 @@ public class escreverreceita extends AppCompatActivity {
             Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
         }
     }
+    //************************ FIM-PARTE DE BAIXO ********************************************
+    //************************************************************************************
 }
