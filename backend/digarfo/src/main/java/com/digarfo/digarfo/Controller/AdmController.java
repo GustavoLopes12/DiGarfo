@@ -23,7 +23,7 @@ public class AdmController {
 			return admRepository.findAll();
 		}
 		//GET adm por id(email)	
-		@GetMapping("/{id_adm}")
+		@GetMapping("/{email}")
 		public Adm buscaAdmPorId(@PathVariable String email) {
 			return admRepository.findById(email).orElse(null);
 		}
