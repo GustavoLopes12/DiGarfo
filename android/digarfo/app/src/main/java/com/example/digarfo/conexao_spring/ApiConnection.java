@@ -1,5 +1,7 @@
 package com.example.digarfo.conexao_spring;
 
+import com.example.digarfo.model.Adm;
+import com.example.digarfo.model.AdmList;
 import com.example.digarfo.model.Usuario;
 import com.example.digarfo.model.UsuarioList;
 
@@ -29,6 +31,17 @@ public class ApiConnection {
         Call<Usuario> attUsuario(@Path("email") String email, Usuario usuario);
        @DELETE("/usuario/{email}")
         Call<Usuario> deleteUsuario(@Path("email") String email);
+       //adm
+        @GET("/adm")
+        Call<AdmList> getListaAdms();
+        @GET("/adm/{email}")
+        Call<Adm> getAdm(@Path("email") String email);
+        @POST("/adm")
+        Call<Adm> criarAdm(@Body Adm adm);
+        @PUT("/adm/{email}")
+        Call<Adm> attAdm(@Path("email") String email);
+        @DELETE("/adm/{email}")
+        Call<Adm> deleteAdm(@Path("email") String email);
     }
     //link do banco
     String urlBase = "http://localhost:8080";//do banco
@@ -42,6 +55,10 @@ public class ApiConnection {
                 .build();
         requestUser = retrofit.create(RequestUser.class);
     }
+    /*
+    * ////////////////////////////////////////////////////
+    * ////////////////////////////////////////////////////
+    * */
     //criar usuario //cadastro
     public interface UsuarioCallback {
         void onSuccess(Usuario usuario);
