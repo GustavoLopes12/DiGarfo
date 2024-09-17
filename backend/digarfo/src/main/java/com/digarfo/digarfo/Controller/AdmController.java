@@ -1,5 +1,6 @@
 package com.digarfo.digarfo.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.digarfo.digarfo.Model.Adm;
+import com.digarfo.digarfo.Model.Usuario;
 import com.digarfo.digarfo.Repository.AdmRepository;
 
 @RestController
@@ -17,6 +19,16 @@ public class AdmController {
 	//adm tem os endpoints de usuario pois o adm domina sobre os usuarios
 	@Autowired
 	private AdmRepository admRepository;
+		//login
+		@PostMapping("/loginAdm")
+		public ResponseEntity<String> login(@RequestBody Adm adm){
+			Adm foundAdm = admRepository.findByEmailAndSenha(adm.getEmail(), adm.getSenha());
+			if (foundAdm != null) {
+				return ResponseEntity.ok("Login feito");
+			}else {
+				return ResponseEntity.status(401).body("Login nao realizado");
+			}
+		}
 	  	//GET todos os adms
 		@GetMapping
 		public Iterable<Adm> getAdm(){

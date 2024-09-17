@@ -55,10 +55,6 @@ public class ApiConnection {
                 .build();
         requestUser = retrofit.create(RequestUser.class);
     }
-    /*
-    * ////////////////////////////////////////////////////
-    * ////////////////////////////////////////////////////
-    * */
     //criar usuario //cadastro
     public interface UsuarioCallback {
         void onSuccess(Usuario usuario);
