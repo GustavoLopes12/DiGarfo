@@ -3,6 +3,7 @@ package com.example.digarfo.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +27,21 @@ public class escreverreceita extends AppCompatActivity {
             return insets;
         });
     }
+
+    //atributos qe vao receber os campos da activity
+    //img
+    EditText titulo;
+    EditText tempo;
+    //dificuldade
+    EditText ingredientes;
+    EditText modo_prep;
+
+
+
+
+
+
+
 
     //*********************** FAZENDO CAMPOS FUNCIONAREM ***************************
     //******************************************************************************
