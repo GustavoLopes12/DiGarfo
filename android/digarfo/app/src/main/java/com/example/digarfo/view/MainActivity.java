@@ -3,6 +3,7 @@ package com.example.digarfo.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,9 @@ import com.example.digarfo.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText email;
+    EditText senha;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +29,15 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        email = findViewById(R.id.email);
+        senha = findViewById(R.id.password);
     }
+    //Cadastro
     public void outrapagina(View view){//indo para outra pagina
         Intent outraTela = new Intent(getApplicationContext(), Cadastro.class);
         startActivity(outraTela);
     }
+    //login
     boolean usuariologado = true; //variavel usada em todas as funções
     public void irparahomelogado(View view){
         if(usuariologado){
@@ -41,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(outraTela);
         }
     }
+    //home sem login
     public void homesemlogin(View view){//indo para outra pagina
         Intent outraTela = new Intent(getApplicationContext(), home.class);
         startActivity(outraTela);

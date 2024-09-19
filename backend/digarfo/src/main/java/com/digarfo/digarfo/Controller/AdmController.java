@@ -44,6 +44,15 @@ public class AdmController {
 		public Adm adicionarAdm(@RequestBody Adm adm) {
 			return admRepository.save(adm);
 		}
+		@PutMapping("/{email}")
+		public Adm atualizaAdm(@PathVariable String email, @RequestBody Adm adm) {
+			adm.setEmail(email);
+			return admRepository.save(adm);
+		}
+		@DeleteMapping("/{email}")
+		public void deletaAdm(@PathVariable String email) {
+			admRepository.deleteById(email);
+		}
 	/*@Autowired
 	private UsuarioRepository usuarioRepository;
 	    //GET todas os usuarios

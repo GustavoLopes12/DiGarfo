@@ -29,16 +29,16 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		public Receita buscaReceitaPorId(@PathVariable Long id_receita) {
 			return receitaRepository.findById(id_receita).orElse(null);
 		}
-		/*//GET por nome
+		//GET por nome
 		@GetMapping("/nome/{nome_receita}")
 		public Iterable<Receita> buscarReceitaPorNome(@PathVariable String nome_receita) {
 			return receitaRepository.findByNome(nome_receita);
-		}*/
-		/*//GET por categoria
+		}
+		//GET por categoria
 		@GetMapping("/categoria/{categoria}")
 		public Iterable<Receita> buscarReceitaPorCateoria(@PathVariable String categoria) {
 			return receitaRepository.findByCategoria(categoria);
-		}*/
+		}
 		
 		//CREATE nova receita
 		@PostMapping
