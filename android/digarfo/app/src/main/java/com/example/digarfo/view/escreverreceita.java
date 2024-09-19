@@ -13,8 +13,23 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.digarfo.R;
+import com.example.digarfo.conexao_spring.ApiConnection;
+import com.example.digarfo.model.Receita;
+import com.example.digarfo.model.Usuario;
 
 public class escreverreceita extends AppCompatActivity {
+    //ApiConnection conexao;
+    //ApiConnection.UsuarioCallback usuarioCallback;
+
+    //img
+    EditText titulo; //certo
+    EditText tempo; //certo
+   //dificuldade
+    EditText ingredientes; //certo
+    EditText modo_prep; //certo
+    //dificuldade-----!!!!! colocar radio (bolinhas opção, pq ta como img) !!!!!!! -----
+    EditText custo;
+    EditText categoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,37 +41,33 @@ public class escreverreceita extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //img
+        titulo =  findViewById(R.id.title_input_rct);
+        tempo =  findViewById(R.id.time_input_rct);
+        ingredientes = findViewById(R.id.ingred_input_rct);
+        modo_prep = findViewById(R.id.prep_input_rct);
+        //dificuldade
+        custo = findViewById(R.id.custo_input_rct);
+        categoria = findViewById(R.id.categ_input_rct);
     }
-
-    //atributos qe vao receber os campos da activity
-    //img
-    EditText titulo;
-    EditText tempo;
-    //dificuldade
-    EditText ingredientes;
-    EditText modo_prep;
-
-
-
-
-
-
-
 
     //*********************** FAZENDO CAMPOS FUNCIONAREM ***************************
     //******************************************************************************
 
-    //-campo titulo
-
-
     //-botao enviar receita
+    public void enviar_rct(View view){
+        Receita receita = new Receita(null, titulo.getText().toString(), custo.getText().toString(), categoria.getText().toString(), null, tempo.getText().toString(),
+                ingredientes.getText().toString(), modo_prep.getText().toString(), null, true);
+
+        //conexao.criarUsuario(user, usuarioCallback);----!!! CRIAR NO APCONNECTION !!!------
+        Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(outraTela);
+
+    }
+    //-FIM-botao enviar receita
 
     //*********************** FIM-FAZENDO CAMPOS FUNCIONAREM ***********************
     //******************************************************************************
-
-
-
-
 
 
     //************************ PARTE DE BAIXO ********************************************

@@ -9,7 +9,7 @@
     tools:context=".view.MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/title_input_rct"
         android:layout_width="323dp"
         android:layout_height="68dp"
         android:background="@drawable/custom_input_login"
