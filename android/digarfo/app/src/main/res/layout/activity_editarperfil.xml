@@ -94,21 +94,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.612" />
 
-    <EditText
-        android:id="@+id/title_input_rct"
-        android:layout_width="367dp"
-        android:layout_height="36dp"
-        android:background="@drawable/custom_input_login"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="  Seu Email"
-        android:textColor="#A6A6A6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.584" />
-
         <EditText
             android:id="@+id/password"
             android:layout_width="367dp"
