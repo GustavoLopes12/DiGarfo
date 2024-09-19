@@ -3,7 +3,9 @@ package com.example.digarfo.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -41,6 +43,24 @@ public class escreverreceita extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Referenciar o Spinner no layout
+        Spinner spinner = findViewById(R.id.my_spinner);
+
+        // Criar uma lista de opções
+        String[] options = {"Nenhum", "Doces", "Salgados", "Saladas"};
+
+        // Criar um ArrayAdapter usando a lista de opções e o layout padrão do Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Aplicar o ArrayAdapter ao Spinner
+        spinner.setAdapter(adapter);
+
+        // Definir o item selecionado como "Nenhum"
+        spinner.setSelection(0); // Seleciona o primeiro item, que é "Nenhum"
+
+
         //img
         titulo =  findViewById(R.id.title_input_rct);
         tempo =  findViewById(R.id.time_input_rct);
@@ -48,7 +68,6 @@ public class escreverreceita extends AppCompatActivity {
         modo_prep = findViewById(R.id.prep_input_rct);
         //dificuldade
         custo = findViewById(R.id.custo_input_rct);
-        categoria = findViewById(R.id.categ_input_rct);
     }
 
     //*********************** FAZENDO CAMPOS FUNCIONAREM ***************************

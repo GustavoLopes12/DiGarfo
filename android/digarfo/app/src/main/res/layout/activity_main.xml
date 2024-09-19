@@ -9,11 +9,7 @@
     tools:context=".view.MainActivity">
 
     <EditText
-<<<<<<< HEAD
         android:id="@+id/title_input_rct"
-=======
-        android:id="@+id/email"
->>>>>>> f638de1a23301d2a655c56f7701f142cf2ae2cca
         android:layout_width="323dp"
         android:layout_height="68dp"
         android:background="@drawable/custom_input_login"

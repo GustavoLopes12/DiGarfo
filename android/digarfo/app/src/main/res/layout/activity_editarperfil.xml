@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="0.806">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/faz_o_L"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -94,7 +94,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.612" />
 
-<<<<<<< HEAD
     <EditText
         android:id="@+id/title_input_rct"
         android:layout_width="367dp"
@@ -109,7 +108,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.584" />
-=======
+
         <EditText
             android:id="@+id/password"
             android:layout_width="367dp"
@@ -125,7 +124,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.659" />
->>>>>>> f638de1a23301d2a655c56f7701f142cf2ae2cca
 
         <TextView
             android:id="@+id/textView"
