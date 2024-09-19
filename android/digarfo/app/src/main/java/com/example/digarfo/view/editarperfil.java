@@ -3,6 +3,7 @@ package com.example.digarfo.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +15,10 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.digarfo.R;
 
 public class editarperfil extends AppCompatActivity {
+    EditText email;
+    EditText senha;
+    EditText nome;
+    EditText descricao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +30,19 @@ public class editarperfil extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        email = findViewById(R.id.email);
+        senha = findViewById(R.id.password);
+        nome = findViewById(R.id.nome);
+        descricao = findViewById(R.id.descricao);
     }
+
     boolean usuariologado = true; //variavel usada em todas as funções
+    //voltar home
     public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
         startActivity(outraTela);
     }
+    //inserir receita //se logado
     public void irparainserir(View view){
         if(usuariologado){
             Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
@@ -40,6 +52,7 @@ public class editarperfil extends AppCompatActivity {
         }
 
     }
+    //ir p favoritos se logado
     public void irparafavoritos(View view){
         if (usuariologado){
             Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);

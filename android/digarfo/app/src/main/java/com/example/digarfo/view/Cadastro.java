@@ -43,4 +43,14 @@ public class Cadastro extends AppCompatActivity {
         Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(outraTela);
     }
+    //botao home sem login
+    public void homesemlogin(View view){//indo para outra pagina
+        Intent outraTela = new Intent(getApplicationContext(), home.class);
+        startActivity(outraTela);
+    }
+    //voltar login
+    public void outrapagina(View view){//indo para outra pagina
+        Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(outraTela);
+    }
 }

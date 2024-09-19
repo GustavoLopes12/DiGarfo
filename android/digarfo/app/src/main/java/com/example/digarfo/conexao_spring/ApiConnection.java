@@ -26,7 +26,9 @@ public class ApiConnection {
        @GET("/usuario/{email}")
        Call<Usuario> getUsuario(@Path("email") String email);
        @POST("/usuario")
-        Call<Usuario> criarUsuario(@Body Usuario usuario);
+       Call<Usuario> criarUsuario(@Body Usuario usuario);
+      /* @POST("/login")
+       Call<Usuario> login(@Body Usuario usuario); */
        @PUT("/usuario/{email}")
         Call<Usuario> attUsuario(@Path("email") String email, Usuario usuario);
        @DELETE("/usuario/{email}")
@@ -62,7 +64,7 @@ public class ApiConnection {
     }
     public void criarUsuario(Usuario usuario, UsuarioCallback usuariocallback){
         Call<Usuario> call = requestUser.criarUsuario(usuario);
-        call.enqueue(new Callback<Usuario>(){
+       call.enqueue(new Callback<Usuario>(){
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 usuariocallback.onSuccess(response.body());

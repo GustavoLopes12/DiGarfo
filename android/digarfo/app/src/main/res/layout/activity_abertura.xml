@@ -8,7 +8,7 @@
     tools:context="com.example.digarfo.view.Abertura">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imagemfundo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
