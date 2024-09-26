@@ -1,5 +1,6 @@
 package com.example.digarfo.view;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.digarfo.R;
+import com.example.digarfo.conexao_spring.RetrofitClient;
+import com.example.digarfo.conexao_spring.UsuarioAPIController;
+import com.example.digarfo.model.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,13 +36,46 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         senha = findViewById(R.id.password);
     }
+    // login api
+    public void login(View view){
+        //pegando valores
+        String emailString = email.getText().toString();
+        String senhaString = senha.getText().toString();
+        //cliente
+        RetrofitClient retrofitClient = new RetrofitClient();
+        //api controller
+        UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
+        //login
+        usuarioAPIController.Login(emailString, senhaString, new UsuarioAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Login Feito");
+                alerta.setMessage(usuario.toString());
+                alerta.setNegativeButton("Ok",null);
+                alerta.create().show();
+            }
+            @Override
+            public void onFailure(Throwable t) {
+                androidx.appcompat.app.AlertDialog.Builder alerta = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Login Falhou");
+                alerta.setMessage(t.toString());
+                alerta.setNegativeButton("Sair",null);
+                alerta.create().show();
+            }
+        });
+
+
+    }
     //Cadastro
     public void outrapagina(View view){//indo para outra pagina
         Intent outraTela = new Intent(getApplicationContext(), Cadastro.class);
         startActivity(outraTela);
     }
-    //login
-    boolean usuariologado = true; //variavel usada em todas as funções
+    //login sem api "improvisado"
+    /*boolean usuariologado = true; //variavel usada em todas as funções
     public void irparahomelogado(View view){
         if(usuariologado){
             Intent outraTela = new Intent(getApplicationContext(), home.class);
@@ -48,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(outraTela);
         }
-    }
+    }*/
     //home sem login
     public void homesemlogin(View view){//indo para outra pagina
         Intent outraTela = new Intent(getApplicationContext(), home.class);

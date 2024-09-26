@@ -15,9 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.digarfo.R;
-import com.example.digarfo.conexao_spring.ApiConnection;
 import com.example.digarfo.model.Receita;
-import com.example.digarfo.model.Usuario;
 
 public class escreverreceita extends AppCompatActivity {
     //ApiConnection conexao;
@@ -62,7 +60,7 @@ public class escreverreceita extends AppCompatActivity {
 
 
         //img
-        titulo =  findViewById(R.id.title_input_rct);
+        titulo =  findViewById(R.id.email);
         tempo =  findViewById(R.id.time_input_rct);
         ingredientes = findViewById(R.id.ingred_input_rct);
         modo_prep = findViewById(R.id.prep_input_rct);

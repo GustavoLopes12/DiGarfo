@@ -9,7 +9,7 @@
     tools:context=".view.MainActivity">
 
     <EditText
-        android:id="@+id/title_input_rct"
+        android:id="@+id/email"
         android:layout_width="323dp"
         android:layout_height="68dp"
         android:background="@drawable/custom_input_login"
@@ -84,7 +84,7 @@
         android:drawableTint="@color/cor_button"
         android:foregroundTint="#FF9997"
         android:foregroundTintMode="add"
-        android:onClick="irparahomelogado"
+        android:onClick="login"
         android:shadowColor="#FF9997"
         android:text="Entrar"
         android:textColorHint="#FF9997"

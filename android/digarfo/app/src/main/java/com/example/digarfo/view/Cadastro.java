@@ -18,7 +18,7 @@ import com.example.digarfo.model.Usuario;
 
 public class Cadastro extends AppCompatActivity {
     ApiConnection conexao;
-    UsuarioCallback usuarioCallback;
+    //UsuarioCallback usuarioCallback;
     EditText name;
     EditText email;
     EditText senha;
@@ -39,7 +39,7 @@ public class Cadastro extends AppCompatActivity {
     //cadastro
     public void cadastrar(View view){
         Usuario user = new Usuario(email.getText().toString(),name.getText().toString(),senha.getText().toString());
-        conexao.criarUsuario(user, usuarioCallback);
+        //conexao.criarUsuario(user, usuarioCallback);
         Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(outraTela);
     }

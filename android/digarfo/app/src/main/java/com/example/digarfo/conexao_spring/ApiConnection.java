@@ -19,7 +19,7 @@ import retrofit2.http.Path;
 
 public class ApiConnection {
     //interface com os endpoints
-    interface RequestUser{
+   /* interface RequestUser{
         //usuario
        @GET("/usuario")
        Call<UsuarioList> getListaUsuarios();
@@ -29,7 +29,7 @@ public class ApiConnection {
        Call<Usuario> criarUsuario(@Body Usuario usuario);
       /* @POST("/login")
        Call<Usuario> login(@Body Usuario usuario); */
-       @PUT("/usuario/{email}")
+      /* @PUT("/usuario/{email}")
         Call<Usuario> attUsuario(@Path("email") String email, Usuario usuario);
        @DELETE("/usuario/{email}")
         Call<Usuario> deleteUsuario(@Path("email") String email);
@@ -74,5 +74,5 @@ public class ApiConnection {
                 usuariocallback.onFailure(new Exception("Request failed"));
             }
         });
-    }
+    }*/
 }

@@ -104,3 +104,4 @@ create table if not exists adm_avalia_receita(
 
 use digarfo;
 select*from usuario;
+
