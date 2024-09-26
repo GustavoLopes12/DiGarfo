@@ -51,18 +51,27 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(Usuario usuario) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
                 alerta.setCancelable(false);
-                alerta.setTitle("Login Feito");
-                alerta.setMessage(usuario.toString());
-                alerta.setNegativeButton("Ok",null);
-                alerta.create().show();
+                if(usuario.getEmail() == null){
+                    alerta.setTitle("Esse usuario não existe");
+                    alerta.setMessage("Faça login com um usuario existente ou crie um usuario novo");
+                    alerta.setNegativeButton("Voltar",null);
+                    alerta.create().show();
+                    Intent outraTela = new Intent(getApplicationContext(), home.class);
+                    startActivity(outraTela);
+                }else{
+                    alerta.setTitle("Login feito com sucesso");
+                    alerta.setMessage("Login realizado com sucesso, desfrute o DiGarfo :)");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
             }
             @Override
             public void onFailure(Throwable t) {
                 androidx.appcompat.app.AlertDialog.Builder alerta = new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this);
                 alerta.setCancelable(false);
-                alerta.setTitle("Login Falhou");
+                alerta.setTitle("Conexão Falhou, não é possivel realizar login");
                 alerta.setMessage(t.toString());
-                alerta.setNegativeButton("Sair",null);
+                alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
             }
         });

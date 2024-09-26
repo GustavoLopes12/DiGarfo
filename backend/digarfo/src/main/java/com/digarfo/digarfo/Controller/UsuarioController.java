@@ -21,12 +21,13 @@ public class UsuarioController {
 	
 	//login
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody Usuario usuario){
+	public Usuario login(@RequestBody Usuario usuario){
 		Usuario foundUser = usuarioRepository.findByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
 		if (foundUser != null) {
-			return ResponseEntity.ok("Login feito");
+			return foundUser;
 		}else {
-			return ResponseEntity.status(401).body("Login nao realizado");
+			Usuario emptyUser = new Usuario();
+			return emptyUser;
 		}
 	}
 	

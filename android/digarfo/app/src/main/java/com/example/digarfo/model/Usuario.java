@@ -79,4 +79,16 @@ public class Usuario {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "email='" + email + '\'' +
+                ", nome_usuario='" + nome_usuario + '\'' +
+                ", banido=" + banido +
+                ", img_user='" + img_user + '\'' +
+                ", senha='" + senha + '\'' +
+                ", descricao='" + descricao + '\'' +
+                '}';
+    }
 }
