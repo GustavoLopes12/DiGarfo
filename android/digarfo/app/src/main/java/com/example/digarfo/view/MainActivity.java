@@ -56,13 +56,17 @@ public class MainActivity extends AppCompatActivity {
                     alerta.setMessage("Faça login com um usuario existente ou crie um usuario novo");
                     alerta.setNegativeButton("Voltar",null);
                     alerta.create().show();
-                    Intent outraTela = new Intent(getApplicationContext(), home.class);
-                    startActivity(outraTela);
+                    email.setText(null);
+                    senha.setText(null);
                 }else{
                     alerta.setTitle("Login feito com sucesso");
                     alerta.setMessage("Login realizado com sucesso, desfrute o DiGarfo :)");
                     alerta.setNegativeButton("Ok",null);
                     alerta.create().show();
+                    email.setText(null);
+                    senha.setText(null);
+                    Intent outraTela = new Intent(getApplicationContext(), home.class);
+                    startActivity(outraTela);
                 }
             }
             @Override
@@ -75,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 alerta.create().show();
             }
         });
-
-
     }
     //Cadastro
     public void outrapagina(View view){//indo para outra pagina

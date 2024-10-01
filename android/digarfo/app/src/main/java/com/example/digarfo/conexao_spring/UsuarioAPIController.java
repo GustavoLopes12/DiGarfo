@@ -29,6 +29,7 @@ public class UsuarioAPIController {
     public String getMessage() {
         return status;
     }
+    //login
     public void Login(String email, String password, UsuarioAPIController.ResponseCallback responseCallback) {
 
         Usuario user = new Usuario(email, password);
@@ -42,6 +43,22 @@ public class UsuarioAPIController {
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 responseCallback.onFailure(new Exception("Não foi possivel fazer login"));
+            }
+        });
+    }
+    //cadastro
+    public void Cadastro(String nome, String email, String senha, UsuarioAPIController.ResponseCallback responseCallback){
+        Usuario user = new Usuario(email, nome, senha);
+        Call<Usuario> call = this.usuarioAPI.criarUsuario(user);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel cadastrar o usuario"));
             }
         });
     }

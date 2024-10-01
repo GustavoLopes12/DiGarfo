@@ -1,6 +1,8 @@
 package com.example.digarfo.view;
 
 import static com.example.digarfo.conexao_spring.ApiConnection.*;
+
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.example.digarfo.R;
 import com.example.digarfo.conexao_spring.ApiConnection;
+import com.example.digarfo.conexao_spring.RetrofitClient;
+import com.example.digarfo.conexao_spring.UsuarioAPIController;
 import com.example.digarfo.model.Usuario;
 
 public class Cadastro extends AppCompatActivity {
@@ -38,10 +42,43 @@ public class Cadastro extends AppCompatActivity {
     }
     //cadastro
     public void cadastrar(View view){
-        Usuario user = new Usuario(email.getText().toString(),name.getText().toString(),senha.getText().toString());
-        //conexao.criarUsuario(user, usuarioCallback);
-        Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(outraTela);
+        //pegando valores para criação
+        String emailString = email.getText().toString();
+        String nomeString = name.getText().toString();
+        String senhaString = senha.getText().toString();
+        //cliente retrofit
+        RetrofitClient retrofitClient = new RetrofitClient();
+        //api controller
+        UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
+        //cadastro
+        usuarioAPIController.Cadastro(nomeString, emailString, senhaString, new UsuarioAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(Cadastro.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Cadastro Realizado");
+                alerta.setMessage("Seu cadastro foi realizado com sucesso");
+                alerta.setNegativeButton("Ok",null);
+                alerta.create().show();
+                name.setText(null);
+                email.setText(null);
+                senha.setText(null);
+                Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(outraTela);
+            }
+            @Override
+            public void onFailure(Throwable t) {
+                androidx.appcompat.app.AlertDialog.Builder alerta = new androidx.appcompat.app.AlertDialog.Builder(Cadastro.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Conexão Falhou, não é possivel realizar cadastro, tente novamente");
+                alerta.setMessage(t.toString());
+                alerta.setNegativeButton("Voltar",null);
+                alerta.create().show();
+                name.setText(null);
+                email.setText(null);
+                senha.setText(null);
+            }
+        });
     }
     //botao home sem login
     public void homesemlogin(View view){//indo para outra pagina
