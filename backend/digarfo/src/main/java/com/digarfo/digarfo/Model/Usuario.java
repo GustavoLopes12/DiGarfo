@@ -15,7 +15,7 @@ public class Usuario implements Serializable {
 	private String email;
 	private String nome_usuario;
 	private boolean banido;
-	private String img_user;
+	private String img_user;//caminho da imagem né
 	private String senha;
 	private String descricao;
 	//construtores
