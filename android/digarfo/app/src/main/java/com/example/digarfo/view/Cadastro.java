@@ -5,6 +5,7 @@ import static com.example.digarfo.conexao_spring.ApiConnection.*;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,12 +26,15 @@ import com.example.digarfo.conexao_spring.RetrofitClient;
 import com.example.digarfo.conexao_spring.UsuarioAPIController;
 import com.example.digarfo.model.Usuario;
 
+import java.io.File;
+
 public class Cadastro extends AppCompatActivity {
     EditText name;
     EditText email;
     EditText senha;
     EditText descricao;
     ImageView img;
+    Uri imageUri; //guardar uri da imagem de perfil
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,29 +60,50 @@ public class Cadastro extends AppCompatActivity {
             }
         });
     }
-
+    //negocio para pegar imagem na galeria
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == 1){
-                img.setImageURI(data.getData());
+                imageUri = data.getData(); // Armazena a URI da imagem selecionada
+                img.setImageURI(imageUri);
             }
         }
     }
-
+    // Método para obter o caminho do arquivo a partir da URI
+    private String getRealPathFromURI(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor != null) {
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String path = cursor.getString(columnIndex);
+            cursor.close();
+            return path;
+        }
+        return null;
+    }
     //cadastro
     public void cadastrar(View view){
         //pegando valores para criação
         String emailString = email.getText().toString();
         String nomeString = name.getText().toString();
         String senhaString = senha.getText().toString();
+        String descricaoString = descricao.getText().toString();
+        // Verificando se uma imagem foi selecionada
+        if (imageUri == null) {
+            Toast.makeText(this, "Por favor, selecione uma imagem.", Toast.LENGTH_SHORT).show();
+        }
+        // Convertendo a URI em um arquivo
+        String imagePath = getRealPathFromURI(imageUri);
+        File imageFile = new File(imagePath);
         //cliente retrofit
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
         UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
         //cadastro
-        usuarioAPIController.Cadastro(nomeString, emailString, senhaString, new UsuarioAPIController.ResponseCallback() {
+        usuarioAPIController.Cadastro(nomeString, emailString, senhaString, descricaoString, imageFile, new UsuarioAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Usuario usuario) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(Cadastro.this);
@@ -90,6 +115,7 @@ public class Cadastro extends AppCompatActivity {
                 name.setText(null);
                 email.setText(null);
                 senha.setText(null);
+                descricao.setText(null);
                 Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(outraTela);
             }
@@ -104,6 +130,7 @@ public class Cadastro extends AppCompatActivity {
                 name.setText(null);
                 email.setText(null);
                 senha.setText(null);
+                descricao.setText(null);
             }
         });
     }

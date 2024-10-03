@@ -23,7 +23,7 @@ public class ApiConnection {
         //usuario
        @GET("/usuario")
        Call<UsuarioList> getListaUsuarios();
-       @GET("/usuario/{email}")
+       @GET("/usuario/email/{email}")
        Call<Usuario> getUsuario(@Path("email") String email);
        @POST("/usuario")
        Call<Usuario> criarUsuario(@Body Usuario usuario);
