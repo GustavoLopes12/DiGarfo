@@ -2,8 +2,12 @@ package com.example.digarfo.conexao_spring;
 
 import com.example.digarfo.model.Usuario;
 
+import java.io.File;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,9 +51,14 @@ public class UsuarioAPIController {
         });
     }
     //cadastro
-    public void Cadastro(String nome, String email, String senha, UsuarioAPIController.ResponseCallback responseCallback){
-        Usuario user = new Usuario(email, nome, senha);
-        Call<Usuario> call = this.usuarioAPI.criarUsuario(user);
+    public void Cadastro(String nome, String email, String senha, String descricao, File imagem, UsuarioAPIController.ResponseCallback responseCallback){
+        Usuario user = new Usuario(email, nome, senha, descricao);
+
+        //preparando arquivo
+        RequestBody requestFile = RequestBody.create(MediaType.parse("*/*"), imagem);
+        MultipartBody.Part arquivoPart = MultipartBody.Part.createFormData("file", imagem.getName(),requestFile);
+
+        Call<Usuario> call = this.usuarioAPI.criarUsuario(user, arquivoPart);
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {

@@ -26,7 +26,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	//private static String diretorio = "DiGarfo/imagens/imagem_perfil/";//para salvar imagem aqui
+	private static String diretorio = "DiGarfo/imagens/imagem_perfil/";//para salvar imagem aqui
 	
 	//login
 	@PostMapping("/login")
@@ -59,8 +59,8 @@ public class UsuarioController {
 	
 	//CREATE novo usuario
 	@PostMapping
-	public Usuario adicionarUsuario(@RequestBody Usuario usuario/*, @RequestParam("file") MultipartFile arquivo*/) {
-		/*try {
+	public Usuario adicionarUsuario(@RequestBody Usuario usuario, @RequestParam("file") MultipartFile arquivo) {
+		try {
 			if(!arquivo.isEmpty()) {
 				byte[] bytes = arquivo.getBytes();
 				Path caminho = Paths.get(diretorio+String.valueOf(usuario.getEmail())+arquivo.getOriginalFilename());
@@ -69,7 +69,7 @@ public class UsuarioController {
 			}
 		}catch(IOException e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 		return usuarioRepository.save(usuario);
 	}
@@ -79,7 +79,7 @@ public class UsuarioController {
 		usuario.setEmail(email);
 		return usuarioRepository.save(usuario);
 	}
-	//DELETE usuario receita por id(email)
+	//DELETE usuario usuario por id(email)
 	@DeleteMapping("/{email}")
 	public void deletaUsuario(@PathVariable String email) {
 		usuarioRepository.deleteById(email);

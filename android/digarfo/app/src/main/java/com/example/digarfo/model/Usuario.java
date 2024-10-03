@@ -20,10 +20,11 @@ public class Usuario {
         //default
     }
 
-    public Usuario(String email, String nome_usuario, String senha) {//construtor para cadastro
+    public Usuario(String email, String nome_usuario, String senha, String descricao) {//construtor para cadastro
         this.email = email;
         this.nome_usuario = nome_usuario;
         this.senha = senha;
+        this.descricao = descricao;
         this.banido = false;
     }
     public Usuario(String email, String senha){//construtor para login
