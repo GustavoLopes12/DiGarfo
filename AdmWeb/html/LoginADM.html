@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin</title>
     <link rel="stylesheet" href="../css/LoginADM.css">
+    <title>Login Admin</title>
+    <link rel="icon" href="../Image/DIGarfo2.0.png" type="image/x-icon">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login Admin</h2>
+    <img src="../Image/Anuncio DiGarfo.png" alt="Digarfo">
+    <div class="container">
+        <h1>Login Admin</h1>
         <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="senha" id="senha" placeholder="Senha" required>
-            <button onclick="enviar()" type="submit">Entrar</button>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="input-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" required>
+            </div>
+            <button type="submit">Entrar</button>
         </form>
-        <div id="message" style="color: red;"></div>
         <div id="message"></div>
     </div>
+
     <script src="../js/LoginADM.js"></script>
 </body>
 </html>

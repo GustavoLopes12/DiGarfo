@@ -1,24 +1,46 @@
+/* home.css */
 body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Define a altura total da tela */
+    display: flex; /* Usar flexbox para centralização */
+    align-items: center; /* Centralizar verticalmente */
+    justify-content: center; /* Centralizar horizontalmente */
+    flex-direction: column;
+}
+
+.container {
+    padding: 20px; /* Espaçamento interno do contêiner */
+    background-color: white; /* Cor de fundo do contêiner */
+    border-radius: 10px; /* Cantos arredondados do contêiner */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+}
+
+#opcao {
     display: flex;
-    justify-content: center; /* Alinha horizontalmente */
-    align-items: center; /* Alinha verticalmente */
-    height: 100vh; /* Faz o body ocupar toda a altura da janela */
-    margin: 0; /* Remove margens padrão */
-    background-color: rgb(184, 184, 184);
+    flex-direction: column; /* Alinhar os grupos de botões em coluna */
+    align-items: center; /* Centralizar os botões */
 }
 
-button{
-    background-color: palevioletred;
-    width: 200px;
-    height: 40px;
-    border-radius: 5px;
+#opcao a {
+    margin: 10px 0; /* Espaçamento entre os botões verticalmente */
+    width: 200px; /* Largura fixa para todos os botões */
 }
 
-#opcao{
-    display:flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 300px;
-    height: 50px;
-    background-color: rgba(0, 255, 255, 0);
+button {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remover borda padrão */
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    width: 100%; /* Botão ocupa 100% da largura do link */
+    cursor: pointer; /* Cursor pointer ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave ao passar o mouse */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
 }
