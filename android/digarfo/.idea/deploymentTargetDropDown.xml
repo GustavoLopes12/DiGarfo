@@ -2,7 +2,11 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+<<<<<<< HEAD
       <entry key="DiGarfo">
+=======
+      <entry key="digarfo">
+>>>>>>> 40f96d918f50bcb2cca7cc507b55e6c2db50eb1c
         <State />
       </entry>
     </value>

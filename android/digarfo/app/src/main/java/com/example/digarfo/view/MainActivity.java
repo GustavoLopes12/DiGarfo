@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         senha = findViewById(R.id.password);
     }
+
     // login api
     public void login(View view){
         //pegando valores
@@ -59,14 +60,18 @@ public class MainActivity extends AppCompatActivity {
                     email.setText(null);
                     senha.setText(null);
                 }else{
+                    String emailGuardado = email.getText().toString();//para guardar o email do usuario
                     alerta.setTitle("Login feito com sucesso");
                     alerta.setMessage("Login realizado com sucesso, desfrute o DiGarfo :)");
                     alerta.setNegativeButton("Ok",null);
                     alerta.create().show();
                     email.setText(null);
                     senha.setText(null);
-                    Intent outraTela = new Intent(getApplicationContext(), home.class);
-                    startActivity(outraTela);
+                    //levar o email do usuario para a activitie de editar perfil para quando clicado poder editar seu perfil
+                    Intent intent = new Intent(MainActivity.this, home.class);
+                    intent.putExtra("Email", emailGuardado);
+                    startActivity(intent);
+                    finish();
                 }
             }
             @Override
@@ -99,7 +104,11 @@ public class MainActivity extends AppCompatActivity {
     }*/
     //home sem login
     public void homesemlogin(View view){//indo para outra pagina
-        Intent outraTela = new Intent(getApplicationContext(), home.class);
-        startActivity(outraTela);
+        String emailGuardado = null;//para guardar o email do usuario
+        //levar o email do usuario para a activitie de editar perfil para quando clicado poder editar seu perfil
+        Intent intent = new Intent(MainActivity.this, home.class);
+        intent.putExtra("Email", emailGuardado);
+        startActivity(intent);
+        finish();
     }
 }

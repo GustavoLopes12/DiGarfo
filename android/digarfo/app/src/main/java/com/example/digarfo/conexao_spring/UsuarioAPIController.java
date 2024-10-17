@@ -51,14 +51,10 @@ public class UsuarioAPIController {
         });
     }
     //cadastro
-    public void Cadastro(String nome, String email, String senha, String descricao, File imagem, UsuarioAPIController.ResponseCallback responseCallback){
+    public void Cadastro(String nome, String email, String senha, String descricao, UsuarioAPIController.ResponseCallback responseCallback){
         Usuario user = new Usuario(email, nome, senha, descricao);
 
-        //preparando arquivo
-        RequestBody requestFile = RequestBody.create(MediaType.parse("*/*"), imagem);
-        MultipartBody.Part arquivoPart = MultipartBody.Part.createFormData("file", imagem.getName(),requestFile);
-
-        Call<Usuario> call = this.usuarioAPI.criarUsuario(user, arquivoPart);
+        Call<Usuario> call = this.usuarioAPI.criarUsuario(user);
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
