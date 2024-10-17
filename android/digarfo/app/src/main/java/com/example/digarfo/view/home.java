@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.digarfo.R;
 
 public class home extends AppCompatActivity {
-
+    String emailUSUARIO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +25,16 @@ public class home extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        String emailGuardado = getIntent().getStringExtra("Email");
+        emailUSUARIO = emailGuardado;
     }
-    boolean usuariologado = true; //variavel usada em todas as funções
+    //ir para perfil se logado senão não
     public void irparaperfil(View view){
-        if(usuariologado){
+        if(emailUSUARIO != null){
             Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
+            outraTela.putExtra("Email", emailUSUARIO);
             startActivity(outraTela);
+            finish();
         }else{
             Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
             Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
@@ -41,7 +45,7 @@ public class home extends AppCompatActivity {
         Toast.makeText(this, "Você já está na home :)", Toast.LENGTH_SHORT).show();
     }
     public void irparainserir(View view){
-        if(usuariologado){
+        if(emailUSUARIO != null){
             Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
             startActivity(outraTela);
         }else{
@@ -50,11 +54,11 @@ public class home extends AppCompatActivity {
 
     }
     public void irparafavoritos(View view){
-        if (usuariologado){
+        if (emailUSUARIO != null){
             Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
             startActivity(outraTela);
         }else{
-            Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Você ainda não esta logado, faça login para ter favoritos", Toast.LENGTH_SHORT).show();
         }
     }
     public void resultadopesquisa(View view) {

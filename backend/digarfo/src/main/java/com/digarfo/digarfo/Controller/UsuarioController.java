@@ -26,7 +26,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	private static String diretorio = "DiGarfo/imagens/imagem_perfil/";//para salvar imagem aqui
+	private static String diretorio = System.getProperty("user.home") + "\\DiGarfo\\imagens\\imagem_perfil\\"; //salvar imagem aqui
 	
 	//login
 	@PostMapping("/login")
@@ -59,7 +59,10 @@ public class UsuarioController {
 	
 	//CREATE novo usuario
 	@PostMapping
-	public Usuario adicionarUsuario(@RequestBody Usuario usuario, @RequestParam("file") MultipartFile arquivo) {
+	public Usuario adicionarUsuario(@RequestBody Usuario usuario/*@RequestParam String email, @RequestParam String nome_usuario, 
+	@RequestParam boolean banido, @RequestParam("file") MultipartFile arquivo, @RequestParam String senha, 
+	@RequestParam String descricao*/) {
+		/*Usuario usuario = new Usuario(nome_usuario, banido, null, email, senha, descricao);
 		try {
 			if(!arquivo.isEmpty()) {
 				byte[] bytes = arquivo.getBytes();
@@ -69,7 +72,7 @@ public class UsuarioController {
 			}
 		}catch(IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		return usuarioRepository.save(usuario);
 	}

@@ -15,10 +15,10 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.digarfo.R;
 
 public class editarperfil extends AppCompatActivity {
-    EditText email;
     EditText senha;
     EditText nome;
     EditText descricao;
+    String emailUSUARIO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +30,11 @@ public class editarperfil extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        email = findViewById(R.id.email);
         senha = findViewById(R.id.password);
         nome = findViewById(R.id.nome);
         descricao = findViewById(R.id.descricao);
+        String emailGuardado = getIntent().getStringExtra("Email");
+        emailUSUARIO = emailGuardado;
     }
 
     boolean usuariologado = true; //variavel usada em todas as funções
