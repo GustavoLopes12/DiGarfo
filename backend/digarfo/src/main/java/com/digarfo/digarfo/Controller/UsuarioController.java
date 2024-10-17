@@ -88,6 +88,4 @@ public class UsuarioController {
 		usuarioRepository.deleteById(email);
 	}
 	
-	
-
 }

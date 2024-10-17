@@ -2,34 +2,77 @@ package com.digarfo.digarfo.Model;
 
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
+@Table(name="receita")
 public class Receita implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_receita;
+	@Column(nullable=false)
 	private String nome_receita;
+	@Column(nullable=false)
 	private String custo;
+	@Column(nullable=false)
 	private String categoria;
+	@Column(nullable=false)
 	private String dificuldade;
+	@Column(nullable=false)
 	private String tempo_prep;
+	@Column(nullable=false)
 	private String ingredientes;
+	@Column(nullable=false)
 	private String modo_prep;
+	@Column(nullable=true)
 	private String img_receita;
-	private boolean aprovacao;
+	@Column(nullable=false)
+	private boolean aprovada;
+	
+	//relacionamento n pra 1 com usuario CRIACAO DE RECEITA
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_autor", nullable=false)
+	private Usuario usuario;
+	
+	//relacionamento n pra n com usuario USUARIO FAVORITA RECEITA
+	@ManyToMany
+	@JoinTable(name="usuario_favorita_receita", joinColumns = @JoinColumn(name = "id_receita_fk"), inverseJoinColumns = @JoinColumn(name = "email_usuario_fk"))
+	Set<Usuario> usuarios;
+	
+	//relacionamento n pra n com usuario USUARIO DENUNCIA RECEITA (motivo)
+	
+	//relacionamento n pra n com usuario USUARIO AVALIA RECEITA (valor)
+	
+	//relacionamento n pra 1 com adm ADM AVALIA RECEITA
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_adm", nullable=false)
+	private Adm adm;
+	
+	//relacionamento 1 pra n com comentario RECEITA TEM COMENTARIO
+	//@OneToMany(mappedBy="receita", fetch=FetchType.EAGER)
+	//private List<Comentario> comentarios;
+	
 	//construtores
 	public Receita() {
 		//default
 	}
 	public Receita(Long id_receita, String nome_receita, String custo, String categoria, String dificuldade,
-		String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovacao) {
+		String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovada/*, Usuario usuario*/) {
 		this.id_receita = id_receita;
 		this.nome_receita = nome_receita;
 		this.custo = custo;
@@ -39,7 +82,8 @@ public class Receita implements Serializable{
 		this.ingredientes = ingredientes;
 		this.modo_prep = modo_prep;
 		this.img_receita = img_receita;
-		this.aprovacao = aprovacao;
+		this.aprovada = aprovada;
+		//this.usuario = usuario;
 	}
 	//getters e setters
 	public Long getId_receita() {
@@ -96,11 +140,36 @@ public class Receita implements Serializable{
 	public void setImg_receita(String img_receita) {
 		this.img_receita = img_receita;
 	}
-	public boolean isAprovacao() {
-		return aprovacao;
+	public boolean getAprovada() {
+		return aprovada;
 	}
-	public void setAprovacao(boolean aprovacao) {
-		this.aprovacao = aprovacao;
+	public void setAprovada(boolean aprovada) {
+		this.aprovada = aprovada;
 	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	public Adm getAdm() {
+		return adm;
+	}
+	public void setAdm(Adm adm) {
+		this.adm = adm;
+	}
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	
 }
 

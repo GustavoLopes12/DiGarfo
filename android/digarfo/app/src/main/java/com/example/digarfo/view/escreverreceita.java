@@ -38,11 +38,8 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
     RadioGroup radioGroup_custo;
     RadioGroup radioGroup_dificul;
     //ImageView img_receita;
-
     //img
     //aprov
-
-
     /*------FIM-ATRIBUTOS QUE VAO RECEBER O VALOR DO ID DOS ELEMENTOS  */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,9 +79,6 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         radioGroup_custo = findViewById(R.id.radioCusto);
 
          */
-
-
-
     }
     //PEGA O VALOR SELECIONADO
     @Override
@@ -94,12 +88,10 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
             Toast.makeText(getApplicationContext(), "Item selecionado: " + valueFromSpinner, Toast.LENGTH_SHORT).show();
         }
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
     //RADIOGROUP 1
     String dific_selecionada;// adicionei la no parametro do receitaapicontroller
     public void selecionarDificul(View view){
@@ -118,7 +110,6 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         }
     }
     //FIM-RADIOGROUP 1
-
     //RADIOGROUP 2
     String custo_selecionado;
     public void selecionarCusto(View view){
@@ -137,7 +128,6 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         }
     }
     //FIM-RADIOGROUP 2
-
     //************************ PARTE DE BAIXO ********************************************
     //************************************************************************************
     boolean usuariologado = true; //variavel usada em todas as funções
@@ -173,8 +163,6 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
     }
     //************************ FIM-PARTE DE BAIXO ********************************************
     //************************************************************************************
-
-
 
     //*********************** BOTÃO ENVIAR RECEITA-FIZ MAS COMENTEI***************************
     //******************************************************************************

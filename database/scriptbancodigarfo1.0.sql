@@ -1,4 +1,4 @@
-/*drop schema if exists digarfo;*//*cuidado com esta linha*//*so use se necessario e olha la em*/
+drop schema if exists digarfo;/*cuidado com esta linha*//*so use se necessario e olha la em*/
 create schema if not exists digarfo;
 use digarfo;
 create table if not exists receita(
