@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,6 +36,9 @@ public class editarperfil extends AppCompatActivity {
     String descricaoString;
     String senhaString;
     String nomeString;
+    //para ocultar ou desocultar a senha
+    ImageView olho;
+    boolean visible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,23 @@ public class editarperfil extends AppCompatActivity {
             return insets;
         });
         //valores
-        senha = findViewById(R.id.password);
+                senha = findViewById(R.id.password);
+                olho = findViewById(R.id.olho2);
+                //botao olhinho da senha
+                olho.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(visible){
+                            senha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            olho.setImageResource(R.drawable.zoio);
+                        }else{
+                            senha.setInputType(InputType.TYPE_CLASS_TEXT);
+                            olho.setImageResource(R.drawable.olho_aberto);
+                        }
+                        senha.setSelection(senha.getText().length());
+                        visible = !visible;
+                    }
+                });
         nome = findViewById(R.id.nome);
         descricao = findViewById(R.id.descricao);
         //pegando email de usuario que deverá ser atualizado

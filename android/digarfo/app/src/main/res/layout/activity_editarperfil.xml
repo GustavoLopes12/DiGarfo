@@ -38,6 +38,7 @@
         app:layout_constraintVertical_bias="0.105" />
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="412dp"
         android:layout_height="350dp"
         android:orientation="vertical"
@@ -124,7 +125,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.612" />
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
         <EditText
             android:id="@+id/password"
             android:layout_width="367dp"
@@ -132,7 +136,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@drawable/custom_input_login"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="text|textWebEmailAddress"
             android:paddingLeft="5dp"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -141,6 +145,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.659" />
+
+    <ImageView
+        android:id="@+id/olho2"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right"
+        android:layout_marginEnd="30dp"
+        app:srcCompat="@drawable/olho_aberto" />
+</FrameLayout>
 
         <LinearLayout
             android:layout_width="309dp"

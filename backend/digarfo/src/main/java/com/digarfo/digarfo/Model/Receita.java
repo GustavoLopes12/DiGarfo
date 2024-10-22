@@ -35,9 +35,9 @@ public class Receita implements Serializable{
 	private String dificuldade;
 	@Column(nullable=false)
 	private String tempo_prep;
-	@Column(nullable=false)
+	@Column(nullable=false, length = 999999999)
 	private String ingredientes;
-	@Column(nullable=false)
+	@Column(nullable=false, length = 999999999)
 	private String modo_prep;
 	@Column(nullable=true)
 	private String img_receita;
