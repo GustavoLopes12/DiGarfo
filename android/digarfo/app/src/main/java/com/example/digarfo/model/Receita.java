@@ -24,27 +24,15 @@ public class Receita {
     private String img_receita;
     @SerializedName("aprovacao")
     private boolean aprovacao;
+    @SerializedName("id_autor")
+    private String id_autor;
 
     public Receita() {
         //default
     }
-    public Receita(Long id_receita, String nome_receita, String custo, String categoria, String dificuldade,
-                   String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovacao) {
-        this.id_receita = id_receita;
-        this.nome_receita = nome_receita;
-        this.custo = custo;
-        this.categoria = categoria;
-        this.dificuldade = dificuldade;
-        this.tempo_prep = tempo_prep;
-        this.ingredientes = ingredientes;
-        this.modo_prep = modo_prep;
-        this.img_receita = img_receita;
-        this.aprovacao = aprovacao;
-    }
 
     //construtor 2 (sem id)
-    public Receita( String nome_receita, String custo, String categoria, String dificuldade,
-                   String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovacao) {
+    public Receita( String nome_receita, String custo, String categoria, String dificuldade, String tempo_prep, String ingredientes, String modo_prep, String id_autor) {
         this.nome_receita = nome_receita;
         this.custo = custo;
         this.categoria = categoria;
@@ -52,10 +40,18 @@ public class Receita {
         this.tempo_prep = tempo_prep;
         this.ingredientes = ingredientes;
         this.modo_prep = modo_prep;
-       // this.img_receita = "sssss";
-       // this.aprovacao = false;
+        this.img_receita = null;
+        this.aprovacao = false;
+        this.id_autor = id_autor;
     }
     //getters e setters
+    public String getId_autor() {
+        return id_autor;
+    }
+
+    public void setId_autor(String id_autor) {
+        this.id_autor = id_autor;
+    }
     public Long getId_receita() {
         return id_receita;
     }

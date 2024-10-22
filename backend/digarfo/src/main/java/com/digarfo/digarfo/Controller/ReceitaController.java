@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.digarfo.digarfo.Model.Receita;
+import com.digarfo.digarfo.Model.Usuario;
 import com.digarfo.digarfo.Repository.ReceitaRepository;
 	
 	@RestController
@@ -42,7 +43,7 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		
 		//CREATE nova receita
 		@PostMapping
-		public Receita adicionarReceita(@RequestBody Receita receita) {
+		public Receita adicionarReceita(@RequestBody Receita receita){
 			return receitaRepository.save(receita);
 		}
 		//UPDATE receita por id

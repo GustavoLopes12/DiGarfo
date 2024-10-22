@@ -60,7 +60,7 @@ public class Receita implements Serializable{
 	
 	//relacionamento n pra 1 com adm ADM AVALIA RECEITA
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="id_adm", nullable=false)
+	@JoinColumn(name="id_adm", nullable=true)
 	private Adm adm;
 	
 	//relacionamento 1 pra n com comentario RECEITA TEM COMENTARIO

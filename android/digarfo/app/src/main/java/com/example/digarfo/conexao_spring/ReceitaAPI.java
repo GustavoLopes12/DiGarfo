@@ -10,10 +10,10 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface ReceitaAPI {
-    /*
+
     @POST("/receita")
     Call<Receita> criarReceita(@Body Receita receita);
-    */
+    
 
 }
 
