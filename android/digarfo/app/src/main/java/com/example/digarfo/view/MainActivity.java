@@ -3,8 +3,10 @@ package com.example.digarfo.view;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     EditText email;
     EditText senha;
+    //para ocultar ou desocultar a senha
+    ImageView olho;
+    boolean visible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,22 @@ public class MainActivity extends AppCompatActivity {
         });
         email = findViewById(R.id.email);
         senha = findViewById(R.id.password);
+        //para ocultar a senha ou desocultar
+        olho = findViewById(R.id.olho);
+        olho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(visible){
+                    senha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    olho.setImageResource(R.drawable.zoio);
+                }else{
+                    senha.setInputType(InputType.TYPE_CLASS_TEXT);
+                    olho.setImageResource(R.drawable.olho_aberto);
+                }
+                senha.setSelection(senha.getText().length());
+                visible = !visible;
+            }
+        });
     }
 
     // login api
@@ -90,18 +111,6 @@ public class MainActivity extends AppCompatActivity {
         Intent outraTela = new Intent(getApplicationContext(), Cadastro.class);
         startActivity(outraTela);
     }
-    //login sem api "improvisado"
-    /*boolean usuariologado = true; //variavel usada em todas as funções
-    public void irparahomelogado(View view){
-        if(usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), home.class);
-            startActivity(outraTela);
-        }else{
-            Toast.makeText(this, "Você não está logado, faça login para entrar no app o entre sem login", Toast.LENGTH_SHORT).show();
-            Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(outraTela);
-        }
-    }*/
     //home sem login
     public void homesemlogin(View view){//indo para outra pagina
         String emailGuardado = null;//para guardar o email do usuario

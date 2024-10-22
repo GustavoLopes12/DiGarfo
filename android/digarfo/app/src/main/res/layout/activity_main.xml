@@ -30,13 +30,15 @@
         android:background="@drawable/custom_input_login"
         android:ems="10"
         android:hint="Senha"
-        android:inputType="textPassword"
+        android:inputType="text|textEmailAddress"
         android:paddingStart="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.457"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black" />
 
     <ImageView
         android:id="@+id/imagemfundo"
@@ -133,5 +135,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.678" />
+
+    <ImageView
+        android:id="@+id/olho"
+        android:layout_width="35dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.459"
+        app:srcCompat="@drawable/olho_aberto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

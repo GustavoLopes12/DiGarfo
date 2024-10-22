@@ -33,6 +33,22 @@ public class UsuarioAPIController {
     public String getMessage() {
         return status;
     }
+
+    //pegar usuario por id(email)
+    public void getUsuario(String email, UsuarioAPIController.ResponseCallback responseCallback){
+        Call<Usuario> call = this.usuarioAPI.getUsuario(email);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel pegar o usuario pelo email"));
+            }
+        });
+    }
     //login
     public void Login(String email, String password, UsuarioAPIController.ResponseCallback responseCallback) {
 

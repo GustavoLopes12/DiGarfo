@@ -71,7 +71,8 @@
             android:background="@drawable/custom_input_login"
             android:ems="10"
             android:inputType="text"
-            android:textColor="#A6A6A6"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -101,7 +102,8 @@
             android:background="@drawable/custom_input_login"
             android:ems="10"
             android:inputType="text"
-            android:textColor="#A6A6A6"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -131,7 +133,8 @@
             android:background="@drawable/custom_input_login"
             android:ems="10"
             android:inputType="textPassword"
-            android:textColor="#A6A6A6"
+            android:paddingLeft="5dp"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -291,7 +294,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img"
         android:layout_width="133dp"
         android:layout_height="114dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -299,7 +302,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.306"
-        app:srcCompat="@drawable/cook_emoji" />
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
