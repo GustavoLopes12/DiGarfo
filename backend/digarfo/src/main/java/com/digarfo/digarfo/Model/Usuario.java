@@ -41,8 +41,8 @@ public class Usuario implements Serializable {
 	private List<Receita> receitas_usuario;
 	
 	//relacionamento n pra n com receita USUARIO FAVORITA RECEITA
-	@ManyToMany(mappedBy="usuarios")
-	private Set<Receita> receitas_fav;
+	//@ManyToMany(mappedBy="usuarios")
+	//private Set<Receita> receitas_fav;
 	
 	//relacionamento n pra n com receita USUARIO DENUNCIA RECEITA
 	
@@ -50,7 +50,7 @@ public class Usuario implements Serializable {
 	
 	//RELACIONAMENTO N PRA 1 COM ADM, ADM BANI USUARIO
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="id_adm", nullable=false)
+	@JoinColumn(name="id_adm", nullable=true)
 	private Adm adm;
 	
 	//relacionamento 1 pra n com comentario USUARIO FAZ COMENTARIO
@@ -133,12 +133,12 @@ public class Usuario implements Serializable {
 	public void setReceitas_usuario(List<Receita> receitas_usuario) {
 		this.receitas_usuario = receitas_usuario;
 	}
-	public Set<Receita> getReceitas_fav() {
+	/*public Set<Receita> getReceitas_fav() {
 		return receitas_fav;
 	}
 	public void setReceitas_fav(Set<Receita> receitas_fav) {
 		this.receitas_fav = receitas_fav;
-	}
+	}*/
 	public Adm getAdm() {
 		return adm;
 	}

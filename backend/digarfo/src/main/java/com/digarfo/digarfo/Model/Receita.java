@@ -50,9 +50,9 @@ public class Receita implements Serializable{
 	private Usuario usuario;
 	
 	//relacionamento n pra n com usuario USUARIO FAVORITA RECEITA
-	@ManyToMany
-	@JoinTable(name="usuario_favorita_receita", joinColumns = @JoinColumn(name = "id_receita_fk"), inverseJoinColumns = @JoinColumn(name = "email_usuario_fk"))
-	Set<Usuario> usuarios;
+	//@ManyToMany
+	//@JoinTable(name="usuario_favorita_receita", joinColumns = @JoinColumn(name = "id_receita_fk"), inverseJoinColumns = @JoinColumn(name = "email_usuario_fk"))
+	//Set<Usuario> usuarios;
 	
 	//relacionamento n pra n com usuario USUARIO DENUNCIA RECEITA (motivo)
 	
@@ -152,24 +152,24 @@ public class Receita implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public Set<Usuario> getUsuarios() {
+	/*public Set<Usuario> getUsuarios() {
 		return usuarios;
 	}
 	public void setUsuarios(Set<Usuario> usuarios) {
 		this.usuarios = usuarios;
-	}
+	}*/
 	public Adm getAdm() {
 		return adm;
 	}
 	public void setAdm(Adm adm) {
 		this.adm = adm;
 	}
-	public List<Comentario> getComentarios() {
+	/*public List<Comentario> getComentarios() {
 		return comentarios;
 	}
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
-	}
+	}*/
 	
 }
 
