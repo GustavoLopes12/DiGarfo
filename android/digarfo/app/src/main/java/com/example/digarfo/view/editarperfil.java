@@ -149,6 +149,38 @@ public class editarperfil extends AppCompatActivity {
             startActivity(outraTela);
             finish();
     }
+    //atualizar dados
+    public void atualizar_dados(){
+        //cliente retrofit
+        RetrofitClient retrofitClient = new RetrofitClient();
+        //api controller
+        UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
+        usuarioAPIController.getUsuario(emailUSUARIO, new UsuarioAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Editar Usuario " + usuario.getNome_usuario());
+                alerta.setMessage("Aqui você poderá editar seu usuario");
+                alerta.setNegativeButton("Ok",null);
+                alerta.create().show();
+                nome.setText(usuario.getNome_usuario());
+                senha.setText(usuario.getSenha());
+                descricao.setText(usuario.getDescricao());
+                banidoUSER = usuario.isBanido();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Algo de errado não está certo...");
+                alerta.setMessage("Tente editar seu usuario mais tarde!!!");
+                alerta.setNegativeButton("Ok",null);
+                alerta.create().show();
+            }
+        });
+    }
     //atualizar (SALVAR) usuario
     public void salvar(View view){
         //para texto
@@ -172,6 +204,7 @@ public class editarperfil extends AppCompatActivity {
                 nome.setText(null);
                 descricao.setText(null);
                 senha.setText(null);
+                atualizar_dados();
             }
 
             @Override
@@ -185,6 +218,7 @@ public class editarperfil extends AppCompatActivity {
                 nome.setText(null);
                 descricao.setText(null);
                 senha.setText(null);
+                atualizar_dados();
             }
         });
     }

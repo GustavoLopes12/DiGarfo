@@ -36,6 +36,9 @@ public class Usuario {
         this.banido = banido;
         this.img_user = null;
     }
+    public Usuario(String email){
+        this.email = email;
+    }
     public Usuario(String email, String senha){//construtor para login
         this.email = email;
         this.senha = senha;

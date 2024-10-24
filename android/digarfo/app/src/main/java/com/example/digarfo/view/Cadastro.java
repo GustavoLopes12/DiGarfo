@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,8 +34,13 @@ public class Cadastro extends AppCompatActivity {
     EditText email;
     EditText senha;
     EditText descricao;
+
     //ImageView img;
     //Uri imageUri; //guardar uri da imagem de perfil
+
+    //para ocultar ou desocultar a senha
+    ImageView olho;
+    boolean visible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,22 @@ public class Cadastro extends AppCompatActivity {
         email = findViewById(R.id.emailinput);
         senha = findViewById(R.id.senhainput);
         descricao = findViewById(R.id.descrição);
+        //para ocultar a senha ou desocultar
+        olho = findViewById(R.id.zoioo);
+        olho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(visible){
+                    senha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    olho.setImageResource(R.drawable.zoio);
+                }else{
+                    senha.setInputType(InputType.TYPE_CLASS_TEXT);
+                    olho.setImageResource(R.drawable.olho_aberto);
+                }
+                senha.setSelection(senha.getText().length());
+                visible = !visible;
+            }
+        });
         //pegando img pela galeria
         //img.setOnClickListener(new View.OnClickListener() {
         //    @Override

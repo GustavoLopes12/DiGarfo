@@ -37,7 +37,8 @@ public class ReceitaAPIController {
     }
     //inserir receitas
     public void enviarReceita(String nome_receita, String custo_selecionado, String categoria, String dific_selecionada,String tempo_prep, String ingredientes, String modo_prep, String id_autor, ReceitaAPIController.ResponseCallback responseCallback){
-        Receita receita = new Receita(nome_receita,  custo_selecionado,  categoria,  dific_selecionada, tempo_prep,  ingredientes,  modo_prep, id_autor);
+        Usuario usuario = new Usuario(id_autor);
+        Receita receita = new Receita(nome_receita,  custo_selecionado,  categoria,  dific_selecionada, tempo_prep,  ingredientes,  modo_prep, usuario);
         Call<Receita> call = this.receitaAPI.criarReceita(receita);
         call.enqueue(new Callback<Receita>() {
             @Override
