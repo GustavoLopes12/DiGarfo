@@ -126,36 +126,26 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         }
     }
     //FIM-RADIOGROUP 2
-    boolean usuariologado = true; //variavel usada em todas as funções
     public void irparaperfil(View view){
-        if(usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
-            startActivity(outraTela);
-        }else{
-            Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
-            Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(outraTela);
-        }
+            Intent intent = new Intent(escreverreceita.this, editarperfil.class);
+            intent.putExtra("Email", emailUSUARIO);
+            startActivity(intent);
+            finish();
     }
     public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
+        outraTela.putExtra("Email", emailUSUARIO);
         startActivity(outraTela);
+        finish();
     }
     public void irparainserir(View view){
-        if(usuariologado){
             Toast.makeText(this, "Você já está em escrever receitas :)", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
-        }
-
     }
     public void irparafavoritos(View view){
-        if (usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
-            startActivity(outraTela);
-        }else{
-            Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
-        }
+            Intent intent = new Intent(escreverreceita.this, favoritoslogado.class);
+            intent.putExtra("Email", emailUSUARIO);
+            startActivity(intent);
+            finish();
     }
     //enviar rct
     public void enviar_rct(View view) {

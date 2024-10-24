@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.digarfo.R;
 
 public class favoritoslogado extends AppCompatActivity {
-
+    String emailUSUARIO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,33 +25,29 @@ public class favoritoslogado extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //pegando o email do usuario logado
+        String emailGuardado = getIntent().getStringExtra("Email");
+        emailUSUARIO = emailGuardado;
     }
-    boolean usuariologado = true; //variavel usada em todas as funções
     public void irparaperfil(View view){
-        if(usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
-            startActivity(outraTela);
-        }else{
-            Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
-            Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(outraTela);
-        }
+        Intent intent = new Intent(favoritoslogado.this, editarperfil.class);
+        intent.putExtra("Email", emailUSUARIO);
+        startActivity(intent);
+        finish();
     }
     public void botaohome(View view){
-        Intent outraTela = new Intent(getApplicationContext(), home.class);
-        startActivity(outraTela);
+        Intent intent = new Intent(favoritoslogado.this, home.class);
+        intent.putExtra("Email", emailUSUARIO);
+        startActivity(intent);
+        finish();
     }
     public void irparainserir(View view){
-        if(usuariologado){
-            Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
-            startActivity(outraTela);
-        }else{
-            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
-        }
-
+        Intent intent = new Intent(favoritoslogado.this, escreverreceita.class);
+        intent.putExtra("Email", emailUSUARIO);
+        startActivity(intent);
+        finish();
     }
     public void irparafavoritos(View view){
         Toast.makeText(this, "Você já está em favoritos :)", Toast.LENGTH_SHORT).show();
-
     }
 }

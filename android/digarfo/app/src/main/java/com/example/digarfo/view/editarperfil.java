@@ -131,26 +131,23 @@ public class editarperfil extends AppCompatActivity {
     //voltar home
     public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
+        outraTela.putExtra("Email", emailUSUARIO);
         startActivity(outraTela);
+        finish();
     }
     //inserir receita //se logado
     public void irparainserir(View view){
-        if(emailUSUARIO != null){
             Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
+            outraTela.putExtra("Email", emailUSUARIO);
             startActivity(outraTela);
-        }else{
-            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
-        }
-
+            finish();
     }
     //ir p favoritos se logado
     public void irparafavoritos(View view){
-        if (emailUSUARIO != null){
             Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
+            outraTela.putExtra("Email", emailUSUARIO);
             startActivity(outraTela);
-        }else{
-            Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
-        }
+            finish();
     }
     //atualizar (SALVAR) usuario
     public void salvar(View view){
