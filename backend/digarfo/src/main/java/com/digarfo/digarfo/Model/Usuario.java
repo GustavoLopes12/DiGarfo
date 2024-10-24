@@ -3,7 +3,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,7 +38,8 @@ public class Usuario implements Serializable {
 	private String motivo_banimento;
 	//relaçionamento 1 pra n com receita CRIACAO DE RECEITA
 	@OneToMany(mappedBy="usuario", fetch=FetchType.EAGER)
-	private List<Receita> receitas_usuario;
+	@JsonManagedReference(value="usuario_receita")
+	private Set<Receita> receitas_usuario;
 	
 	//relacionamento n pra n com receita USUARIO FAVORITA RECEITA
 	//@ManyToMany(mappedBy="usuarios")
@@ -64,13 +65,14 @@ public class Usuario implements Serializable {
 		//default
 	}
 	public Usuario(String nome_usuario, boolean banido, String img_user, String email,
-	String senha, String descricao) {
+	String senha, String descricao, Set<Receita> receitas_usuario) {
 		this.nome_usuario = nome_usuario;
 		this.banido = banido;
 		this.img_user = img_user;
 		this.email = email;
 		this.senha = senha;
 		this.descricao = descricao;
+		this.receitas_usuario = receitas_usuario;
 	}
 	//getters e setters
 
@@ -127,10 +129,10 @@ public class Usuario implements Serializable {
 	public void setMotivo_banimento(String motivo_banimento) {
 		this.motivo_banimento = motivo_banimento;
 	}
-	public List<Receita> getReceitas_usuario() {
+	public Set<Receita> getReceitas_usuario() {
 		return receitas_usuario;
 	}
-	public void setReceitas_usuario(List<Receita> receitas_usuario) {
+	public void setReceitas_usuario(Set<Receita> receitas_usuario) {
 		this.receitas_usuario = receitas_usuario;
 	}
 	/*public Set<Receita> getReceitas_fav() {

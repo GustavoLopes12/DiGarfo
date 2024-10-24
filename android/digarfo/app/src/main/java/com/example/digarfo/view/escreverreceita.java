@@ -26,6 +26,7 @@ import com.example.digarfo.model.Receita;
 
 public class escreverreceita extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String emailUSUARIO;
+    String emailUSUARIO2;
 
     /*------ATRIBUTOS QUE VAO RECEBER O VALOR DO ID DOS ELEMENTOS  */
     EditText titulo;
@@ -52,6 +53,7 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         //pegando o email do usuario logado
         String emailGuardado = getIntent().getStringExtra("Email");
         emailUSUARIO = emailGuardado;
+        emailUSUARIO2 = emailGuardado;
         //outras relaçoes
         titulo = findViewById(R.id.title_input_rct);
         radioGroup_custo = findViewById(R.id.radioCusto);
@@ -178,17 +180,17 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
                 alerta.setNegativeButton("Ok",null);
                 alerta.create().show();
                 //limpando as coisas
-                //titulo.setText(null);
-                //tempo.setText(null);
-                //ingredientes.setText(null);
-                //modo_prep.setText(null);
+                titulo.setText(null);
+                tempo.setText(null);
+                ingredientes.setText(null);
+                modo_prep.setText(null);
                 //categ_spinner.setText(null);//!!poe o que?
                 //radioGroup_custo.setText(null);//!!
                 //radioGroup_dificul.setText(null);//!!
                 Intent outraTela = new Intent(getApplicationContext(), home.class);
-                //outraTela.putExtra("Email", emailUSUARIO);
+                outraTela.putExtra("Email", emailUSUARIO2);
                 startActivity(outraTela);
-                //finish();
+                finish();
             }
             @Override
             public void onFailure(Throwable t) {
@@ -198,11 +200,6 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
                 alerta.setMessage(t.toString());
                 alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
-                //limpando
-                //titulo.setText(null);
-                //tempo.setText(null);
-                //ingredientes.setText(null);
-               // modo_prep.setText(null);
             }
         });
     }

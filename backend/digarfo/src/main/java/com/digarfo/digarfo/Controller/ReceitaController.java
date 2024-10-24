@@ -17,7 +17,6 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 	@RestController
 	@RequestMapping("/receita")
 	public class ReceitaController {
-		
 		@Autowired
 		private ReceitaRepository receitaRepository;
 		//GET todas as receitas

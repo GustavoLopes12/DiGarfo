@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -47,6 +47,7 @@ public class Receita implements Serializable{
 	//relacionamento n pra 1 com usuario CRIACAO DE RECEITA
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_autor", nullable=false)
+	@JsonBackReference(value="usuario_receita")
 	private Usuario usuario;
 	
 	//relacionamento n pra n com usuario USUARIO FAVORITA RECEITA
@@ -72,7 +73,7 @@ public class Receita implements Serializable{
 		//default
 	}
 	public Receita(Long id_receita, String nome_receita, String custo, String categoria, String dificuldade,
-		String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovada/*, Usuario usuario*/) {
+		String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovada, Usuario usuario, Adm adm) {
 		this.id_receita = id_receita;
 		this.nome_receita = nome_receita;
 		this.custo = custo;
@@ -83,7 +84,8 @@ public class Receita implements Serializable{
 		this.modo_prep = modo_prep;
 		this.img_receita = img_receita;
 		this.aprovada = aprovada;
-		//this.usuario = usuario;
+		this.usuario = usuario;
+		this.adm = adm;
 	}
 	//getters e setters
 	public Long getId_receita() {
