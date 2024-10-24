@@ -31,11 +31,9 @@ public class editarperfil extends AppCompatActivity {
     String emailUSUARIO;//para editar esse usuario
     //para pegar a img da galeria
     ImageView img;
+    boolean banidoUSER;
     Uri imageUri;
-    //para guardar o usuario buscado, pois depois ele vai ser editado e quero guardar essas coisinhas
-    String descricaoString;
-    String senhaString;
-    String nomeString;
+
     //para ocultar ou desocultar a senha
     ImageView olho;
     boolean visible = false;
@@ -91,6 +89,7 @@ public class editarperfil extends AppCompatActivity {
                     nome.setText(usuario.getNome_usuario());
                     senha.setText(usuario.getSenha());
                     descricao.setText(usuario.getDescricao());
+                    banidoUSER = usuario.isBanido();
                 }
 
                 @Override
@@ -152,5 +151,44 @@ public class editarperfil extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Você ainda não esta logado", Toast.LENGTH_SHORT).show();
         }
+    }
+    //atualizar (SALVAR) usuario
+    public void salvar(View view){
+        //para texto
+        String descricaoString = descricao.getText().toString();
+        String senhaString = senha.getText().toString();
+        String nomeString = nome.getText().toString();
+        //cliente retrofit
+        RetrofitClient retrofitClient = new RetrofitClient();
+        //api controller
+        UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
+        //atualizar
+        usuarioAPIController.atualizar(nomeString, descricaoString, senhaString, emailUSUARIO, banidoUSER,new UsuarioAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Mudança Realizada");
+                alerta.setMessage("Seu perfil foi alterado com sucesso");
+                alerta.setNegativeButton("Ok",null);
+                alerta.create().show();
+                nome.setText(null);
+                descricao.setText(null);
+                senha.setText(null);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                androidx.appcompat.app.AlertDialog.Builder alerta = new androidx.appcompat.app.AlertDialog.Builder(editarperfil.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Conexão Falhou, não é possivel alterar seu perfil, tente novamente");
+                alerta.setMessage(t.toString());
+                alerta.setNegativeButton("Voltar",null);
+                alerta.create().show();
+                nome.setText(null);
+                descricao.setText(null);
+                senha.setText(null);
+            }
+        });
     }
 }

@@ -83,4 +83,20 @@ public class UsuarioAPIController {
             }
         });
     }
+    //atualizar usuario
+    public void atualizar(String nome,String descricao,String senha,String email,boolean banido, UsuarioAPIController.ResponseCallback responseCallback){
+        Usuario usuario = new Usuario(email, nome, senha, descricao, banido);
+        Call<Usuario> call = this.usuarioAPI.attUsuario(email,usuario);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                responseCallback.onFailure(new Exception("nao foi possivel atualizar o usuario"));
+            }
+        });
+    }
 }

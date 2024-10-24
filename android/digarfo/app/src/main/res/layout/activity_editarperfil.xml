@@ -197,6 +197,7 @@
             android:layout_height="46dp"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="#FEC987"
+            android:onClick="salvar"
             android:text="Salvar"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
