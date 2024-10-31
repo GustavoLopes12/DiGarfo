@@ -50,6 +50,8 @@ public class Receita {
         return usuario;
     }
 
+
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }

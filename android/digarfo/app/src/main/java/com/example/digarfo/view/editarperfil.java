@@ -112,7 +112,8 @@ public class editarperfil extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Escolha sua Imagem"), 1);
             }
         });
-    }
+    }//FIM-ONCREATE
+
     //fazer foto aparecer no lugar da foto padrao
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
