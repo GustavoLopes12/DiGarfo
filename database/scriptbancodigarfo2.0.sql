@@ -68,5 +68,8 @@ create table if not exists usuario_favorita_receita(
 	foreign key (email_usuario_fk) references usuario(email),
     foreign key (id_receita_fk) references receita(id_receita)
 );
+<<<<<<< HEAD
+=======
 select * from usuario;
+>>>>>>> fd1c0f6af371958d300fb75ec6ed550b44f4f3b2
 select * from receita;
