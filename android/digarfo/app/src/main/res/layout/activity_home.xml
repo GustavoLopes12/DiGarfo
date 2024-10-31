@@ -529,7 +529,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/botao_carrosel"
-                        android:onClick="resultadopesquisa"></Button>
+                        android:onClick="resultadopesquisa" />
 
                 </LinearLayout>
 
@@ -537,11 +537,68 @@
 
         </HorizontalScrollView>
 
+        <!--RECEITS SUGERIDAS-->
+       <LinearLayout
+           android:layout_width="150dp"
+           android:layout_height="150dp"
+           android:layout_marginLeft="22dp"
+           android:layout_marginTop="11dp"
+           android:orientation="vertical">
         <TextView
             android:id="@+id/recebe_receita"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nome Receita bd AQUI" />
+            android:text="Nome Receita bd AQUI"
+            android:textStyle="bold"
+            android:textSize="16sp">
+        </TextView>
+           <TextView
+               android:id="@+id/autor_receita"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Nome Autor Receita bd AQUI"
+               android:textSize="14sp">
+           </TextView>
+       </LinearLayout>
+        <!--RECEITS SUGERIDAS-->
+
+
+
+
+        <!--***********************************************
+        <LinearLayout
+            android:layout_width="110dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="10dp"
+            android:background="#F1AEAE"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/salada"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Salada e Vegetarianas"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:visibility="visible"
+                tools:visibility="visible"></TextView>
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/botao_carrosel"
+                android:onClick="resultadopesquisa"></Button>
+
+        </LinearLayout>
+        -->
 
         <Button
             android:id="@+id/btn_buscar_receita"

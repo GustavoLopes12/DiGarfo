@@ -27,7 +27,7 @@ public class ReceitaAPIController {
     //interface de response callback
     public interface ResponseCallback {
         void onSuccess(Receita receita);
-        void onSuccessList(List<Receita> receitas);
+       void onSuccessList(List<Receita> receitas);
         void onFailure(Throwable t);
     }
     public ReceitaAPIController(RetrofitClient retrofitClient) { //construtor
