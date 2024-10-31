@@ -10,71 +10,45 @@
     android:foregroundTint="#FFFFFF"
     tools:context=".view.home">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+
+    <!--SCROLLVIEW-->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
+        android:layout_height="match_parent">
+        <!--LINEAR LAYOUT-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="268dp"
+        android:layout_height="97dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="30dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.069"
-            app:srcCompat="@drawable/menu_removebg_preview" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="268dp"
-            android:layout_height="97dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.022"
-            app:srcCompat="@drawable/receitas_removebg_preview__2_" />
-
-        <ImageView
-            android:id="@+id/perfil"
-            android:layout_width="49dp"
-            android:layout_height="57dp"
-            android:layout_gravity="center_vertical"
-            android:onClick="irparaperfil"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="0.027"
-            app:srcCompat="@drawable/user" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/receitas_removebg_preview__2_" />
 
 
     <LinearLayout
-        android:layout_width="393dp"
-        android:layout_height="573dp"
+        android:layout_width="392dp"
+        android:layout_height="546dp"
+        android:layout_marginBottom="92dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout">
+
 
         <TextView
             android:id="@+id/textView6"
@@ -560,26 +534,30 @@
                 </LinearLayout>
 
             </LinearLayout>
+
         </HorizontalScrollView>
 
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginTop="50dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/recebe_receita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome Receita bd AQUI" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:background="@drawable/coisa_cinza"
-                android:gravity="center"
-                android:text="Receitas Sugeridas"
-                android:textColor="#FFFFFF"></TextView>
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_buscar_receita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="irpararesultadopesq"
+            android:text="Buscar" />
+
     </LinearLayout>
+
+    <!--FIM-LINEARLAYOUT-->
+        </LinearLayout>
+    <!--FIM-SCROLLVIEW-->
+    </ScrollView>
+       
+
 
     <LinearLayout
         android:id="@+id/imageView9"
@@ -598,7 +576,7 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="120dp"
+            android:layout_marginLeft="55dp"
             android:onClick="botaohome"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -613,7 +591,7 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginRight="116dp"
+            android:layout_marginLeft="40dp"
             android:onClick="irparainserir"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -623,21 +601,34 @@
             app:layout_constraintVertical_bias="0.933"
             app:srcCompat="@drawable/botao_adicionar__1_" />
 
-
         <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="52dp"
-            android:layout_height="55dp"
-            android:layout_gravity="right|center_vertical|end"
-            android:onClick="irparafavoritos"
+            android:id="@+id/perfil"
+            android:layout_width="49dp"
+            android:layout_height="57dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:onClick="irparaperfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.027"
+            app:srcCompat="@drawable/user" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginLeft="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.94"
-            app:srcCompat="@drawable/contorno_em_forma_de_coracao__1_" />
-
+            app:layout_constraintVertical_bias="0.069"
+            app:srcCompat="@drawable/menu_removebg_preview" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

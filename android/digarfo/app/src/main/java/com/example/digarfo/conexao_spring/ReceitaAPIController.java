@@ -6,6 +6,7 @@ import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -25,6 +26,7 @@ public class ReceitaAPIController {
     //interface de response callback
     public interface ResponseCallback {
         void onSuccess(Receita receita);
+        void onSuccessList(List<Receita> receitas);
         void onFailure(Throwable t);
     }
     public ReceitaAPIController(RetrofitClient retrofitClient) { //construtor
@@ -51,4 +53,35 @@ public class ReceitaAPIController {
             }
         });
     }
+    //buscar todas as receitas
+    public void BuscarReceitas(ReceitaAPIController.ResponseCallback responseCallback){
+        Call <List<Receita>> call = this.receitaAPI.all_receitas();
+        call.enqueue(new Callback<List<Receita>>() {
+            @Override
+            public void onResponse(Call<List<Receita>> call, Response<List<Receita>> response) {
+                responseCallback.onSuccessList(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Receita>> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel pegar todas as receitas"));
+            }
+        });
+    }
+    //buscar receita por id
+    public void getReceita(Long id, ReceitaAPIController.ResponseCallback responseCallback){
+        Call<Receita> call = this.receitaAPI.getReceita(id);
+        call.enqueue(new Callback<Receita>() {
+            @Override
+            public void onResponse(Call<Receita> call, Response<Receita> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Receita> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel pegar a receita pelo id"));
+            }
+        });
+    }
+
 }
