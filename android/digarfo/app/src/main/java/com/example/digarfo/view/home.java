@@ -54,7 +54,7 @@ public class home extends AppCompatActivity {
             Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
         }
     }
-    public void irparafavoritos(View view){
+    /*public void irparafavoritos(View view){
         if (emailUSUARIO != null){
             Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
             outraTela.putExtra("Email", emailUSUARIO);
@@ -63,7 +63,7 @@ public class home extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Você ainda não esta logado, faça login para ter favoritos", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
     public void resultadopesquisa(View view) {
         Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
         outraTela.putExtra("Email", emailUSUARIO);

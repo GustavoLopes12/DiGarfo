@@ -10,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.digarfo.R;
 
 public class resultadopesquisa extends AppCompatActivity {
+    RecyclerView recycler_view_resultado_pesquisa;
+    String pesquisaString;//valor da pesquisa
     String emailUSUARIO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,9 @@ public class resultadopesquisa extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //oque pesquisou?
+        String pesquisaGuardada = getIntent().getStringExtra("Pesquisa");
+        pesquisaString = pesquisaGuardada;
         //quem tá logado?
         String emailGuardado = getIntent().getStringExtra("Email");
         emailUSUARIO = emailGuardado;
