@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         receitas.forEach(receita => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${receita.id_receita}</td> <!-- Exibe a senha oculta -->
+                <td>${receita.id_receita}</td> <!-- -->
                 <td>${receita.aprovada}</td> <!-- Exemplo de campo adicional -->
                 <td>${receita.categoria}</td> 
                 <td>${receita.custo}</td> 

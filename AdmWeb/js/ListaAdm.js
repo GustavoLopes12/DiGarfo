@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.innerHTML = `
                 <td>${senhaOculta}</td> <!-- Exibe a senha oculta -->
                 <td>${admin.email}</td> <!-- Exemplo de campo adicional -->
+                <!-- Adicione mais campos conforme necessário -->
             `;
             tasksContainer.appendChild(row);
         });
