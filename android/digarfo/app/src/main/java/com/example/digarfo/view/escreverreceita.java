@@ -24,6 +24,8 @@ import com.example.digarfo.conexao_spring.ReceitaAPIController;
 import com.example.digarfo.conexao_spring.RetrofitClient;
 import com.example.digarfo.model.Receita;
 
+import java.util.List;
+
 public class escreverreceita extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String emailUSUARIO;
     String emailUSUARIO2;
@@ -192,6 +194,11 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
                 startActivity(outraTela);
                 finish();
             }
+
+            @Override
+            public void onSuccessList(List<Receita> receitas) {
+            }
+
             @Override
             public void onFailure(Throwable t) {
                 androidx.appcompat.app.AlertDialog.Builder alerta = new androidx.appcompat.app.AlertDialog.Builder(escreverreceita.this);
