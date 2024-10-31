@@ -40,6 +40,18 @@ public class UsuarioController {
 		}
 	}
 	
+	//get por receita
+	@GetMapping("/receita/{idReceita}")
+	public ResponseEntity<Usuario> buscarUsuarioPorReceita(@PathVariable Long idReceita) {
+	    Usuario usuario = usuarioRepository.findUsuarioByReceitaId(idReceita);
+	    if (usuario == null) {
+	        System.out.println("Usuario não encontrado para a receita com ID: " + idReceita);
+	        return ResponseEntity.notFound().build();
+	    }
+	    System.out.println("Usuario encontrado: " + usuario.getNome_usuario());
+	    return ResponseEntity.ok(usuario);
+	}
+	
 	//GET por nome
 	@GetMapping("/{nome_usuario}")
 	public Iterable<Usuario> buscarUsuarioPorNome(@RequestParam String nome_usuario) {

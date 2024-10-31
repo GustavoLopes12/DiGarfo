@@ -34,6 +34,24 @@ public class UsuarioAPIController {
         return status;
     }
 
+    //pegar usuario por receita
+    public void getUsuarioForReceita(Long id_receita, UsuarioAPIController.ResponseCallback responseCallback){
+        Call<Usuario> call = this.usuarioAPI.getUsuarioForReceita(id_receita);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel pegar o usuario pela sua receita"));
+            }
+        });
+
+    }
+
+
     //pegar usuario por id(email)
     public void getUsuario(String email, UsuarioAPIController.ResponseCallback responseCallback){
         Call<Usuario> call = this.usuarioAPI.getUsuario(email);

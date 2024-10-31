@@ -37,7 +37,7 @@ public class home extends AppCompatActivity {
         emailUSUARIO = emailGuardado;
 
         valorPesquisa = findViewById(R.id.barradepesquisa);
-        valuePesquisa = valorPesquisa.getText().toString();
+
 
         //recebendo textview q vai ter receita do bd
        // tv_recebe_receita = findViewById(R.id.recebe_receita);
@@ -48,6 +48,7 @@ public class home extends AppCompatActivity {
     }
 
     public void irpararesultadopesq(View view) {
+        valuePesquisa = valorPesquisa.getText().toString();
         Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
         outraTela.putExtra("Email", emailUSUARIO);
         outraTela.putExtra("Pesquisa", valuePesquisa);

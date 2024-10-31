@@ -15,6 +15,9 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface UsuarioAPI {
+
+    @GET("/usuario/receita/{idReceita}")
+    Call<Usuario> getUsuarioForReceita(@Path("idReceita") Long id_receita);
     @GET("/usuario/email/{email}")//pegar usuario por id
     Call<Usuario> getUsuario(@Path("email") String email);
     @POST("/usuario/login")

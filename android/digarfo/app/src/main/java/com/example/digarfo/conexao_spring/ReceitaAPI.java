@@ -24,5 +24,8 @@ public interface ReceitaAPI {
     @GET("/receita/{id}")//pegar receita por id
     Call<Receita> getReceita(@Path("id") Long id);
 
+   @GET("/receita/nome/{nome}")
+    Call<List<Receita>> getReceitaForName(@Path("nome")String nome);
+
 }
 

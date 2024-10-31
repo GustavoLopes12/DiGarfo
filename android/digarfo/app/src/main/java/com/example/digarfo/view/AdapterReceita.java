@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.digarfo.R;
+import com.example.digarfo.conexao_spring.RetrofitClient;
+import com.example.digarfo.conexao_spring.UsuarioAPIController;
 import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
 
@@ -29,12 +31,37 @@ public class AdapterReceita extends RecyclerView.Adapter<AdapterReceita.MyViewHo
         return myViewHolder;
     }
 
+
+
+
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Receita receita = lista_receita.get(position);
         holder.nome_receita.setText(receita.getNome_receita());
-        //Usuario intermediario = receita.getUsuario();
-       // holder.nome_autor_receita.setText(intermediario.getNome_usuario());
+
+        //pegando o autor dessa receita shall we go
+        //client retrofit
+        RetrofitClient retrofitClient = new RetrofitClient();
+        //api controller
+        UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
+        // Bora pegar esse usuário
+        usuarioAPIController.getUsuarioForReceita(receita.getId_receita(), new UsuarioAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+                if (usuario != null && holder.getAdapterPosition() == position) {
+                    holder.nome_autor_receita.setText(usuario.getNome_usuario());
+                } else {
+                    holder.nome_autor_receita.setText("Autor desconhecido");
+                }
+            }
+            @Override
+            public void onFailure(Throwable t) {
+                if (holder.getAdapterPosition() == position) {
+                    holder.nome_autor_receita.setText("Erro ao carregar autor");
+                }
+            }
+        });
     }
 
     @Override
@@ -46,13 +73,13 @@ public class AdapterReceita extends RecyclerView.Adapter<AdapterReceita.MyViewHo
 
         //ImageView imagem_receita;
         TextView nome_receita;
-       // TextView nome_autor_receita;
+        TextView nome_autor_receita;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             //imagem_receita = itemView.findViewById(R.id.image_rct);
             nome_receita = itemView.findViewById(R.id.nome_rct);
-            //nome_autor_receita = itemView.findViewById(R.id.nome_aut);
+            nome_autor_receita = itemView.findViewById(R.id.nome_aut);
         }
 
     }//fim classe holder

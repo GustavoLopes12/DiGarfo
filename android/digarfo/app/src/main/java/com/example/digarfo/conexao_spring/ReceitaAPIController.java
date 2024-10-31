@@ -6,6 +6,7 @@ import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -59,7 +60,11 @@ public class ReceitaAPIController {
         call.enqueue(new Callback<List<Receita>>() {
             @Override
             public void onResponse(Call<List<Receita>> call, Response<List<Receita>> response) {
-                responseCallback.onSuccessList(response.body());
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccessList(response.body());
+                } else {
+                    responseCallback.onSuccessList(new ArrayList<>()); // Passa lista vazia se a resposta é nula
+                }
             }
 
             @Override
@@ -82,6 +87,25 @@ public class ReceitaAPIController {
                 responseCallback.onFailure(new Exception("Não foi possivel pegar a receita pelo id"));
             }
         });
+    }
+    //buscar receita por nome
+    public void getReceitaForName(String nome, ReceitaAPIController.ResponseCallback responseCallback){
+            Call <List<Receita>> call = this.receitaAPI.getReceitaForName(nome);
+            call.enqueue(new Callback<List<Receita>>() {
+                @Override
+                public void onResponse(Call<List<Receita>> call, Response<List<Receita>> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        responseCallback.onSuccessList(response.body());
+                    } else {
+                        responseCallback.onSuccessList(new ArrayList<>()); // Passa lista vazia se a resposta é nula
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Receita>> call, Throwable t) {
+                    responseCallback.onFailure(new Exception("Não foi possivel pegar a receita pelo nome"));
+                }
+            });
     }
 
 }

@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -21,15 +23,21 @@ import com.example.digarfo.conexao_spring.ReceitaAPIController;
 import com.example.digarfo.conexao_spring.RetrofitClient;
 import com.example.digarfo.model.Receita;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class resultadopesquisa extends AppCompatActivity {
     RecyclerView recycler_view_resultado_pesquisa;//recycler view
 
     List<Receita> lista_de_receitas;
+    List<Receita> lista_de_receitas_filtradas = new ArrayList<>();
 
     String pesquisaString;//valor da pesquisa
     String emailUSUARIO;
+    TextView txt;
+
+    EditText barradepesquisa;
+    String barradepesquisaTXT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,20 +62,23 @@ public class resultadopesquisa extends AppCompatActivity {
         recycler_view_resultado_pesquisa.setHasFixedSize(true);
         recycler_view_resultado_pesquisa.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         //metodo para pegar lista de receitas pela pesquisa
+        //buscar_receitas();
+        txt = findViewById(R.id.pesquisa);
+        txt.setText(pesquisaString);
         buscar_receitas();
+
+        this.barradepesquisa = findViewById(R.id.searchView);
     }
     //pegar receita com base na pesquisa
-    public void buscar_receitas(){
-
-        if (pesquisaString != null){
+    public void buscar_receitas() {
+        if (pesquisaString != null && !pesquisaString.trim().isEmpty()) {
             buscar_receita_pesquisada();
-        }else{
+        } else {
             buscar_all_receitas();
         }
-
     }
     //caso ele clique em mais receitas, por exemplo vem nulo eai busca tds receitas, ou se ele n digitar nd e clicar
-    public void buscar_all_receitas(){
+    public void buscar_all_receitas(){//todas as receitas
         //cliente retrofit
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
@@ -82,8 +93,9 @@ public class resultadopesquisa extends AppCompatActivity {
             @Override
             public void onSuccessList(List<Receita> receitas) {
                 //fazer aparecer no recycler view a lista
-                lista_de_receitas.addAll(receitas);
-                AdapterReceita adapterReceita = new AdapterReceita(lista_de_receitas);
+                lista_de_receitas_filtradas.addAll(receitas);
+                //configurando adapter
+                AdapterReceita adapterReceita = new AdapterReceita(lista_de_receitas_filtradas);
                 recycler_view_resultado_pesquisa.setAdapter(adapterReceita);
             }
 
@@ -98,8 +110,37 @@ public class resultadopesquisa extends AppCompatActivity {
             }
         });
     }
-    public void buscar_receita_pesquisada(){
+    public void buscar_receita_pesquisada(){//receita por nome
+        //cliente retrofit
+        RetrofitClient retrofitClient = new RetrofitClient();
+        //api controller
+        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+        //chamando metodo
+        receitaAPIController.getReceitaForName(pesquisaString, new ReceitaAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Receita receita) {
 
+            }
+
+            @Override
+            public void onSuccessList(List<Receita> receitas) {
+                //fazer aparecer no recycler view a lista
+                lista_de_receitas_filtradas.addAll(receitas);
+                //configurando adapter
+                AdapterReceita adapterReceita = new AdapterReceita(lista_de_receitas_filtradas);
+                recycler_view_resultado_pesquisa.setAdapter(adapterReceita);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(resultadopesquisa.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Erro...");
+                alerta.setMessage("Tente pesquisar novamente mais tarde...");
+                alerta.setNegativeButton("Voltar",null);
+                alerta.create().show();
+            }
+        });
     }
     //se logado vai senao nao
     public void irparafavoritos(View view){
@@ -139,6 +180,15 @@ public class resultadopesquisa extends AppCompatActivity {
     public void botaohome(View view){//botao home
         Intent outraTela = new Intent(getApplicationContext(), home.class);
         outraTela.putExtra("Email", emailUSUARIO);
+        startActivity(outraTela);
+        finish();
+    }
+
+    public void reload(View view){//botao home
+        barradepesquisaTXT = barradepesquisa.getText().toString();
+        Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("Pesquisa", barradepesquisaTXT);
         startActivity(outraTela);
         finish();
     }
