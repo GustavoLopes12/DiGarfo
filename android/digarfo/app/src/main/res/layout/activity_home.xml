@@ -10,12 +10,18 @@
     android:foregroundTint="#FFFFFF"
     tools:context=".view.home">
 
-    <!--<ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">-->
+
+    <!--SCROLLVIEW-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--LINEAR LAYOUT-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
-    <!--</ScrollView>-->
 
     <ImageView
         android:id="@+id/imageView3"
@@ -30,6 +36,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/receitas_removebg_preview__2_" />
+
 
     <LinearLayout
         android:layout_width="392dp"
@@ -530,7 +537,27 @@
 
         </HorizontalScrollView>
 
+        <TextView
+            android:id="@+id/recebe_receita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome Receita bd AQUI" />
+
+        <Button
+            android:id="@+id/btn_buscar_receita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="irpararesultadopesq"
+            android:text="Buscar" />
+
     </LinearLayout>
+
+    <!--FIM-LINEARLAYOUT-->
+        </LinearLayout>
+    <!--FIM-SCROLLVIEW-->
+    </ScrollView>
+       
+
 
     <LinearLayout
         android:id="@+id/imageView9"
