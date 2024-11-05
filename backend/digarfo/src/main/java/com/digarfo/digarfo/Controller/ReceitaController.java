@@ -26,6 +26,21 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		public Iterable<Receita> getReceita(){
 			return receitaRepository.findAll();
 		}
+		//get all receitas false aprovada
+		@GetMapping("/aprovadaFalse")
+		public List<Receita> getReceitasFalseAprovada(){
+			return receitaRepository.findAllByAprovacaoFalse();
+		}
+		//get all receitas true aprovada
+		@GetMapping("/aprovada")
+		public List<Receita> getReceitasTrueAprovada(){
+			return receitaRepository.findAllByAprovacaoTrue();
+		}
+		//get receita barra de pesquisas 
+		@GetMapping("/search/{termo}")
+		public List<Receita> search(@PathVariable String termo) {
+			return receitaRepository.buscarPorNomeOuCategoriaAprovadas(termo);
+		}
 		//GET por id	
 		@GetMapping("/{id_receita}")
 		public Receita buscaReceitaPorId(@PathVariable Long id_receita) {

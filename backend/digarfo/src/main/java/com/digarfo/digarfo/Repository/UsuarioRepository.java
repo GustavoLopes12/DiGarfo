@@ -20,7 +20,8 @@ public interface UsuarioRepository extends CrudRepository<Usuario, String>{
 	//buscar usuario pela receita dele
 	@Query("SELECT r.usuario FROM Receita r WHERE r.id_receita = :idReceita")
 	Usuario findUsuarioByReceitaId(@Param("idReceita") Long idReceita);
- 
+	
+	
 
  
 	

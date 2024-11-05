@@ -29,7 +29,6 @@ import java.util.List;
 public class escreverreceita extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String emailUSUARIO;
     String emailUSUARIO2;
-
     /*------ATRIBUTOS QUE VAO RECEBER O VALOR DO ID DOS ELEMENTOS  */
     EditText titulo;
     EditText tempo;

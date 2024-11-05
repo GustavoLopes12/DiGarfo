@@ -15,7 +15,16 @@ public interface ReceitaRepository extends CrudRepository<Receita, Long>{
 	@Query("SELECT r FROM Receita r WHERE r.categoria LIKE %:categoria%")
 	List<Receita> findByCategoria(String categoria);
 	
-	//pegar usuario pela categoria e pelo nome
+	//pegar receita pela categoria e pelo nome
+	@Query("SELECT r FROM Receita r WHERE (LOWER(r.nome_receita) LIKE LOWER(CONCAT('%', :termo, '%')) OR LOWER(r.categoria) LIKE LOWER(CONCAT('%', :termo, '%'))) AND r.aprovada = true")
+	List<Receita> buscarPorNomeOuCategoriaAprovadas(String termo);
 	
+	// Para retornar todas as receitas aprovadas
+	@Query("SELECT r FROM Receita r WHERE r.aprovada = true")
+	List<Receita> findAllByAprovacaoTrue();
+	
+	// Para retornar todas as receitas aprovadas
+		@Query("SELECT r FROM Receita r WHERE r.aprovada = false")
+		List<Receita> findAllByAprovacaoFalse();
 	
 }
