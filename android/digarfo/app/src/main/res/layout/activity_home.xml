@@ -537,29 +537,141 @@
 
         </HorizontalScrollView>
 
-        <!--RECEITS SUGERIDAS-->
-       <LinearLayout
-           android:layout_width="150dp"
-           android:layout_height="150dp"
-           android:layout_marginLeft="22dp"
-           android:layout_marginTop="11dp"
-           android:orientation="vertical">
         <TextView
-            android:id="@+id/recebe_receita"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome Receita bd AQUI"
+            android:text="Sugestões do Garfo :D"
             android:textStyle="bold"
-            android:textSize="16sp">
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            >
         </TextView>
-           <TextView
-               android:id="@+id/autor_receita"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="Nome Autor Receita bd AQUI"
-               android:textSize="14sp">
-           </TextView>
-       </LinearLayout>
+        <!--RECEITAS SUGERIDAS-->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="11dp"
+                android:orientation="horizontal">
+
+               <LinearLayout
+                   android:layout_width="150dp"
+                   android:layout_height="200dp"
+                   android:layout_marginTop="11dp"
+                   android:orientation="vertical">
+                   <ImageView
+                       android:layout_width="match_parent"
+                       android:layout_height="70dp"
+                       android:layout_gravity="center_horizontal"
+                       android:background="@drawable/tacomexicano"></ImageView>
+
+                <TextView
+                    android:id="@+id/recebe_receita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nome Receita bd AQUI"
+                    android:textStyle="bold"
+                    android:textSize="16sp">
+                </TextView>
+                   <TextView
+                       android:id="@+id/autor_receita"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="Nome Autor Receita bd AQUI"
+                       android:textSize="14sp">
+                   </TextView>
+               </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/tacomexicano"></ImageView>
+                    <TextView
+                        android:id="@+id/recebe_receita_dois"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nome Receita bd AQUI"
+                        android:textStyle="bold"
+                        android:textSize="16sp">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/autor_receita_dois"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nome Autor Receita bd AQUI"
+                        android:textSize="14sp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/tacomexicano"></ImageView>
+                    <TextView
+                        android:id="@+id/recebe_receita_tres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nome Receita bd AQUI"
+                        android:textStyle="bold"
+                        android:textSize="16sp">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/autor_receita_tres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nome Autor Receita bd AQUI"
+                        android:textSize="14sp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/tacomexicano"></ImageView>
+                    <TextView
+                        android:id="@+id/recebe_receita_quatro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nome Receita bd AQUI"
+                        android:textStyle="bold"
+                        android:textSize="16sp">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/autor_receita_quatro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nome Autor Receita bd AQUI"
+                        android:textSize="14sp">
+                    </TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
         <!--RECEITS SUGERIDAS-->
 
 
@@ -604,6 +716,7 @@
             android:id="@+id/btn_buscar_receita"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:onClick="irpararesultadopesq"
             android:text="Buscar" />
 

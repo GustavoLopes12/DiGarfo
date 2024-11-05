@@ -29,8 +29,14 @@ public class home extends AppCompatActivity {
     String valuePesquisa;
 
     TextView tv_receita_bd;//nome
+    TextView tv_receita_bd_dois;//nome
+    TextView tv_receita_bd_tres;//nome
+    TextView tv_receita_bd_quatro;//nome
     TextView tv_autor_receita_bd;
-    Long id_receita_bd;//emailUSER
+    TextView tv_autor_receita_bd_dois;
+    TextView tv_autor_receita_bd_tres;
+    TextView tv_autor_receita_bd_quatro;
+    Long id_receita_bd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,45 +54,241 @@ public class home extends AppCompatActivity {
 
 
         tv_receita_bd = findViewById(R.id.recebe_receita);
+        tv_receita_bd_dois = findViewById(R.id.recebe_receita_dois);
+        tv_receita_bd_tres = findViewById(R.id.recebe_receita_tres);
+        tv_receita_bd_quatro = findViewById(R.id.recebe_receita_quatro);
         tv_autor_receita_bd = findViewById(R.id.autor_receita);
-
-        //pegando email de usuario que deverá ser atualizado
-        id_receita_bd = 1L;
-        //pego usuario do email
-
-        //cliente retrofit
-        RetrofitClient retrofitClient = new RetrofitClient();
-        //api controller
-        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-        receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
-            @Override
-            public void onSuccess(Receita receita) {
-                tv_receita_bd.setText(receita.getNome_receita());
-                //pega usuario
-                //tv_autor_receita_bd.setText(receita.getNomeUsuario());
-
-            }
-
-            @Override
-            public void onSuccessList(List<Receita> receitas) {
-
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                alerta.setCancelable(false);
-                alerta.setTitle("Algo de errado não está certo...");
-                alerta.setMessage("Tente editar seu usuario mais tarde!!!");
-                alerta.setNegativeButton("Ok",null);
-                alerta.create().show();
-            }
-        });
+        tv_autor_receita_bd_dois = findViewById(R.id.autor_receita_dois);
+        tv_autor_receita_bd_tres = findViewById(R.id.autor_receita_tres);
+        tv_autor_receita_bd_quatro = findViewById(R.id.autor_receita_quatro);
 
 
-    }
+
+        //chamar mostrarReceita aqui 4x, cada uma com 1 id
+        mostrarReceita(1L);
+        mostrarReceita(2L);
+        mostrarReceita(3L);
+        mostrarReceita(4L);
+
+
+    }//fim oncreate
 
     //-----------------------------------------------------
+
+    public void mostrarReceita(Long id_receita_bd){
+        if(id_receita_bd == 1L){
+            //-PEGANDO NOME RECEITA
+
+            //cliente retrofit
+            RetrofitClient retrofitClient = new RetrofitClient();
+
+            //receita api controller
+            ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+            receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
+
+                @Override
+                public void onSuccess(Receita receita) {
+                    tv_receita_bd.setText(receita.getNome_receita());
+                }
+
+                @Override
+                public void onSuccessList(List<Receita> receitas) {
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Algo de errado não está certo...");
+                    alerta.setMessage("receita nao encontrada");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+
+            //-PEGANDO AUTOR RECEITA
+
+            //client retrofit
+            RetrofitClient retrofitClient2 = new RetrofitClient();
+            //api controller
+            UsuarioAPIController usuarioAPIController2 = new UsuarioAPIController(retrofitClient2);
+            // Bora pegar esse usuário
+            usuarioAPIController2.getUsuarioForReceita(id_receita_bd, new UsuarioAPIController.ResponseCallback() {
+                @Override
+                public void onSuccess(Usuario usuario) {
+                    tv_autor_receita_bd.setText("Por: " + usuario.getNome_usuario());
+                }
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Algo de errado não está certo...");
+                    alerta.setMessage("autor receita nao encontrado");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+        } else if (id_receita_bd == 2L) {
+            //-PEGANDO NOME RECEITA
+
+            RetrofitClient retrofitClient = new RetrofitClient();
+            //receita api controller
+            ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+            receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
+
+                @Override
+                public void onSuccess(Receita receita) {
+                    tv_receita_bd_dois.setText(receita.getNome_receita());
+                }
+
+                @Override
+                public void onSuccessList(List<Receita> receitas) {
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Algo de errado não está certo...");
+                    alerta.setMessage("receita nao encontrada");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+            //-PEGANDO AUTOR RECEITA
+
+            //client retrofit
+            RetrofitClient retrofitClient2 = new RetrofitClient();
+            //api controller
+            UsuarioAPIController usuarioAPIController2 = new UsuarioAPIController(retrofitClient2);
+            // Bora pegar esse usuário
+            usuarioAPIController2.getUsuarioForReceita(id_receita_bd, new UsuarioAPIController.ResponseCallback() {
+                @Override
+                public void onSuccess(Usuario usuario) {
+                    tv_autor_receita_bd_dois.setText("Por: " + usuario.getNome_usuario());
+                }
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Algo de errado não está certo...");
+                    alerta.setMessage("autor receita nao encontrado");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+        } else if (id_receita_bd == 3L) {
+            //-PEGANDO NOME RECEITA
+
+            RetrofitClient retrofitClient = new RetrofitClient();
+            //receita api controller
+            ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+            receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
+
+                @Override
+                public void onSuccess(Receita receita) {
+                    tv_receita_bd_tres.setText(receita.getNome_receita());
+                }
+
+                @Override
+                public void onSuccessList(List<Receita> receitas) {
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Algo de errado não está certo...");
+                    alerta.setMessage("receita nao encontrada");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+            //-PEGANDO AUTOR RECEITA
+
+            //client retrofit
+            RetrofitClient retrofitClient2 = new RetrofitClient();
+            //api controller
+            UsuarioAPIController usuarioAPIController2 = new UsuarioAPIController(retrofitClient2);
+            // Bora pegar esse usuário
+            usuarioAPIController2.getUsuarioForReceita(id_receita_bd, new UsuarioAPIController.ResponseCallback() {
+                @Override
+                public void onSuccess(Usuario usuario) {
+                    tv_autor_receita_bd_tres.setText("Por: " + usuario.getNome_usuario());
+                }
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Algo de errado não está certo...");
+                    alerta.setMessage("autor receita nao encontrado");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+        } else if (id_receita_bd == 4L) {
+            //-PEGANDO NOME RECEITA
+
+            RetrofitClient retrofitClient = new RetrofitClient();
+            //receita api controller
+            ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+            receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
+
+                @Override
+                public void onSuccess(Receita receita) {
+                    tv_receita_bd_quatro.setText(receita.getNome_receita());
+                }
+
+                @Override
+                public void onSuccessList(List<Receita> receitas) {
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Algo de errado não está certo...");
+                    alerta.setMessage("receita nao encontrada");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+            //-PEGANDO AUTOR RECEITA
+
+            //client retrofit
+            RetrofitClient retrofitClient2 = new RetrofitClient();
+            //api controller
+            UsuarioAPIController usuarioAPIController2 = new UsuarioAPIController(retrofitClient2);
+            // Bora pegar esse usuário
+            usuarioAPIController2.getUsuarioForReceita(id_receita_bd, new UsuarioAPIController.ResponseCallback() {
+                @Override
+                public void onSuccess(Usuario usuario) {
+                    tv_autor_receita_bd_quatro.setText("Por: " + usuario.getNome_usuario());
+                }
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Algo de errado não está certo...");
+                    alerta.setMessage("autor receita nao encontrado");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+        }else{
+            AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
+            alerta.setCancelable(false);
+            alerta.setTitle("Algo de errado não está certo...");
+            alerta.setMessage("apenas receitas com os IDs 1, 2, 3 ou 4 dão certo!!");
+            alerta.setNegativeButton("Ok",null);
+            alerta.create().show();
+        }
+
+    }
 
 
     //-----------------------------------------------------
