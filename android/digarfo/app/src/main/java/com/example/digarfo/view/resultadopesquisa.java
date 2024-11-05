@@ -192,4 +192,16 @@ public class resultadopesquisa extends AppCompatActivity {
         startActivity(outraTela);
         finish();
     }
+    public void ver_receita(View view){
+        //mandar id da receita junto
+        TextView id = view.findViewById(R.id.id_rct);
+        String idStg = id.getText().toString();
+        //lets go the other interface(recipe visualization)
+        Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("Pesquisa", barradepesquisaTXT);
+        outraTela.putExtra("id_rct", idStg);
+        startActivity(outraTela);
+        finish();
+    }
 }

@@ -41,6 +41,11 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		public List<Receita> search(@PathVariable String termo) {
 			return receitaRepository.buscarPorNomeOuCategoriaAprovadas(termo);
 		}
+		//get receita pelo nome exato dela
+		@GetMapping("/findbynome/{nome_receita}")
+		public Receita getReceitaByNome(@PathVariable String nome_receita) {
+			return receitaRepository.findReceitaByNome(nome_receita);
+		}
 		//GET por id	
 		@GetMapping("/{id_receita}")
 		public Receita buscaReceitaPorId(@PathVariable Long id_receita) {
