@@ -15,4 +15,7 @@ public interface ReceitaRepository extends CrudRepository<Receita, Long>{
 	@Query("SELECT r FROM Receita r WHERE r.categoria LIKE %:categoria%")
 	List<Receita> findByCategoria(String categoria);
 	
+	//pegar usuario pela categoria e pelo nome
+	
+	
 }
