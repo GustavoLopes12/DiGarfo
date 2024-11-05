@@ -27,5 +27,11 @@ public interface ReceitaAPI {
    @GET("/receita/nome/{nome}")
     Call<List<Receita>> getReceitaForName(@Path("nome")String nome);
 
+   @GET("/receita/aprovada")
+    Call<List<Receita>> getReceitasAprovadas();
+
+   @GET("/receita/search/{termo}")
+    Call<List<Receita>> getReceitasSearchCN(@Path("termo") String termo);
+
 }
 

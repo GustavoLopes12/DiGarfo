@@ -74,17 +74,17 @@ public class resultadopesquisa extends AppCompatActivity {
         if (pesquisaString != null && !pesquisaString.trim().isEmpty()) {
             buscar_receita_pesquisada();
         } else {
-            buscar_all_receitas();
+            buscar_all_receitas_aprovadas();
         }
     }
     //caso ele clique em mais receitas, por exemplo vem nulo eai busca tds receitas, ou se ele n digitar nd e clicar
-    public void buscar_all_receitas(){//todas as receitas
+    public void buscar_all_receitas_aprovadas(){//todas as receitas
         //cliente retrofit
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
         ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
         //chamando metodo
-        receitaAPIController.BuscarReceitas(new ReceitaAPIController.ResponseCallback() {
+        receitaAPIController.buscarReceitasAprovadas(new ReceitaAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Receita receita) {
 
@@ -116,7 +116,7 @@ public class resultadopesquisa extends AppCompatActivity {
         //api controller
         ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
         //chamando metodo
-        receitaAPIController.getReceitaForName(pesquisaString, new ReceitaAPIController.ResponseCallback() {
+        receitaAPIController.buscarReceitaForTermoCN(pesquisaString, new ReceitaAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Receita receita) {
 

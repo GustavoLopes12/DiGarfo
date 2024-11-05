@@ -73,6 +73,44 @@ public class ReceitaAPIController {
             }
         });
     }
+    //buscar todas as receitas aprovadas
+    public void buscarReceitasAprovadas(ReceitaAPIController.ResponseCallback responseCallback){
+        Call <List<Receita>> call = this.receitaAPI.getReceitasAprovadas();
+        call.enqueue(new Callback<List<Receita>>() {
+            @Override
+            public void onResponse(Call<List<Receita>> call, Response<List<Receita>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccessList(response.body());
+                } else {
+                    responseCallback.onSuccessList(new ArrayList<>()); // Passa lista vazia se a resposta é nula
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Receita>> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel pegar todas as receitas aprovadas"));
+            }
+        });
+    }
+    //buscar receitas por termo que pode ser categoria ou nome
+    public void buscarReceitaForTermoCN(String termo, ReceitaAPIController.ResponseCallback responseCallback){
+        Call<List<Receita>> call = this.receitaAPI.getReceitasSearchCN(termo);
+        call.enqueue(new Callback<List<Receita>>() {
+            @Override
+            public void onResponse(Call<List<Receita>> call, Response<List<Receita>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccessList(response.body());
+                } else {
+                    responseCallback.onSuccessList(new ArrayList<>()); // Passa lista vazia se a resposta é nula
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Receita>> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel pegar todas as receitas por esse termo que pode ser o nome dela ou a categoria dela"));
+            }
+        });
+    }
     //buscar receita por id
     public void getReceita(Long id, ReceitaAPIController.ResponseCallback responseCallback){
         Call<Receita> call = this.receitaAPI.getReceita(id);
