@@ -66,18 +66,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.216" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="166dp"
-        android:layout_height="23dp"
-        android:text="Lembrar de mim"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="267dp"
@@ -95,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.594"
+        app:layout_constraintVertical_bias="0.559"
         app:rippleColor="@color/cor_button"
         app:strokeColor="#FF9997" />
 
@@ -105,12 +93,12 @@
         android:layout_height="wrap_content"
         android:onClick="outrapagina"
         android:text="Não possui uma conta? Cadastre-ce"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.612" />
 
     <TextView
         android:id="@+id/sem_conta"
@@ -118,23 +106,13 @@
         android:layout_height="wrap_content"
         android:onClick="homesemlogin"
         android:text="Entrar sem login"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
-
-    <TextView
-        android:id="@+id/esquecisenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esqueci minha senha"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintVertical_bias="0.648" />
 
     <ImageView
         android:id="@+id/olho"

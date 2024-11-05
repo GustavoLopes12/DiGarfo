@@ -39,6 +39,7 @@ public class AdapterReceita extends RecyclerView.Adapter<AdapterReceita.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Receita receita = lista_receita.get(position);
         holder.nome_receita.setText(receita.getNome_receita());
+        holder.id_rct.setText(receita.getId_receita().toString());
 
         //pegando o autor dessa receita shall we go
         //client retrofit
@@ -75,9 +76,12 @@ public class AdapterReceita extends RecyclerView.Adapter<AdapterReceita.MyViewHo
         TextView nome_receita;
         TextView nome_autor_receita;
 
+        TextView id_rct;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             //imagem_receita = itemView.findViewById(R.id.image_rct);
+            id_rct = itemView.findViewById(R.id.id_rct);
             nome_receita = itemView.findViewById(R.id.nome_rct);
             nome_autor_receita = itemView.findViewById(R.id.nome_aut);
         }

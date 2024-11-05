@@ -25,5 +25,5 @@ public interface UsuarioAPI {
     @POST("/usuario")
     Call<Usuario> criarUsuario(@Body Usuario usuario);
     @PUT("/usuario/{email}")
-    Call<Usuario> attUsuario(@Path("email") String email, Usuario usuario);
+    Call<Usuario> attUsuario(@Path("email") String email, @Body Usuario usuario);
 }

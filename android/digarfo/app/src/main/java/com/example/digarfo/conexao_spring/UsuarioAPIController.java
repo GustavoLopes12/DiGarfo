@@ -102,8 +102,7 @@ public class UsuarioAPIController {
         });
     }
     //atualizar usuario
-    public void atualizar(String nome,String descricao,String senha,String email,boolean banido, UsuarioAPIController.ResponseCallback responseCallback){
-        Usuario usuario = new Usuario(email, nome, senha, descricao, banido);
+    public void atualizar(Usuario usuario, String email, UsuarioAPIController.ResponseCallback responseCallback){
         Call<Usuario> call = this.usuarioAPI.attUsuario(email,usuario);
         call.enqueue(new Callback<Usuario>() {
             @Override

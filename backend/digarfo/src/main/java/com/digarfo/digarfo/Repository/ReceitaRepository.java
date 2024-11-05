@@ -24,7 +24,11 @@ public interface ReceitaRepository extends CrudRepository<Receita, Long>{
 	List<Receita> findAllByAprovacaoTrue();
 	
 	// Para retornar todas as receitas aprovadas
-		@Query("SELECT r FROM Receita r WHERE r.aprovada = false")
-		List<Receita> findAllByAprovacaoFalse();
+	@Query("SELECT r FROM Receita r WHERE r.aprovada = false")
+	List<Receita> findAllByAprovacaoFalse();
+		
+	//receita pelo nome exato dela
+	@Query("SELECT r FROM Receita r WHERE r.nome_receita = :nome_receita")
+	Receita findReceitaByNome(String nome_receita);
 	
 }

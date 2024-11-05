@@ -211,18 +211,6 @@
 
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="42dp"
-        android:layout_height="41dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047"
-        app:srcCompat="@drawable/user" />
-
-    <ImageView
         android:id="@+id/imageView7"
         android:layout_width="224dp"
         android:layout_height="92dp"
@@ -234,23 +222,11 @@
         app:layout_constraintVertical_bias="0.004"
         app:srcCompat="@drawable/receitas_removebg_preview__2_" />
 
-    <ImageView
-        android:id="@+id/imageView19"
-        android:layout_width="30dp"
-        android:layout_height="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047"
-        app:srcCompat="@drawable/menu_removebg_preview" />
-
 
     <LinearLayout
         android:id="@+id/imageView9"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="89dp"
         android:background="@drawable/detalhe3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -264,7 +240,7 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="120dp"
+            android:layout_marginLeft="55dp"
             android:onClick="botaohome"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -279,7 +255,7 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginRight="116dp"
+            android:layout_marginLeft="40dp"
             android:onClick="irparainserir"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -289,21 +265,34 @@
             app:layout_constraintVertical_bias="0.933"
             app:srcCompat="@drawable/botao_adicionar__1_" />
 
-
         <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="52dp"
-            android:layout_height="55dp"
-            android:layout_gravity="right|center_vertical|end"
-            android:onClick="irparafavoritos"
+            android:id="@+id/perfil"
+            android:layout_width="49dp"
+            android:layout_height="57dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:onClick="irparaperfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.027"
+            app:srcCompat="@drawable/user" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginLeft="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.94"
-            app:srcCompat="@drawable/contorno_em_forma_de_coracao__1_" />
-
+            app:layout_constraintVertical_bias="0.069"
+            app:srcCompat="@drawable/menu_removebg_preview" />
 
     </LinearLayout>
 

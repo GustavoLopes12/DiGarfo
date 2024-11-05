@@ -80,12 +80,6 @@ public class editarperfil extends AppCompatActivity {
             usuarioAPIController.getUsuario(emailUSUARIO, new UsuarioAPIController.ResponseCallback() {
                 @Override
                 public void onSuccess(Usuario usuario) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Editar Usuario " + usuario.getNome_usuario());
-                    alerta.setMessage("Aqui você poderá editar seu usuario");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
                     nome.setText(usuario.getNome_usuario());
                     senha.setText(usuario.getSenha());
                     descricao.setText(usuario.getDescricao());
@@ -125,9 +119,6 @@ public class editarperfil extends AppCompatActivity {
             }
         }
     }
-    //pegar a foto mesmo em si
-
-    //atualizar este usuario o usuario podera mudar seu nome, senha, descrição e foto, apenas isso
 
     //voltar home
     public void botaohome(View view){
@@ -136,7 +127,7 @@ public class editarperfil extends AppCompatActivity {
         startActivity(outraTela);
         finish();
     }
-    //inserir receita //se logado
+    //inserir receita
     public void irparainserir(View view){
             Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
             outraTela.putExtra("Email", emailUSUARIO);
@@ -144,12 +135,12 @@ public class editarperfil extends AppCompatActivity {
             finish();
     }
     //ir p favoritos se logado
-    public void irparafavoritos(View view){
+    /*public void irparafavoritos(View view){
             Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
             outraTela.putExtra("Email", emailUSUARIO);
             startActivity(outraTela);
             finish();
-    }
+    }*/
     //atualizar dados
     public void atualizar_dados(){
         //cliente retrofit
@@ -159,12 +150,6 @@ public class editarperfil extends AppCompatActivity {
         usuarioAPIController.getUsuario(emailUSUARIO, new UsuarioAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Usuario usuario) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
-                alerta.setCancelable(false);
-                alerta.setTitle("Editar Usuario " + usuario.getNome_usuario());
-                alerta.setMessage("Aqui você poderá editar seu usuario");
-                alerta.setNegativeButton("Ok",null);
-                alerta.create().show();
                 nome.setText(usuario.getNome_usuario());
                 senha.setText(usuario.getSenha());
                 descricao.setText(usuario.getDescricao());
@@ -176,7 +161,7 @@ public class editarperfil extends AppCompatActivity {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
                 alerta.setCancelable(false);
                 alerta.setTitle("Algo de errado não está certo...");
-                alerta.setMessage("Tente editar seu usuario mais tarde!!!");
+                alerta.setMessage("erro ao buscar dados de perfil");
                 alerta.setNegativeButton("Ok",null);
                 alerta.create().show();
             }
@@ -188,12 +173,19 @@ public class editarperfil extends AppCompatActivity {
         String descricaoString = descricao.getText().toString();
         String senhaString = senha.getText().toString();
         String nomeString = nome.getText().toString();
+        //criando usuario
+        Usuario usuario = new Usuario();
+        usuario.setDescricao(descricaoString);
+        usuario.setNome_usuario(nomeString);
+        usuario.setEmail(emailUSUARIO);
+        usuario.setSenha(senhaString);
+        usuario.setBanido(banidoUSER);
         //cliente retrofit
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
         UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
         //atualizar
-        usuarioAPIController.atualizar(nomeString, descricaoString, senhaString, emailUSUARIO, banidoUSER,new UsuarioAPIController.ResponseCallback() {
+        usuarioAPIController.atualizar(usuario, emailUSUARIO, new UsuarioAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Usuario usuario) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
