@@ -610,7 +610,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="70dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@drawable/tacomexicano"></ImageView>
+                                android:background="@android:drawable/ic_menu_gallery"></ImageView>
 
                             <TextView
                                 android:id="@+id/recebe_receita"
@@ -640,7 +640,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="70dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@drawable/tacomexicano"></ImageView>
+                                android:background="@android:drawable/ic_menu_gallery"></ImageView>
 
                             <TextView
                                 android:id="@+id/recebe_receita_dois"
@@ -669,7 +669,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="70dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@drawable/tacomexicano"></ImageView>
+                                android:background="@android:drawable/ic_menu_gallery"></ImageView>
 
                             <TextView
                                 android:id="@+id/recebe_receita_tres"
@@ -698,7 +698,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="70dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@drawable/tacomexicano"></ImageView>
+                                android:background="@android:drawable/ic_menu_gallery"></ImageView>
 
                             <TextView
                                 android:id="@+id/recebe_receita_quatro"

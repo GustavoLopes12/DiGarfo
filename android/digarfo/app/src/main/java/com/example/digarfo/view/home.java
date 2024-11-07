@@ -85,7 +85,7 @@ public class home extends AppCompatActivity {
 
             //receita api controller
             ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-            receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
+            receitaAPIController.getReceitaAprovID(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
 
                 @Override
                 public void onSuccess(Receita receita) {
@@ -136,7 +136,7 @@ public class home extends AppCompatActivity {
             RetrofitClient retrofitClient = new RetrofitClient();
             //receita api controller
             ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-            receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
+            receitaAPIController.getReceitaAprovID(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
 
                 @Override
                 public void onSuccess(Receita receita) {
@@ -186,7 +186,7 @@ public class home extends AppCompatActivity {
             RetrofitClient retrofitClient = new RetrofitClient();
             //receita api controller
             ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-            receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
+            receitaAPIController.getReceitaAprovID(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
 
                 @Override
                 public void onSuccess(Receita receita) {
@@ -236,7 +236,7 @@ public class home extends AppCompatActivity {
             RetrofitClient retrofitClient = new RetrofitClient();
             //receita api controller
             ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-            receitaAPIController.getReceita(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
+            receitaAPIController.getReceitaAprovID(id_receita_bd, new ReceitaAPIController.ResponseCallback() {
 
                 @Override
                 public void onSuccess(Receita receita) {
