@@ -37,6 +37,7 @@ public class home extends AppCompatActivity {
     TextView tv_autor_receita_bd_tres;
     TextView tv_autor_receita_bd_quatro;
     Long id_receita_bd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -301,7 +302,66 @@ public class home extends AppCompatActivity {
         startActivity(outraTela);
         finish();
     }
+    public void irParaPesquisaCategoria(String categoria) {
+        Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("Pesquisa", categoria);
+        startActivity(outraTela);
+        finish();
+    }
 
+    // Métodos de onClick para cada categoria
+    public void onClickDoces(View view) {
+        irParaPesquisaCategoria("doces");
+    }
+
+    public void onClickSalgados(View view) {
+        irParaPesquisaCategoria("salgados");
+    }
+
+    public void onClickSaudaveis(View view) {
+        irParaPesquisaCategoria("saudaveis");
+    }
+
+    public void onClickBebidas(View view) {
+        irParaPesquisaCategoria("bebidas");
+    }
+
+    public void onClickRapidas(View view) {
+        irParaPesquisaCategoria("rapidas");
+    }
+
+    public void onClickMassas(View view) {
+        irParaPesquisaCategoria("massas");
+    }
+
+    public void onClickFTM(View view) {
+        irParaPesquisaCategoria("frutosdomar");
+    }
+
+    public void onClickAves(View view) {
+        irParaPesquisaCategoria("aves");
+    }
+
+    public void onClickCV(View view) {
+        irParaPesquisaCategoria("carnesV");
+    }
+
+    public void onClickOriental(View view) {
+        irParaPesquisaCategoria("oriental");
+    }
+
+    public void onClickMexicana(View view) {
+        irParaPesquisaCategoria("mexicana");
+    }
+
+    public void onClickSLVG(View view) {
+        irParaPesquisaCategoria("saladaevege");
+    }
+
+    public void onClickSOPAS(View view) {
+        irParaPesquisaCategoria("sopas");
+    }
     //ir para perfil se logado senão não
     public void irparaperfil(View view){
         if(emailUSUARIO != null){
@@ -338,10 +398,4 @@ public class home extends AppCompatActivity {
             Toast.makeText(this, "Você ainda não esta logado, faça login para ter favoritos", Toast.LENGTH_SHORT).show();
         }
     }*/
-    public void resultadopesquisa(View view) {
-        Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
-        outraTela.putExtra("Email", emailUSUARIO);
-        startActivity(outraTela);
-        finish();
-    }
 }
