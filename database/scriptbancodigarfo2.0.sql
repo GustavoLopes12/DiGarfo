@@ -72,3 +72,4 @@ create table if not exists usuario_favorita_receita(
 select * from usuario;
 
 select * from receita;
+select * from adm;

@@ -20,7 +20,8 @@ public interface UsuarioAPI {
     Call<Usuario> getUsuarioForReceita(@Path("idReceita") Long id_receita);
     @GET("/usuario/email/{email}")//pegar usuario por id
     Call<Usuario> getUsuario(@Path("email") String email);
-    @POST("/usuario/login")
+
+    @POST("/usuario/login")//login
     Call<Usuario> loginUsuario(@Body Usuario usuario);
     @POST("/usuario")
     Call<Usuario> criarUsuario(@Body Usuario usuario);
