@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.digarfo.digarfo.Model.Receita;
 @Repository
@@ -32,9 +33,11 @@ public interface ReceitaRepository extends CrudRepository<Receita, Long>{
 	Receita findReceitaByNome(String nome_receita);
 	
 	// Para retornar todas as receitas aprovadas e com id especifico
-		@Query("SELECT r FROM Receita r WHERE r.aprovada = true AND r.id_receita = :id_receita ")
-		Receita pegarReceitaAprovID(Long id_receita);
+	@Query("SELECT r FROM Receita r WHERE r.aprovada = true AND r.id_receita = :id_receita ")
+	Receita pegarReceitaAprovID(Long id_receita);
 		
-	
+	//todas as receitas por usuario
+	@Query("SELECT r FROM Receita r WHERE r.usuario.email = :email")
+	List<Receita> pegarReceitasDoUsuario(String email);
 	
 }

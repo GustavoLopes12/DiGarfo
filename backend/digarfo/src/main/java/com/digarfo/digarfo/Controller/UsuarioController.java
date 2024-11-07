@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -91,6 +92,23 @@ public class UsuarioController {
 	//UPDATE usuario por id(email)
 	@PutMapping("/{email}")
 	public Usuario atualizaUsuario(@PathVariable String email, @RequestBody Usuario usuario) {
+		usuario.setEmail(email);
+		return usuarioRepository.save(usuario);
+	}
+	//UPDATE usuario com imagem de perfil indo junto
+	@PutMapping("/attUserWithImageUser/{email}")
+	public Usuario atualizarUsuarioWithImage(@PathVariable String email, @RequestBody Usuario usuario,  @RequestParam("file") MultipartFile arquivo) {
+		try {
+			if(!arquivo.isEmpty()) {
+				byte[] bytes = arquivo.getBytes();
+				Path caminho = Paths.get(diretorio+String.valueOf(usuario.getEmail())+arquivo.getOriginalFilename());
+				Files.write(caminho, bytes);
+				usuario.setImg_user(String.valueOf(usuario.getEmail())+arquivo.getOriginalFilename());
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		//salvando
 		usuario.setEmail(email);
 		return usuarioRepository.save(usuario);
 	}

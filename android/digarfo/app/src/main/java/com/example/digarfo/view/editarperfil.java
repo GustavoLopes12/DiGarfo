@@ -215,4 +215,10 @@ public class editarperfil extends AppCompatActivity {
             }
         });
     }
+    public void verMinhasReceitas(View view){
+        Intent outraTela = new Intent(getApplicationContext(), MinhasReceitas.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        startActivity(outraTela);
+        finish();
+    }
 }

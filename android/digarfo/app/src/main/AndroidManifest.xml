@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.Visualizar_My_Receita"
+            android:exported="false" />
+        <activity
+            android:name=".view.MinhasReceitas"
+            android:exported="false" />
+        <activity
             android:name=".view.adapter_receita"
             android:exported="false" />
         <activity

@@ -26,6 +26,11 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		public Iterable<Receita> getReceita(){
 			return receitaRepository.findAll();
 		}
+		//get all por usuario
+		@GetMapping("/allRecipesForUser/{email}")
+		public List<Receita> getAllRecipesForUser(@PathVariable String email){
+			return receitaRepository.pegarReceitasDoUsuario(email);
+		}
 		//get all receitas false aprovada
 		@GetMapping("/aprovadaFalse")
 		public List<Receita> getReceitasFalseAprovada(){
@@ -55,7 +60,6 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 			public Receita pao(@PathVariable Long id_receita){
 			return receitaRepository.pegarReceitaAprovID(id_receita);
 		}
-		
 		//GET POR NOME
 		@GetMapping("/nome/{nome_receita}")
 		public List<Receita> buscarReceitaPorNome(@PathVariable String nome_receita) {
