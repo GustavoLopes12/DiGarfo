@@ -15,6 +15,8 @@ import retrofit2.http.Path;
 
 public interface ReceitaAPI {
 
+
+
     @POST("/receita")
     Call<Receita> criarReceita(@Body Receita receita);
 
@@ -23,6 +25,8 @@ public interface ReceitaAPI {
 
     @GET("/receita/{id}")//pegar receita por id
     Call<Receita> getReceita(@Path("id") Long id);
+    @GET("/receita/receitaIDtrue/{id}")//pegar receita aprovada por id
+    Call<Receita> getReceitaAprovID(@Path("id") Long id);
 
    @GET("/receita/nome/{nome}")
     Call<List<Receita>> getReceitaForName(@Path("nome")String nome);

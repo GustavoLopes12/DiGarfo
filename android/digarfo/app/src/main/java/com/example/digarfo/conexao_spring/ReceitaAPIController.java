@@ -111,6 +111,24 @@ public class ReceitaAPIController {
             }
         });
     }
+    //buscar receita por id APROVADA
+    public void getReceitaAprovID(Long id, ReceitaAPIController.ResponseCallback responseCallback){
+        Call<Receita> call = this.receitaAPI.getReceitaAprovID(id);
+        call.enqueue(new Callback<Receita>() {
+            @Override
+            public void onResponse(Call<Receita> call, Response<Receita> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Receita> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel pegar a receita pelo id"));
+            }
+        });
+    }
+
+
+
     //buscar receita por id
     public void getReceita(Long id, ReceitaAPIController.ResponseCallback responseCallback){
         Call<Receita> call = this.receitaAPI.getReceita(id);

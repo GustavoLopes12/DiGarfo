@@ -23,12 +23,18 @@ public interface ReceitaRepository extends CrudRepository<Receita, Long>{
 	@Query("SELECT r FROM Receita r WHERE r.aprovada = true")
 	List<Receita> findAllByAprovacaoTrue();
 	
-	// Para retornar todas as receitas aprovadas
+	// Para retornar todas as receitas reprovadas
 	@Query("SELECT r FROM Receita r WHERE r.aprovada = false")
 	List<Receita> findAllByAprovacaoFalse();
 		
 	//receita pelo nome exato dela
 	@Query("SELECT r FROM Receita r WHERE r.nome_receita = :nome_receita")
 	Receita findReceitaByNome(String nome_receita);
+	
+	// Para retornar todas as receitas aprovadas e com id especifico
+		@Query("SELECT r FROM Receita r WHERE r.aprovada = true AND r.id_receita = :id_receita ")
+		Receita pegarReceitaAprovID(Long id_receita);
+		
+	
 	
 }

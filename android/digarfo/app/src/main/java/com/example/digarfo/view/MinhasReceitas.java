@@ -50,7 +50,7 @@ public class MinhasReceitas extends AppCompatActivity {
     }
     //pegando as receitas do usuario
     public void pegarRct(){
-        
+
     }
     //funcoes do rodape
     public void botaohome(View view){

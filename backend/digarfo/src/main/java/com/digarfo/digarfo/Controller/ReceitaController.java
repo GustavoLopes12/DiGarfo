@@ -51,7 +51,10 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		public Receita buscaReceitaPorId(@PathVariable Long id_receita) {
 			return receitaRepository.findById(id_receita).orElse(null);
 		}
-		
+		@GetMapping("/receitaIDtrue/{id_receita}")
+			public Receita pao(@PathVariable Long id_receita){
+			return receitaRepository.pegarReceitaAprovID(id_receita);
+		}
 		//GET POR NOME
 		@GetMapping("/nome/{nome_receita}")
 		public List<Receita> buscarReceitaPorNome(@PathVariable String nome_receita) {
@@ -70,13 +73,13 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 			return receitaRepository.save(receita);
 		}
 		//UPDATE receita por id
-		@PutMapping("/{id}")
+		@PutMapping("/{id_receita}")
 		public Receita atualizaReceita(@PathVariable Long id_receita, @RequestBody Receita receita) {
 			receita.setId_receita(id_receita);
 			return receitaRepository.save(receita);
 		}
 		//DELETE receita por id
-		@DeleteMapping("/{id}")
+		@DeleteMapping("/{id_receita}")
 		public void deletaReceita(@PathVariable Long id_receita) {
 			receitaRepository.deleteById(id_receita);
 			System.out.println("Receita deletada");
