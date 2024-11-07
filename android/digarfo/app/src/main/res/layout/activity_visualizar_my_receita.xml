@@ -5,10 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.receitavisualizacao">
+    tools:context=".view.Visualizar_My_Receita">
+
+
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView2222222222222222"
         android:layout_width="410dp"
         android:layout_height="613dp"
         android:orientation="vertical"
@@ -20,7 +22,7 @@
         app:layout_constraintVertical_bias="0.218">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/linearLayouttttttttttttttttt"
             android:layout_width="394dp"
             android:layout_height="625dp"
             android:layout_gravity="center_horizontal"
@@ -33,14 +35,14 @@
             app:layout_constraintVertical_bias="0.508">
 
             <ImageView
-                android:id="@+id/imageView24"
+                android:id="@+id/imageView244444444444444444"
                 android:layout_width="268dp"
                 android:layout_height="103dp"
                 android:layout_gravity="center_horizontal"
                 app:srcCompat="@drawable/receitas_removebg_preview" />
 
             <TextView
-                android:id="@+id/nome_r"
+                android:id="@+id/nome_RECEITA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/adlam_display"
@@ -49,7 +51,7 @@
                 android:textSize="30sp" />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imagemmmmmmm"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
@@ -60,14 +62,14 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageViewrrrrrrr"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     app:srcCompat="@android:drawable/ic_menu_gallery" />
 
                 <TextView
-                    android:id="@+id/autor_name"
+                    android:id="@+id/autor_nameeeee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
@@ -94,7 +96,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/custo"
+                    android:id="@+id/CUSTO"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -115,7 +117,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/categoria"
+                    android:id="@+id/CATEGORIA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -136,7 +138,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/tempo"
+                    android:id="@+id/TEMPO"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -162,7 +164,7 @@
 
 
             <TextView
-                android:id="@+id/ingredientes"
+                android:id="@+id/INGREDIENTES"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Recebe ingredientes da receita"
@@ -188,7 +190,7 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView36" />
 
             <TextView
-                android:id="@+id/modo_prep"
+                android:id="@+id/MODO_PREP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Recebe modo de preparo da receita"
@@ -221,7 +223,7 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="55dp"
             android:onClick="botaohome"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -267,6 +269,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_vertical|end"
             android:layout_marginLeft="40dp"
+            android:onClick="verMinhasReceitas"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.044"
@@ -276,5 +279,7 @@
             app:srcCompat="@drawable/receita" />
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

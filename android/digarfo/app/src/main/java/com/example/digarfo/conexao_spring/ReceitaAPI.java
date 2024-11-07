@@ -15,7 +15,8 @@ import retrofit2.http.Path;
 
 public interface ReceitaAPI {
 
-
+    @GET("/receita/allRecipesForUser/{email}")
+    Call<List<Receita>> pegarReceitasForUsuario(@Path("email") String email);
 
     @POST("/receita")
     Call<Receita> criarReceita(@Body Receita receita);

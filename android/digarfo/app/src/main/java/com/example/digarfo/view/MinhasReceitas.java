@@ -1,9 +1,11 @@
 package com.example.digarfo.view;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.digarfo.R;
+import com.example.digarfo.conexao_spring.ReceitaAPIController;
+import com.example.digarfo.conexao_spring.RetrofitClient;
 import com.example.digarfo.model.Receita;
 
 import java.util.ArrayList;
@@ -50,7 +54,35 @@ public class MinhasReceitas extends AppCompatActivity {
     }
     //pegando as receitas do usuario
     public void pegarRct(){
+        //client retrofit
+        RetrofitClient retrofitClient = new RetrofitClient();
+        //api controller
+        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+        receitaAPIController.getReceitaForUser(emailUSUARIO, new ReceitaAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Receita receita) {
 
+            }
+
+            @Override
+            public void onSuccessList(List<Receita> receitas) {
+                lista_receitas.addAll(receitas);
+                //adapter
+                Adapter_Minhas_Receitas adapter_minhas_receitas = new Adapter_Minhas_Receitas(lista_receitas);
+                //recycla viewsssss
+                recycler_view.setAdapter(adapter_minhas_receitas);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(MinhasReceitas.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Erro...");
+                alerta.setMessage("Erro ao exibir suas receitas...");
+                alerta.setNegativeButton("Voltar",null);
+                alerta.create().show();
+            }
+        });
     }
     //funcoes do rodape
     public void botaohome(View view){
@@ -73,5 +105,16 @@ public class MinhasReceitas extends AppCompatActivity {
     }
     public void minhasReceitas(View view){
         Toast.makeText(this, "Você já está aqui :)", Toast.LENGTH_SHORT).show();
+    }
+    public void verReceitaMinha(View view){
+        //mandar id da receita junto
+        TextView id = view.findViewById(R.id.id_rct_my);
+        String idStg = id.getText().toString();
+        //lets go the other interface(recipe visualization)
+        Intent outraTela = new Intent(getApplicationContext(), Visualizar_My_Receita.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("id_rct", idStg);
+        startActivity(outraTela);
+        finish();
     }
 }

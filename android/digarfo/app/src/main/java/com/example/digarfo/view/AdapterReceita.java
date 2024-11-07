@@ -3,7 +3,6 @@ package com.example.digarfo.view;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,11 +29,6 @@ public class AdapterReceita extends RecyclerView.Adapter<AdapterReceita.MyViewHo
         MyViewHolder myViewHolder = new MyViewHolder(itemlista);
         return myViewHolder;
     }
-
-
-
-
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Receita receita = lista_receita.get(position);

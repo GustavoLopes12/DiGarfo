@@ -127,7 +127,21 @@ public class ReceitaAPIController {
         });
     }
 
+    //buscar receitas pelo usuario
+    public void getReceitaForUser(String email, ReceitaAPIController.ResponseCallback responseCallback){
+        Call <List<Receita>> call = this.receitaAPI.pegarReceitasForUsuario(email);
+        call.enqueue(new Callback<List<Receita>>() {
+            @Override
+            public void onResponse(Call<List<Receita>> call, Response<List<Receita>> response) {
+                responseCallback.onSuccessList(response.body());
+            }
 
+            @Override
+            public void onFailure(Call<List<Receita>> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possível pegar as receitas desse usuario"));
+            }
+        });
+    }
 
     //buscar receita por id
     public void getReceita(Long id, ReceitaAPIController.ResponseCallback responseCallback){

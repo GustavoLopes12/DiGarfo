@@ -316,7 +316,7 @@ public class home extends AppCompatActivity {
     }
 
     public void onClickSalgados(View view) {
-        irParaPesquisaCategoria("salgados");
+        irParaPesquisaCategoria("salgada");
     }
 
     public void onClickSaudaveis(View view) {
@@ -381,6 +381,16 @@ public class home extends AppCompatActivity {
     public void irparainserir(View view){
         if(emailUSUARIO != null){
             Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
+            outraTela.putExtra("Email", emailUSUARIO);
+            startActivity(outraTela);
+            finish();
+        }else{
+            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void verMinhasReceitas(View view){
+        if(emailUSUARIO != null){
+            Intent outraTela = new Intent(getApplicationContext(), MinhasReceitas.class);
             outraTela.putExtra("Email", emailUSUARIO);
             startActivity(outraTela);
             finish();

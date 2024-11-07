@@ -150,6 +150,12 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
             startActivity(intent);
             finish();
     }
+    public void verMinhasReceitas(View view){
+            Intent outraTela = new Intent(getApplicationContext(), MinhasReceitas.class);
+            outraTela.putExtra("Email", emailUSUARIO);
+            startActivity(outraTela);
+            finish();
+    }
     //enviar rct
     public void enviar_rct(View view) {
         //pegando valores para criação

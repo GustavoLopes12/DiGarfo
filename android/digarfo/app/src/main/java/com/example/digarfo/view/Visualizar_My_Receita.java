@@ -22,64 +22,60 @@ import com.example.digarfo.model.Usuario;
 
 import java.util.List;
 
-public class receitavisualizacao extends AppCompatActivity {
-    String pesquisaString;//valor da pesquisa
+public class Visualizar_My_Receita extends AppCompatActivity {
     String emailUSUARIO;
     Long id_long;
-
-    //coisas do layout
-    TextView nome_autor;
+    //ELEMENTOS DA PAGINA
     TextView nome_receita;
-    TextView ingredientes;
-    TextView modo_prep;
-    TextView custo;
+    TextView autor_receita;
     TextView categoria;
     TextView tempo;
+    TextView custo;
+    TextView ingredientes;
+    TextView modo_prep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_receitavisualizacao);
+        setContentView(R.layout.activity_visualizar_my_receita);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        //oque pesquisou?
-        String pesquisaGuardada = getIntent().getStringExtra("Pesquisa");
-        pesquisaString = pesquisaGuardada;
-        //quem tá logado?
+        //elementos
+        nome_receita = findViewById(R.id.nome_RECEITA);
+        autor_receita = findViewById(R.id.autor_nameeeee);
+        categoria = findViewById(R.id.CATEGORIA);
+        custo = findViewById(R.id.CUSTO);
+        tempo = findViewById(R.id.TEMPO);
+        ingredientes = findViewById(R.id.INGREDIENTES);
+        modo_prep = findViewById(R.id.MODO_PREP);
+        //email usuario
         String emailGuardado = getIntent().getStringExtra("Email");
         emailUSUARIO = emailGuardado;
         //pegar id da receita
         String id_guardado = getIntent().getStringExtra("id_rct");
         id_long = Long.parseLong(id_guardado);
-        //relacion
-        nome_autor = findViewById(R.id.autor_name);
-        nome_receita = findViewById(R.id.nome_r);
-        ingredientes = findViewById(R.id.ingredientes);
-        modo_prep = findViewById(R.id.modo_prep);
-        custo = findViewById(R.id.custo);
-        categoria = findViewById(R.id.categoria);
-        tempo = findViewById(R.id.tempo);
-        carregar_rct();
+        //chamando metodo para buscar minha receita
+        buscar_minha_receita(id_long);
     }
-    public void carregar_rct(){
-        //cliente retrofit
+    //buscarMinhaReceitaClicadaPorId
+    public void buscar_minha_receita(Long id_receita){
+        //RetroFitClient
         RetrofitClient retrofitClient = new RetrofitClient();
-        //receita api controller
+        //Api Controller
         ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-        receitaAPIController.getReceita(id_long, new ReceitaAPIController.ResponseCallback() {
-
+        //chamando metodo
+        receitaAPIController.getReceita(id_receita, new ReceitaAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Receita receita) {
                 nome_receita.setText(receita.getNome_receita());
+                categoria.setText(receita.getCategoria());
+                custo.setText(receita.getCusto());
                 ingredientes.setText(receita.getIngredientes());
                 modo_prep.setText(receita.getModo_prep());
-                custo.setText(receita.getCusto());
-                categoria.setText(receita.getCategoria());
-                tempo.setText(receita.getTempo_prep());
                 carregarAutor(receita.getId_receita());
             }
 
@@ -90,7 +86,7 @@ public class receitavisualizacao extends AppCompatActivity {
 
             @Override
             public void onFailure(Throwable t) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(receitavisualizacao.this);
+                AlertDialog.Builder alerta = new AlertDialog.Builder(Visualizar_My_Receita.this);
                 alerta.setCancelable(false);
                 alerta.setTitle("Não foi possivel carregar sua receita");
                 alerta.setMessage("Tente novamente mais tarde");
@@ -99,7 +95,7 @@ public class receitavisualizacao extends AppCompatActivity {
             }
         });
     }
-
+    //pegar autor
     public void carregarAutor(Long id){
         //client retrofit
         RetrofitClient retrofitClient = new RetrofitClient();
@@ -109,12 +105,12 @@ public class receitavisualizacao extends AppCompatActivity {
         usuarioAPIController.getUsuarioForReceita(id, new UsuarioAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Usuario usuario) {
-                nome_autor.setText(usuario.getNome_usuario());
+                autor_receita.setText(usuario.getNome_usuario());
             }
 
             @Override
             public void onFailure(Throwable t) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(receitavisualizacao.this);
+                AlertDialog.Builder alerta = new AlertDialog.Builder(Visualizar_My_Receita.this);
                 alerta.setCancelable(false);
                 alerta.setTitle("Algo de errado não está certo...");
                 alerta.setMessage("autor da receita não encontrado");
@@ -123,29 +119,12 @@ public class receitavisualizacao extends AppCompatActivity {
             }
         });
     }
-
-    //ir para perfil se logado senão não
+    //funcoes rodape
     public void irparaperfil(View view){
-        if(emailUSUARIO != null){
-            Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
-            outraTela.putExtra("Email", emailUSUARIO);
-            startActivity(outraTela);
-            finish();
-        }else{
-            Toast.makeText(this, "Você não está logado, faça login para editar seu perfil!!!", Toast.LENGTH_SHORT).show();
-            Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(outraTela);
-        }
-    }
-    public void verMinhasReceitas(View view){
-        if(emailUSUARIO != null){
-            Intent outraTela = new Intent(getApplicationContext(), MinhasReceitas.class);
-            outraTela.putExtra("Email", emailUSUARIO);
-            startActivity(outraTela);
-            finish();
-        }else{
-            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
-        }
+        Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        startActivity(outraTela);
+        finish();
     }
     public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
@@ -154,20 +133,15 @@ public class receitavisualizacao extends AppCompatActivity {
         finish();
     }
     public void irparainserir(View view){
-        if(emailUSUARIO != null){
-            Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
-            outraTela.putExtra("Email", emailUSUARIO);
-            startActivity(outraTela);
-            finish();
-        }else{
-            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
-        }
-    }
-    /*public void voltar(View view){
-        Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
+        Intent outraTela = new Intent(getApplicationContext(), escreverreceita.class);
         outraTela.putExtra("Email", emailUSUARIO);
-        outraTela.putExtra("Pesquisa", pesquisaString);
         startActivity(outraTela);
         finish();
-    }*/
+    }
+    public void verMinhasReceitas(View view){
+        Intent outraTela = new Intent(getApplicationContext(), MinhasReceitas.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        startActivity(outraTela);
+        finish();
+    }
 }

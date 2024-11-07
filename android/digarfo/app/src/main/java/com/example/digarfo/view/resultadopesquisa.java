@@ -177,6 +177,16 @@ public class resultadopesquisa extends AppCompatActivity {
             Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
         }
     }
+    public void verMinhasReceitas(View view){
+        if(emailUSUARIO != null){
+            Intent outraTela = new Intent(getApplicationContext(), MinhasReceitas.class);
+            outraTela.putExtra("Email", emailUSUARIO);
+            startActivity(outraTela);
+            finish();
+        }else{
+            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
+        }
+    }
     public void botaohome(View view){//botao home
         Intent outraTela = new Intent(getApplicationContext(), home.class);
         outraTela.putExtra("Email", emailUSUARIO);

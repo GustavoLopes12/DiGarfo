@@ -26,6 +26,11 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		public Iterable<Receita> getReceita(){
 			return receitaRepository.findAll();
 		}
+		//get all por usuario
+		@GetMapping("/allRecipesForUser/{email}")
+		public List<Receita> getAllRecipesForUser(@PathVariable String email){
+			return receitaRepository.pegarReceitasDoUsuario(email);
+		}
 		//get all receitas false aprovada
 		@GetMapping("/aprovadaFalse")
 		public List<Receita> getReceitasFalseAprovada(){
