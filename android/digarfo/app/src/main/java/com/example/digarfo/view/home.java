@@ -54,14 +54,7 @@ public class home extends AppCompatActivity {
         });
         String emailGuardado = getIntent().getStringExtra("Email");
         emailUSUARIO = emailGuardado;
-
         valorPesquisa = findViewById(R.id.barradepesquisa);
-
-        idrct1 = findViewById(R.id.id_rct_one);
-        idrct2 = findViewById(R.id.id_rct_two);
-        idrct3 = findViewById(R.id.id_rct_tree);
-        idrct4 = findViewById(R.id.id_rct_four);
-
         tv_receita_bd = findViewById(R.id.recebe_receita);
         tv_receita_bd_dois = findViewById(R.id.recebe_receita_dois);
         tv_receita_bd_tres = findViewById(R.id.recebe_receita_tres);
@@ -98,7 +91,7 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Receita receita) {
                     tv_receita_bd.setText(receita.getNome_receita());
-                    //idrct1 = receita.getId_receita().toString();
+                    idrct1 = receita.getId_receita().toString();
                 }
 
                 @Override
@@ -150,7 +143,7 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_dois.setText(receita.getNome_receita());
-                    //idrct2 = receita.getId_receita().toString();
+                    idrct2 = receita.getId_receita().toString();
                 }
 
                 @Override
@@ -201,7 +194,7 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_tres.setText(receita.getNome_receita());
-                    //idrct3 = receita.getId_receita().toString();
+                    idrct3 = receita.getId_receita().toString();
                 }
 
                 @Override
@@ -252,7 +245,7 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_quatro.setText(receita.getNome_receita());
-                    //idrct4 = receita.getId_receita().toString();
+                    idrct4 = receita.getId_receita().toString();
                 }
 
                 @Override
@@ -377,7 +370,7 @@ public class home extends AppCompatActivity {
 
     //receitas sugeridas
 
-   /* public void rct_view_one(View view){
+   public void rct_view_one(View view){
         //lets go the other interface(recipe visualization)
         Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
         outraTela.putExtra("Email", emailUSUARIO);
@@ -411,7 +404,7 @@ public class home extends AppCompatActivity {
         outraTela.putExtra("id_rct", idrct4);
         startActivity(outraTela);
         finish();
-    }*/
+    }
 
 
 
