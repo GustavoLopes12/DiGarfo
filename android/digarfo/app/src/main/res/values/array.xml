@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name= "categorias">
-        <item>Doce </item>
-        <item>Salgada</item>
-        <item>Bebida</item>
-        <item>Rápida</item>
+        <item>Doces</item>
+        <item>Salgados</item>
+        <item>Bebidas</item>
+        <item>Rápidas</item>
+        <item>Saudável</item>
+        <item>Massas</item>
+        <item>Frutos do Mar</item>
+        <item>Aves</item>
+        <item>Carne Vermelha</item>
+        <item>Oriental</item>
+        <item>Mexicana</item>
+        <item>Salada e Vegetarianas</item>
+        <item>Sopas</item>
 
     </string-array>
 

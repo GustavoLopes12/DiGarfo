@@ -194,7 +194,7 @@ public class resultadopesquisa extends AppCompatActivity {
         finish();
     }
 
-    public void reload(View view){//botao home
+    public void reload(View view){
         barradepesquisaTXT = barradepesquisa.getText().toString();
         Intent outraTela = new Intent(getApplicationContext(), resultadopesquisa.class);
         outraTela.putExtra("Email", emailUSUARIO);

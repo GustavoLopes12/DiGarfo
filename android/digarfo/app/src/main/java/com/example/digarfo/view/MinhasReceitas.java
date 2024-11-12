@@ -66,6 +66,7 @@ public class MinhasReceitas extends AppCompatActivity {
 
             @Override
             public void onSuccessList(List<Receita> receitas) {
+                lista_receitas.clear();
                 lista_receitas.addAll(receitas);
                 //adapter
                 Adapter_Minhas_Receitas adapter_minhas_receitas = new Adapter_Minhas_Receitas(lista_receitas);

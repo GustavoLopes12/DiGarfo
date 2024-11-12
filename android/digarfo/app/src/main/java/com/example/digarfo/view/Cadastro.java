@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -120,12 +121,8 @@ public class Cadastro extends AppCompatActivity {
         usuarioAPIController.Cadastro(nomeString, emailString, senhaString, descricaoString, new UsuarioAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Usuario usuario) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(Cadastro.this);
-                alerta.setCancelable(false);
-                alerta.setTitle("Cadastro Realizado");
-                alerta.setMessage("Seu cadastro foi realizado com sucesso");
-                alerta.setNegativeButton("Ok",null);
-                alerta.create().show();
+                Log.d("Cadastro", "Cadastro realizado com sucesso: " + usuario.getNome_usuario());
+                Toast.makeText(Cadastro.this, "Cadastro realizado com sucesso " + usuario.getNome_usuario(), Toast.LENGTH_SHORT).show();
                 name.setText(null);
                 email.setText(null);
                 senha.setText(null);

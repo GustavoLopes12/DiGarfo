@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -82,10 +83,8 @@ public class MainActivity extends AppCompatActivity {
                     senha.setText(null);
                 }else{
                     String emailGuardado = email.getText().toString();//para guardar o email do usuario
-                    alerta.setTitle("Login feito com sucesso");
-                    alerta.setMessage("Login realizado com sucesso, desfrute o DiGarfo :)");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.d("MainActivity", "Login realizado com sucesso: " + usuario.getNome_usuario());
+                    Toast.makeText(MainActivity.this, "Login realizado com sucesso " + usuario.getNome_usuario(), Toast.LENGTH_SHORT).show();
                     email.setText(null);
                     senha.setText(null);
                     //levar o email do usuario para a activitie de editar perfil para quando clicado poder editar seu perfil
@@ -103,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 alerta.setMessage(t.toString());
                 alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
+                email.setText(null);
+                senha.setText(null);
             }
         });
     }

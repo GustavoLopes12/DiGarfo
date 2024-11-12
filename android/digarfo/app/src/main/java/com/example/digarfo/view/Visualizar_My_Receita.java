@@ -27,7 +27,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
     Long id_long;
     //ELEMENTOS DA PAGINA
     TextView nome_receita;
-    TextView autor_receita;
+   // TextView autor_receita;
     TextView categoria;
     TextView tempo;
     TextView custo;
@@ -46,7 +46,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
         });
         //elementos
         nome_receita = findViewById(R.id.nome_RECEITA);
-        autor_receita = findViewById(R.id.autor_nameeeee);
+        //autor_receita = findViewById(R.id.autor_nameeeee);
         categoria = findViewById(R.id.CATEGORIA);
         custo = findViewById(R.id.CUSTO);
         tempo = findViewById(R.id.TEMPO);
@@ -76,7 +76,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
                 custo.setText(receita.getCusto());
                 ingredientes.setText(receita.getIngredientes());
                 modo_prep.setText(receita.getModo_prep());
-                carregarAutor(receita.getId_receita());
+                /*carregarAutor(receita.getId_receita());*/
             }
 
             @Override
@@ -96,7 +96,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
         });
     }
     //pegar autor
-    public void carregarAutor(Long id){
+    /*public void carregarAutor(Long id){
         //client retrofit
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
@@ -118,7 +118,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
                 alerta.create().show();
             }
         });
-    }
+    }*/
     //funcoes rodape
     public void irparaperfil(View view){
         Intent outraTela = new Intent(getApplicationContext(), editarperfil.class);
