@@ -627,6 +627,14 @@
                                 android:layout_height="wrap_content"
                                 android:text="Nome Autor Receita bd AQUI"
                                 android:textSize="14sp"></TextView>
+
+                            <TextView
+                                android:id="@+id/id_rct_one"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="invisible"></TextView>
+
+
                         </LinearLayout>
 
                         <LinearLayout
