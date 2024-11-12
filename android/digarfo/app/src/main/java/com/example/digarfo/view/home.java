@@ -28,6 +28,11 @@ public class home extends AppCompatActivity {
     EditText valorPesquisa;
     String valuePesquisa;
 
+   String idrct1;
+   String idrct2;
+   String idrct3;
+   String idrct4;
+
     TextView tv_receita_bd;//nome
     TextView tv_receita_bd_dois;//nome
     TextView tv_receita_bd_tres;//nome
@@ -36,7 +41,6 @@ public class home extends AppCompatActivity {
     TextView tv_autor_receita_bd_dois;
     TextView tv_autor_receita_bd_tres;
     TextView tv_autor_receita_bd_quatro;
-    Long id_receita_bd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,10 @@ public class home extends AppCompatActivity {
 
         valorPesquisa = findViewById(R.id.barradepesquisa);
 
+        idrct1 = findViewById(R.id.id_rct_one);
+        idrct2 = findViewById(R.id.id_rct_two);
+        idrct3 = findViewById(R.id.id_rct_tree);
+        idrct4 = findViewById(R.id.id_rct_four);
 
         tv_receita_bd = findViewById(R.id.recebe_receita);
         tv_receita_bd_dois = findViewById(R.id.recebe_receita_dois);
@@ -90,6 +98,7 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Receita receita) {
                     tv_receita_bd.setText(receita.getNome_receita());
+                    //idrct1 = receita.getId_receita().toString();
                 }
 
                 @Override
@@ -141,6 +150,7 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_dois.setText(receita.getNome_receita());
+                    //idrct2 = receita.getId_receita().toString();
                 }
 
                 @Override
@@ -191,6 +201,7 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_tres.setText(receita.getNome_receita());
+                    //idrct3 = receita.getId_receita().toString();
                 }
 
                 @Override
@@ -241,6 +252,7 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_quatro.setText(receita.getNome_receita());
+                    //idrct4 = receita.getId_receita().toString();
                 }
 
                 @Override
@@ -362,6 +374,50 @@ public class home extends AppCompatActivity {
     public void onClickSOPAS(View view) {
         irParaPesquisaCategoria("sopas");
     }
+
+    //receitas sugeridas
+
+   /* public void rct_view_one(View view){
+        //lets go the other interface(recipe visualization)
+        Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("id_rct", idrct1);
+        startActivity(outraTela);
+        finish();
+    }
+
+    public void rct_view_two(View view){
+        //lets go the other interface(recipe visualization)
+        Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("id_rct", idrct2);
+        startActivity(outraTela);
+        finish();
+    }
+
+    public void rct_view_tree(View view){
+        //lets go the other interface(recipe visualization)
+        Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("id_rct", idrct3);
+        startActivity(outraTela);
+        finish();
+    }
+
+    public void rct_view_four(View view){
+        //lets go the other interface(recipe visualization)
+        Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
+        outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("id_rct", idrct4);
+        startActivity(outraTela);
+        finish();
+    }*/
+
+
+
+
+
+
     //ir para perfil se logado senão não
     public void irparaperfil(View view){
         if(emailUSUARIO != null){

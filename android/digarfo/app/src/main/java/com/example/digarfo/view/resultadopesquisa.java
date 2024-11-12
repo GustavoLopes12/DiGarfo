@@ -209,7 +209,6 @@ public class resultadopesquisa extends AppCompatActivity {
         //lets go the other interface(recipe visualization)
         Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
         outraTela.putExtra("Email", emailUSUARIO);
-        outraTela.putExtra("Pesquisa", barradepesquisaTXT);
         outraTela.putExtra("id_rct", idStg);
         startActivity(outraTela);
         finish();

@@ -23,7 +23,7 @@ import com.example.digarfo.model.Usuario;
 import java.util.List;
 
 public class receitavisualizacao extends AppCompatActivity {
-    String pesquisaString;//valor da pesquisa
+   // String pesquisaString;//valor da pesquisa
     String emailUSUARIO;
     Long id_long;
 
@@ -47,8 +47,8 @@ public class receitavisualizacao extends AppCompatActivity {
             return insets;
         });
         //oque pesquisou?
-        String pesquisaGuardada = getIntent().getStringExtra("Pesquisa");
-        pesquisaString = pesquisaGuardada;
+        //String pesquisaGuardada = getIntent().getStringExtra("Pesquisa");
+       // pesquisaString = pesquisaGuardada;
         //quem tá logado?
         String emailGuardado = getIntent().getStringExtra("Email");
         emailUSUARIO = emailGuardado;

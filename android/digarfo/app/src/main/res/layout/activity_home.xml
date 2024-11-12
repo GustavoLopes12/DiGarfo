@@ -610,12 +610,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@android:drawable/ic_menu_gallery"></ImageView>
+                                android:background="@android:drawable/ic_menu_gallery"
+                                android:onClick="rct_view_one"></ImageView>
 
                             <TextView
                                 android:id="@+id/recebe_receita"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_one"
                                 android:text="Nome Receita bd AQUI"
                                 android:textAlignment="textStart"
                                 android:textSize="16sp"
@@ -625,6 +627,7 @@
                                 android:id="@+id/autor_receita"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_one"
                                 android:text="Nome Autor Receita bd AQUI"
                                 android:textSize="14sp"></TextView>
 
@@ -632,6 +635,7 @@
                                 android:id="@+id/id_rct_one"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_one"
                                 android:visibility="invisible"></TextView>
 
 
@@ -648,12 +652,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@android:drawable/ic_menu_gallery"></ImageView>
+                                android:background="@android:drawable/ic_menu_gallery"
+                                android:onClick="rct_view_two"></ImageView>
 
                             <TextView
                                 android:id="@+id/recebe_receita_dois"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_two"
                                 android:text="Nome Receita bd AQUI"
                                 android:textSize="16sp"
                                 android:textStyle="bold"></TextView>
@@ -662,8 +668,16 @@
                                 android:id="@+id/autor_receita_dois"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_two"
                                 android:text="Nome Autor Receita bd AQUI"
                                 android:textSize="14sp"></TextView>
+
+                            <TextView
+                                android:id="@+id/id_rct_two"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:onClick="rct_view_two"
+                                android:visibility="invisible"></TextView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -677,12 +691,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@android:drawable/ic_menu_gallery"></ImageView>
+                                android:background="@android:drawable/ic_menu_gallery"
+                                android:onClick="rct_view_tree"></ImageView>
 
                             <TextView
                                 android:id="@+id/recebe_receita_tres"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_tree"
                                 android:text="Nome Receita bd AQUI"
                                 android:textSize="16sp"
                                 android:textStyle="bold"></TextView>
@@ -691,8 +707,16 @@
                                 android:id="@+id/autor_receita_tres"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_tree"
                                 android:text="Nome Autor Receita bd AQUI"
                                 android:textSize="14sp"></TextView>
+
+                            <TextView
+                                android:id="@+id/id_rct_tree"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:onClick="rct_view_tree"
+                                android:visibility="invisible"></TextView>
                         </LinearLayout>
 
                         <LinearLayout
@@ -706,12 +730,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@android:drawable/ic_menu_gallery"></ImageView>
+                                android:background="@android:drawable/ic_menu_gallery"
+                                android:onClick="rct_view_four"></ImageView>
 
                             <TextView
                                 android:id="@+id/recebe_receita_quatro"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_four"
                                 android:text="Nome Receita bd AQUI"
                                 android:textSize="16sp"
                                 android:textStyle="bold"></TextView>
@@ -720,8 +746,16 @@
                                 android:id="@+id/autor_receita_quatro"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:onClick="rct_view_four"
                                 android:text="Nome Autor Receita bd AQUI"
                                 android:textSize="14sp"></TextView>
+
+                            <TextView
+                                android:id="@+id/id_rct_four"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:onClick="rct_view_four"
+                                android:visibility="invisible"></TextView>
                         </LinearLayout>
 
                     </LinearLayout>
