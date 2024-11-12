@@ -2,6 +2,7 @@
 <resources>
     <string-array name= "categorias">
         <item>Doces</item>
+<<<<<<< HEAD
         <item>Salgados</item>
         <item>Bebidas</item>
         <item>Rápidas</item>
@@ -13,6 +14,19 @@
         <item>Oriental</item>
         <item>Mexicana</item>
         <item>Salada e Vegetarianas</item>
+=======
+        <item>Salgadas</item>
+        <item>Saudáveis</item>
+        <item>Bebidas</item>
+        <item>Rápidas</item>
+        <item>Massas</item>
+        <item>Frutos do Mar</item>
+        <item>Aves</item>
+        <item>Carnes</item>
+        <item>Orientais</item>
+        <item>Mexicanas</item>
+        <item>Saladas e Vegetarianas</item>
+>>>>>>> 1a2ba563d3e6204701b1db6374b20db47aef899c
         <item>Sopas</item>
 
     </string-array>
