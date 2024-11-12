@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 alerta.setCancelable(false);
                 alerta.setTitle("Conexão Falhou, não é possivel realizar login");
                 alerta.setMessage(t.toString());
+                //alerta.setMessage(t.getMessage());
+
                 alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
             }

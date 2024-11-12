@@ -25,11 +25,11 @@ public class AdmAPIController {
     }
 
     //------------------------
-    public void Login(String email, String password, AdmAPIController.ResponseCallback responseCallback) {
+    public void Login(String email, String senha, AdmAPIController.ResponseCallback responseCallback) {
 
-        Adm adm = new Adm(email, password);//construtor na adm
+        Adm adm = new Adm(email, senha);//construtor na adm
 
-        Call<Adm> call = this.admAPI.loginAdm(adm);//mudar p adm
+        Call<Adm> call = this.admAPI.loginAdm(adm);
         call.enqueue(new Callback<Adm>() {
             @Override
             public void onResponse(Call<Adm> call, Response<Adm> response) {

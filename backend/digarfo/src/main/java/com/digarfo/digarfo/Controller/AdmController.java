@@ -21,12 +21,13 @@ public class AdmController {
 	private AdmRepository admRepository;
 		//login
 		@PostMapping("/loginAdm")
-		public ResponseEntity<String> login(@RequestBody Adm adm){
+		public Adm login(@RequestBody Adm adm){
 			Adm foundAdm = admRepository.findByEmailAndSenha(adm.getEmail(), adm.getSenha());
 			if (foundAdm != null) {
-				return ResponseEntity.ok("Login feito");
+				return foundAdm;
 			}else {
-				return ResponseEntity.status(401).body("Login nao realizado");
+				Adm emptyAdm = new Adm();
+				return emptyAdm;
 			}
 		}
 	  	//GET todos os adms
