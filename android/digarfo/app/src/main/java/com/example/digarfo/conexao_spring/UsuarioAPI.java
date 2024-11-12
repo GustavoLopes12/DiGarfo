@@ -7,6 +7,7 @@ import java.io.File;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -27,4 +28,7 @@ public interface UsuarioAPI {
     Call<Usuario> criarUsuario(@Body Usuario usuario);
     @PUT("/usuario/{email}")
     Call<Usuario> attUsuario(@Path("email") String email, @Body Usuario usuario);
+
+    @DELETE("/usuario/{email}")
+    Call<Usuario> deletUsuario(@Path("email") String email);
 }

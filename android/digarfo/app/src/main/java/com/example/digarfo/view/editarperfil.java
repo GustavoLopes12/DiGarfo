@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -119,6 +120,49 @@ public class editarperfil extends AppCompatActivity {
             }
         }
     }
+
+    //BOTAO SAIR CONTA
+    public void sairdaconta(View view){
+        Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+        Toast.makeText(this, "Você saiu da sua conta ;)", Toast.LENGTH_SHORT).show();
+        startActivity(outraTela);
+        finish();
+    }
+
+    //BOTAO DELETAR USUARIO
+    public void deletaruser(View view){
+
+            //cliente retrofit
+            RetrofitClient retrofitClient = new RetrofitClient();
+            //api controller
+            UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
+            usuarioAPIController.deletar(emailUSUARIO, new UsuarioAPIController.ResponseCallback() {
+                @Override
+                public void onSuccess(Usuario usuario) { //rever parametros
+                    //por fim
+                    Toast.makeText(editarperfil.this, "Usuário deletado!!", Toast.LENGTH_SHORT).show();
+
+                    Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(outraTela);
+                    finish();
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Log.d("Erro", "Erro: " +t);
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Erro ao excluir conta");
+                    alerta.setMessage("Houve um erro ao tentar excluir sua conta. Tente novamente.");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }
+            });
+
+
+    }
+    //--endpoint deleta user do email guardado ate essa pag
+    //FIM-BOTAO DELETAR USUARIO
 
     //voltar home
     public void botaohome(View view){

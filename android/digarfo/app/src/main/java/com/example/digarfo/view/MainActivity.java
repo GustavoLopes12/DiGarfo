@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     senha.setText(null);
                     //levar o email do usuario para a activitie de editar perfil para quando clicado poder editar seu perfil
                     Intent intent = new Intent(MainActivity.this, home.class);
-                    intent.putExtra("Email", emailGuardado);
+                    intent.putExtra("Email", emailGuardado);//chave que guarda o email e, qnd da qetintent, a nova pagina pega ele
                     startActivity(intent);
                     finish();
                 }

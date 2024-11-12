@@ -114,8 +114,16 @@ public class UsuarioController {
 	}
 	//DELETE usuario usuario por id(email)
 	@DeleteMapping("/{email}")
+	public void  deletaUsuario(@PathVariable String email) {
+		usuarioRepository.deleteById(email);
+		 
+	}
+
+	/*
+	@DeleteMapping("/{email}")
 	public void deletaUsuario(@PathVariable String email) {
 		usuarioRepository.deleteById(email);
 	}
+	*/
 	
 }

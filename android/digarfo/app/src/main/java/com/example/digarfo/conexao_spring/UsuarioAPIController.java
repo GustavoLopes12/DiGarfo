@@ -116,4 +116,21 @@ public class UsuarioAPIController {
             }
         });
     }
+
+    //DELETAR USUARIO
+    public void deletar(String email, UsuarioAPIController.ResponseCallback responseCallback){
+        Call<Usuario> call = this.usuarioAPI.deletUsuario(email);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                responseCallback.onFailure(new Exception("nao foi possivel deletar o usuario"));
+            }
+        });
+    }
+
 }
