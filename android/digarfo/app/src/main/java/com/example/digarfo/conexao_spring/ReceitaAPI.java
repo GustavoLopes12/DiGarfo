@@ -6,8 +6,10 @@ import com.example.digarfo.model.Usuario;
 import java.util.List;
 
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -36,7 +38,10 @@ public interface ReceitaAPI {
     Call<List<Receita>> getReceitasAprovadas();
 
    @GET("/receita/search/{termo}")
-    Call<List<Receita>> getReceitasSearchCN(@Path("termo") String termo);
+   Call<List<Receita>> getReceitasSearchCN(@Path("termo") String termo);
+
+    @DELETE("/receita/{id}")
+    Call<ResponseBody> deletarReceita(@Path("id") Long id);
 
 }
 

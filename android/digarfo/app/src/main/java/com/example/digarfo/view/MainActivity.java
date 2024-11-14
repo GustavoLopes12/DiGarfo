@@ -21,6 +21,8 @@ import com.example.digarfo.conexao_spring.RetrofitClient;
 import com.example.digarfo.conexao_spring.UsuarioAPIController;
 import com.example.digarfo.model.Usuario;
 
+import okhttp3.ResponseBody;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText email;
@@ -93,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+            }
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
             }
             @Override
             public void onFailure(Throwable t) {

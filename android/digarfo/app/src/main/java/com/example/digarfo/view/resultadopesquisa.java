@@ -26,6 +26,8 @@ import com.example.digarfo.model.Receita;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 public class resultadopesquisa extends AppCompatActivity {
     RecyclerView recycler_view_resultado_pesquisa;//recycler view
 
@@ -91,6 +93,9 @@ public class resultadopesquisa extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccess(ResponseBody responseBody) {}
+
+            @Override
             public void onSuccessList(List<Receita> receitas) {
                 //fazer aparecer no recycler view a lista
                 lista_de_receitas_filtradas.addAll(receitas);
@@ -121,6 +126,9 @@ public class resultadopesquisa extends AppCompatActivity {
             public void onSuccess(Receita receita) {
 
             }
+
+            @Override
+            public void onSuccess(ResponseBody responseBody) {}
 
             @Override
             public void onSuccessList(List<Receita> receitas) {

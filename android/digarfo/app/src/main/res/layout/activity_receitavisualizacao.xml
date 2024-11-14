@@ -9,20 +9,20 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="410dp"
-        android:layout_height="613dp"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218">
+        app:layout_constraintVertical_bias="0.32">
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="394dp"
-            android:layout_height="625dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,7 +56,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -66,19 +66,36 @@
                     android:layout_gravity="center"
                     app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-                <TextView
-                    android:id="@+id/autor_name"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:text="Nome do criador"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.246"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.404" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/autor_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="Nome do criador"
+                        android:textAlignment="textStart"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.246"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.404" />
+
+                    <TextView
+                        android:id="@+id/descricao_autor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="descricao"
+                        android:textSize="17sp"></TextView>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -191,6 +208,7 @@
                 android:id="@+id/modo_prep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="Recebe modo de preparo da receita"
                 android:textAlignment="textStart"
                 android:textSize="20sp"
@@ -267,6 +285,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_vertical|end"
             android:layout_marginLeft="40dp"
+            android:onClick="verMinhasReceitas"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.044"

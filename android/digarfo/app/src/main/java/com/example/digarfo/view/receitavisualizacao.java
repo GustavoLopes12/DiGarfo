@@ -22,6 +22,8 @@ import com.example.digarfo.model.Usuario;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 public class receitavisualizacao extends AppCompatActivity {
    // String pesquisaString;//valor da pesquisa
     String emailUSUARIO;
@@ -35,6 +37,10 @@ public class receitavisualizacao extends AppCompatActivity {
     TextView custo;
     TextView categoria;
     TextView tempo;
+
+    TextView descricao;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,7 @@ public class receitavisualizacao extends AppCompatActivity {
         custo = findViewById(R.id.custo);
         categoria = findViewById(R.id.categoria);
         tempo = findViewById(R.id.tempo);
+        descricao = findViewById(R.id.descricao_autor);
         carregar_rct();
     }
     public void carregar_rct(){
@@ -82,6 +89,9 @@ public class receitavisualizacao extends AppCompatActivity {
                 tempo.setText(receita.getTempo_prep());
                 carregarAutor(receita.getId_receita());
             }
+
+            @Override
+            public void onSuccess(ResponseBody responseBody) {}
 
             @Override
             public void onSuccessList(List<Receita> receitas) {
@@ -110,8 +120,11 @@ public class receitavisualizacao extends AppCompatActivity {
             @Override
             public void onSuccess(Usuario usuario) {
                 nome_autor.setText(usuario.getNome_usuario());
+                descricao.setText(usuario.getDescricao());
             }
-
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
+            }
             @Override
             public void onFailure(Throwable t) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(receitavisualizacao.this);

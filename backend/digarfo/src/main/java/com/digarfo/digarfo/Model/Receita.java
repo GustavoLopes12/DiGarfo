@@ -43,6 +43,8 @@ public class Receita implements Serializable{
 	private String img_receita;
 	@Column(nullable=false)
 	private boolean aprovada;
+	@Column(nullable=true, length = 500)
+	private String motivo_desaprovacao;
 	
 	//relacionamento n pra 1 com usuario CRIACAO DE RECEITA
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -50,30 +52,17 @@ public class Receita implements Serializable{
 	@JsonBackReference(value="usuario_receita")
 	private Usuario usuario;
 	
-	//relacionamento n pra n com usuario USUARIO FAVORITA RECEITA
-	//@ManyToMany
-	//@JoinTable(name="usuario_favorita_receita", joinColumns = @JoinColumn(name = "id_receita_fk"), inverseJoinColumns = @JoinColumn(name = "email_usuario_fk"))
-	//Set<Usuario> usuarios;
-	
-	//relacionamento n pra n com usuario USUARIO DENUNCIA RECEITA (motivo)
-	
-	//relacionamento n pra n com usuario USUARIO AVALIA RECEITA (valor)
-	
 	//relacionamento n pra 1 com adm ADM AVALIA RECEITA
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_adm", nullable=true)
 	private Adm adm;
-	
-	//relacionamento 1 pra n com comentario RECEITA TEM COMENTARIO
-	//@OneToMany(mappedBy="receita", fetch=FetchType.EAGER)
-	//private List<Comentario> comentarios;
 	
 	//construtores
 	public Receita() {
 		//default
 	}
 	public Receita(Long id_receita, String nome_receita, String custo, String categoria, String dificuldade,
-		String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovada, Usuario usuario, Adm adm) {
+		String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovada, String motivo_desaprovacao, Usuario usuario, Adm adm) {
 		this.id_receita = id_receita;
 		this.nome_receita = nome_receita;
 		this.custo = custo;
@@ -84,6 +73,7 @@ public class Receita implements Serializable{
 		this.modo_prep = modo_prep;
 		this.img_receita = img_receita;
 		this.aprovada = aprovada;
+		this.motivo_desaprovacao = motivo_desaprovacao;
 		this.usuario = usuario;
 		this.adm = adm;
 	}
@@ -148,30 +138,23 @@ public class Receita implements Serializable{
 	public void setAprovada(boolean aprovada) {
 		this.aprovada = aprovada;
 	}
+	public String getMotivo_desaprovacao() {
+		return motivo_desaprovacao;
+	}
+	public void setMotivo_desaprovacao(String motivo_desaprovacao) {
+		this.motivo_desaprovacao = motivo_desaprovacao;
+	}
 	public Usuario getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	/*public Set<Usuario> getUsuarios() {
-		return usuarios;
-	}
-	public void setUsuarios(Set<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}*/
 	public Adm getAdm() {
 		return adm;
 	}
 	public void setAdm(Adm adm) {
 		this.adm = adm;
 	}
-	/*public List<Comentario> getComentarios() {
-		return comentarios;
-	}
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
-	}*/
-	
 }
 

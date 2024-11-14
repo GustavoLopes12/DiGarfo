@@ -26,6 +26,8 @@ import com.example.digarfo.model.Receita;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 public class escreverreceita extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String emailUSUARIO;
     String emailUSUARIO2;
@@ -38,9 +40,6 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
     RadioGroup radioGroup_custo;
     RadioGroup radioGroup_dificul;
     //ImageView img_receita;
-    //img
-    //aprov
-    /*------FIM-ATRIBUTOS QUE VAO RECEBER O VALOR DO ID DOS ELEMENTOS  */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,19 +66,10 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         String[] categorias = getResources().getStringArray(R.array.categorias);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categorias );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         // Define o adaptador no Spinner
         categ_spinner.setAdapter(adapter);
-
         // Listener para o Spinner
         categ_spinner.setOnItemSelectedListener(this);
-
-        //radiogroup
-        /*
-        radioGroup_dificul = findViewById(R.id.radioDific);
-        radioGroup_custo = findViewById(R.id.radioCusto);
-
-         */
     }
     //PEGA O VALOR SELECIONADO
     @Override
@@ -177,7 +167,7 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         //api controller
         ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
         //cadastro
-        receitaAPIController.enviarReceita(tituloString, radioGroup_custoString, categ_spinnerString, radioGroup_dificulString, tempoString, ingredientesString, modo_prepString, emailUSUARIO, new ReceitaAPIController.ResponseCallback() {
+        receitaAPIController.enviarReceita(tituloString, radioGroup_custoString, categ_spinnerString, radioGroup_dificulString, tempoString, ingredientesString, modo_prepString,false,null, emailUSUARIO, new ReceitaAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Receita receita) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(escreverreceita.this);
@@ -199,6 +189,9 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
                 startActivity(outraTela);
                 finish();
             }
+
+            @Override
+            public void onSuccess(ResponseBody responseBody) {}
 
             @Override
             public void onSuccessList(List<Receita> receitas) {

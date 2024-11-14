@@ -332,17 +332,18 @@
             android:id="@+id/radioDific_facil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fácil " />
+            android:text="Fácil" />
         <RadioButton
             android:id="@+id/radioDific_medio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Médio" />
+
         <RadioButton
             android:id="@+id/radioDific_dificil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Difícl" />
+            android:text="Difícil" />
 
 
 
@@ -385,7 +386,7 @@
             android:id="@+id/radioCusto_alto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Alto " />
+            android:text="Alto" />
     </RadioGroup>
 
 
