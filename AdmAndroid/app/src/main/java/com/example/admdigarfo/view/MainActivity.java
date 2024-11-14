@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         //pegando valores
         String emailString = email.getText().toString();
         String senhaString = senha.getText().toString();
+
+        //pra ver se email e senha esta sendo pegos -ESTAO!!
+        //Toast.makeText(this, emailString + senhaString,  Toast.LENGTH_SHORT).show();
+
+
         //cliente
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
@@ -87,5 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 alerta.create().show();
             }
         });
+
+
     }
+
+
 }

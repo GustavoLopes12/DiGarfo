@@ -2,7 +2,10 @@ package com.example.admdigarfo.api;
 
 
 
+import android.content.Intent;
+
 import com.example.admdigarfo.model.Adm;
+import com.example.admdigarfo.view.receitas_avaliar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +32,7 @@ public class AdmAPIController {
 
         Adm adm = new Adm(email, senha);//construtor na adm
 
-        Call<Adm> call = this.admAPI.loginAdm(adm);
+        Call<Adm> call = this.admAPI.loginAdm(adm); //tava dando erro aq, mas Adriano arrumou
         call.enqueue(new Callback<Adm>() {
             @Override
             public void onResponse(Call<Adm> call, Response<Adm> response) {
@@ -40,5 +43,6 @@ public class AdmAPIController {
                 responseCallback.onFailure(new Exception("Não foi possivel fazer login"));
             }
         });
+
     }
 }
