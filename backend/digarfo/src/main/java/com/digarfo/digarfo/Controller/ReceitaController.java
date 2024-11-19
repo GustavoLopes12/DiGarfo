@@ -72,8 +72,6 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		public Iterable<Receita> buscarReceitaPorCateoria(@PathVariable String categoria) {
 			return receitaRepository.findByCategoria(categoria);
 		}
-	 
-		
 		//CREATE nova receita
 		@PostMapping
 		public Receita adicionarReceita(@RequestBody Receita receita){

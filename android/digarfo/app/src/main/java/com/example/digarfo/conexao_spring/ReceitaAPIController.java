@@ -207,5 +207,19 @@ public class ReceitaAPIController {
             }
         });
     }
+    public void atualizarReceita(Receita receita, Long id, ReceitaAPIController.ResponseCallback responseCallback){
+        Call<Receita> call = this.receitaAPI.attReceita(id, receita);
+        call.enqueue(new Callback<Receita>() {
+            @Override
+            public void onResponse(Call<Receita> call, Response<Receita> response) {
+                responseCallback.onSuccess(response.body());
+            }
+            @Override
+            public void onFailure(Call<Receita> call, Throwable t) {
+                responseCallback.onFailure(new Exception("nao foi possivel atualizar a receita"));
+            }
+        });
+    }
+
 
 }

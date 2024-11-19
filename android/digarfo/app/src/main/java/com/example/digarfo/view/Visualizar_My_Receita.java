@@ -86,6 +86,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
                 nome_receita.setText(receita.getNome_receita());
                 categoria.setText(receita.getCategoria());
                 custo.setText(receita.getCusto());
+                tempo.setText(receita.getTempo_prep());
                 ingredientes.setText(receita.getIngredientes());
                 modo_prep.setText(receita.getModo_prep());
                 Log.d("StatusAprovacao", "Valor de aprovacao: " + receita.getAprovada());//teste para ver o valor se aprovado ou n no log cat

@@ -3,6 +3,7 @@ package com.example.digarfo.view;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import com.example.digarfo.R;
 import com.example.digarfo.conexao_spring.ReceitaAPIController;
 import com.example.digarfo.conexao_spring.RetrofitClient;
 import com.example.digarfo.model.Receita;
+import com.example.digarfo.model.Usuario;
 
 import java.util.Arrays;
 import java.util.List;
@@ -216,8 +219,48 @@ public class EditarReceita extends AppCompatActivity{
         int idRadioCusto = radioGroupCusto.getCheckedRadioButtonId();
         RadioButton custoButtonSelecionado = findViewById(idRadioCusto);
         String custo = custoButtonSelecionado.getText().toString();//usar essa variavel na api
-        //consumir api
+        // Verificando se algum campo está nulo ou vazio
+        if (isEmpty(nome) || isEmpty(tempo) || isEmpty(ingredientes) || isEmpty(modo_preparo) || isEmpty(categoria_Stg) || isEmpty(dificuldade) || isEmpty(custo)) {
+            Toast.makeText(this, "Você possui campos em branco", Toast.LENGTH_SHORT).show();
+            return; // Interrompe a execução do método
+        }
 
+        // Consumir API
+        RetrofitClient retrofitClient = new RetrofitClient();
+        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+
+        // Criando receita que será enviada
+        Usuario usuario = new Usuario(emailUSUARIO);
+        Receita receita = new Receita(nome, custo, categoria_Stg, dificuldade, tempo, ingredientes, modo_preparo, false, null, usuario);
+
+        // Enviando
+        receitaAPIController.atualizarReceita(receita, id_long, new ReceitaAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
+                // Sem uso aqui
+            }
+
+            @Override
+            public void onSuccess(Receita receita) {
+                Toast.makeText(EditarReceita.this, "Receita editada com sucesso", Toast.LENGTH_SHORT).show();
+                Log.d("EditarReceita", "Sucesso ao editar receita");
+                carregarRct(receita.getId_receita());
+            }
+
+            @Override
+            public void onSuccessList(List<Receita> receitas) {
+                // Sem uso aqui
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.d("EditarReceita", "Falha ao editar receita");
+            }
+        });
+    }
+    //ver se nulo ou vazio
+    private boolean isEmpty(String value) {
+        return value == null || value.trim().isEmpty();
     }
     //botao para voltar a visualização da receita sua
     public void voltar(View view){
