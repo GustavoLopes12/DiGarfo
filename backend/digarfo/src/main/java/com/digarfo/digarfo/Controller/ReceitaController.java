@@ -1,26 +1,36 @@
 package com.digarfo.digarfo.Controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.digarfo.digarfo.Model.Receita;
 import com.digarfo.digarfo.Model.Usuario;
 import com.digarfo.digarfo.Repository.ReceitaRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 	
 	@RestController
 	@RequestMapping("/receita")
 	public class ReceitaController {
+		private static String caminhoimg = System.getProperty("user.home") + "\\DiGarfo\\imagens\\imagem_receita\\";
 		@Autowired
 		private ReceitaRepository receitaRepository;
 		//GET todas as receitas
@@ -76,6 +86,26 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		@PostMapping
 		public Receita adicionarReceita(@RequestBody Receita receita){
 			return receitaRepository.save(receita);
+		}
+		//criar receita com imagem
+		@PostMapping(value = "/ReceitaWithImage", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+		public Receita adicionarReceitaIMG(@ModelAttribute Receita receita, @RequestParam("file") MultipartFile arquivo) {
+			//primeiro salvando para depois colocar a imagem
+			Receita receitaSalva = receitaRepository.save(receita);
+			try {
+				//verificacao para add imagem 
+				if(arquivo != null) {
+					byte[] bytes = arquivo.getBytes();
+					Path caminho = Paths.get(caminhoimg + String.valueOf(receita.getId_receita() + arquivo.getOriginalFilename()));
+					Files.write(caminho, bytes);
+					receita.setImg_receita(String.valueOf(receita.getId_receita() + arquivo.getOriginalFilename()));
+				} else {
+					receita.setImg_receita(null);
+				}
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+			return receitaRepository.save(receitaSalva);
 		}
 		//UPDATE receita por id
 		@PutMapping("/{id_receita}")

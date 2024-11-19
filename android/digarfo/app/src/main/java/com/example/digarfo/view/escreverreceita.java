@@ -1,7 +1,10 @@
 package com.example.digarfo.view;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -39,7 +43,9 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
     Spinner categ_spinner;
     RadioGroup radioGroup_custo;
     RadioGroup radioGroup_dificul;
-    //ImageView img_receita;
+    //imagem
+    ImageView img;
+    Uri imageUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +55,15 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        //abrindo galeria quando clica na ft
+        img = findViewById(R.id.ibagem);
+        img.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(Intent.createChooser(intent, "Escolha sua Imagem"), 1);
+            }
         });
         //pegando o email do usuario logado
         String emailGuardado = getIntent().getStringExtra("Email");
@@ -71,7 +86,31 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         // Listener para o Spinner
         categ_spinner.setOnItemSelectedListener(this);
     }
-    //PEGA O VALOR SELECIONADO
+    //fazer foto aparecer no lugar da foto padrao
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == 1){
+                imageUri = data.getData(); // Armazena a URI da imagem selecionada
+                img.setImageURI(imageUri);
+            }
+        }
+    }
+    //obter caminho pela uri (codigo do antigo cadastro de usuario que iria imagem e n vai mais)
+    ////private String getRealPathFromURI(Uri uri) {
+    //    String[] projection = { MediaStore.Images.Media.DATA };
+    //    Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+    //     if (cursor != null) {
+    //         int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+    //       cursor.moveToFirst();
+    //       String path = cursor.getString(columnIndex);
+    //       cursor.close();
+    //      return path;
+    //   }
+    //   return null;
+    //}
+    //PEGA O VALOR SELECIONADO CATEGORIA
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if (parent.getId() == R.id.categ_spinner){
@@ -83,7 +122,7 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    //RADIOGROUP 1
+    //RADIOGROUP 1 DIFICULDADE
     String dific_selecionada;// adicionei la no parametro do receitaapicontroller
     public void selecionarDificul(View view){
         int itemRadioGroupSelecionado = radioGroup_dificul.getCheckedRadioButtonId();//variavel que recebe o radiogroup
@@ -101,7 +140,7 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         }
     }
     //FIM-RADIOGROUP 1
-    //RADIOGROUP 2
+    //RADIOGROUP 2 CUSTO
     String custo_selecionado;
     public void selecionarCusto(View view){
         int itemRadioGroupSelecionado = radioGroup_custo.getCheckedRadioButtonId();//variavel que recebe o radiogroup
@@ -166,8 +205,11 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
         ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-        //cadastro
-        receitaAPIController.enviarReceita(tituloString, radioGroup_custoString, categ_spinnerString, radioGroup_dificulString, tempoString, ingredientesString, modo_prepString,false,null, emailUSUARIO, new ReceitaAPIController.ResponseCallback() {
+        //cadastro com img nuovo
+
+
+        //cadastro sem imagem vecchio
+        /*receitaAPIController.enviarReceita(tituloString, radioGroup_custoString, categ_spinnerString, radioGroup_dificulString, tempoString, ingredientesString, modo_prepString,false,null, emailUSUARIO, new ReceitaAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Receita receita) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(escreverreceita.this);
@@ -206,7 +248,7 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
                 alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
             }
-        });
+        });*/
     }
 }
 
