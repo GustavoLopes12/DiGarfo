@@ -139,7 +139,7 @@
         app:srcCompat="@drawable/pencil_270f_fe0f" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/ibagem"
         android:layout_width="144dp"
         android:layout_height="133dp"
         app:layout_constraintBottom_toBottomOf="parent"

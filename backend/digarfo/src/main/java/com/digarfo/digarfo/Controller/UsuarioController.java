@@ -98,13 +98,22 @@ public class UsuarioController {
 	}
 	//UPDATE usuario com imagem de perfil indo junto
 	@PutMapping("/attUserWithImageUser/{email}")
-	public Usuario atualizarUsuarioWithImage(@PathVariable String email, @RequestBody Usuario usuario,  @RequestParam("file") MultipartFile arquivo) {
+	public Usuario atualizarUsuarioWithImage(@PathVariable String email, 
+											 @RequestParam String nome, 
+											 @RequestParam boolean banido, 
+											 @RequestParam(value = "imagemPerfil", required = false) MultipartFile imagemPerfil, 
+											 @RequestParam String senha,
+											 @RequestParam String descricao,
+											 @RequestParam String motivo_banimento) {
+		
+		Usuario usuario = new Usuario();
+		
 		try {
-			if(!arquivo.isEmpty()) {
-				byte[] bytes = arquivo.getBytes();
-				Path caminho = Paths.get(diretorio+String.valueOf(usuario.getEmail())+arquivo.getOriginalFilename());
+			if(!imagemPerfil.isEmpty()) {
+				byte[] bytes = imagemPerfil.getBytes();
+				Path caminho = Paths.get(diretorio+String.valueOf(usuario.getEmail())+imagemPerfil.getOriginalFilename());
 				Files.write(caminho, bytes);
-				usuario.setImg_user(String.valueOf(usuario.getEmail())+arquivo.getOriginalFilename());
+				usuario.setImg_user(String.valueOf(usuario.getEmail())+imagemPerfil.getOriginalFilename());
 			}
 		}catch(IOException e) {
 			e.printStackTrace();

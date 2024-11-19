@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +20,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Multipart;
 
 public class ReceitaAPIController {
     //atributos
@@ -217,6 +219,44 @@ public class ReceitaAPIController {
             @Override
             public void onFailure(Call<Receita> call, Throwable t) {
                 responseCallback.onFailure(new Exception("nao foi possivel atualizar a receita"));
+            }
+        });
+    }
+
+    public void criarReceitaComImagem(Receita receita, File file, ReceitaAPIController.ResponseCallback responseCallback){
+        // Serializar o objeto Receita em JSON
+        Gson gson = new Gson();
+        String receitaJson = gson.toJson(receita);
+
+        // Criar RequestBody para o JSON da Receita
+        RequestBody receitaBody = RequestBody.create(MediaType.parse("application/json"), receitaJson);
+
+        // Converter o arquivo em MultipartBody.Part
+        MultipartBody.Part filePart = null;
+        if (file != null) {
+            RequestBody fileRequestBody = RequestBody.create(MediaType.parse("image/*"), file);
+            filePart = MultipartBody.Part.createFormData("file", file.getName(), fileRequestBody);
+        }
+
+        // Fazer a chamada Retrofit
+        Call<Receita> call = this.receitaAPI.addReceita(receitaBody, filePart);
+
+        call.enqueue(new Callback<Receita>() {
+            @Override
+            public void onResponse(Call<Receita> call, Response<Receita> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // Chamar callback de sucesso
+                    responseCallback.onSuccess(response.body());
+                } else {
+                    // Tratar erro
+                    responseCallback.onFailure(new Exception("Erro ao criar receita: " + response.message()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Receita> call, Throwable t) {
+                // Chamar callback de falha
+                responseCallback.onFailure(new Exception("Erro na comunicação: " + t.getMessage()));
             }
         });
     }

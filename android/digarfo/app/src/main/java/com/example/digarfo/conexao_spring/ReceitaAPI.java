@@ -6,11 +6,13 @@ import com.example.digarfo.model.Usuario;
 import java.util.List;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
@@ -24,6 +26,13 @@ public interface ReceitaAPI {
     @POST("/receita")
     Call<Receita> criarReceita(@Body Receita receita);
 
+    //post com imagem da receita
+    @Multipart
+    @POST("/receita/ReceitaWithImage")
+    Call<Receita> addReceita(
+            @Part("receita") RequestBody receita,
+            @Part MultipartBody.Part file // Arquivo da imagem
+    );
     @GET("/receita")
     Call <List<Receita>> all_receitas();
 
