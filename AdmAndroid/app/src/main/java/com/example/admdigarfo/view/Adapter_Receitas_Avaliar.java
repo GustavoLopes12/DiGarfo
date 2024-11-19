@@ -39,16 +39,21 @@ public class Adapter_Receitas_Avaliar extends RecyclerView.Adapter<Adapter_Recei
         return this.lista_receita_minhas.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder{//pra q isso?
+
         //ImageView imagem_receita;
         TextView nome_receita;
+        //TextView nome_autor_receita;
+
         TextView id_rct;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             //imagem_receita = itemView.findViewById(R.id.image_rct);
-            id_rct = itemView.findViewById(R.id.id_rct_my);
+            id_rct = itemView.findViewById(R.id.id_rct);
             nome_receita = itemView.findViewById(R.id.nome_rct);
+           // nome_autor_receita = itemView.findViewById(R.id.nome_aut);
         }
+
     }//fim classe holder
 }

@@ -1,8 +1,11 @@
 package com.example.admdigarfo.view;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,6 +84,19 @@ public class receitas_avaliar extends AppCompatActivity {
                 alerta.create().show();
             }
         });
+    }
+
+    //função onclick ir p receita clicada
+    public void ver_receita(View view){
+        //mandar id da receita junto
+        TextView id = view.findViewById(R.id.id_rct);
+        String idStg = id.getText().toString();
+        //lets go the other interface(recipe visualization)
+        Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
+        //outraTela.putExtra("Email", emailUSUARIO);
+        outraTela.putExtra("id_rct", idStg);
+        startActivity(outraTela);
+        finish();
     }
 
 

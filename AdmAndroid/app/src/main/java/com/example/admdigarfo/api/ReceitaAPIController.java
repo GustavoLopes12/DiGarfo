@@ -26,8 +26,7 @@ public class ReceitaAPIController {
         this.receitaAPI = RetrofitClient.getRetrofitInstance().create(ReceitaAPI.class);
     }
 
-    //função chama endpoint
-
+    //-pegar receitas nao aprov
     public void getReceitasNaoApdv(ReceitaAPIController.ResponseCallback responseCallback){
         Call<List<Receita>> call = this.receitaAPI.pegarReceitasNaoAprov();
         call.enqueue(new Callback<List<Receita>>() {
@@ -42,4 +41,22 @@ public class ReceitaAPIController {
             }
         });
     }
+
+
+    //-buscar receita por id
+    public void getReceita(Long id, ReceitaAPIController.ResponseCallback responseCallback){
+        Call<Receita> call = this.receitaAPI.getReceita(id);
+        call.enqueue(new Callback<Receita>() {
+            @Override
+            public void onResponse(Call<Receita> call, Response<Receita> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Receita> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel pegar a receita pelo id"));
+            }
+        });
+    }
+
 }

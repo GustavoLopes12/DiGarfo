@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#D37777"
-    android:onClick="verReceitaMinha"
+    android:onClick="MyViewHolder"
     android:orientation="horizontal">
 
     <!--imageview futuro-->
@@ -38,7 +38,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/id_rct_my"
+            android:id="@+id/id_rct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

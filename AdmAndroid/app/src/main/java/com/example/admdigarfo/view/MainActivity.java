@@ -97,5 +97,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //teste
+    public void pagverreceita(View view){
+        Intent outraTela = new Intent(getApplicationContext(), ver_receita.class);
+        //outraTela.putExtra("Email", emailUSUARIO);
+        //outraTela.putExtra("id_rct", idStg);
+        startActivity(outraTela);
+        finish();
+    }
+
+
 
 }
