@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.admdigarfo.R;
 
-public class receita extends AppCompatActivity {
+public class ver_receita extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
