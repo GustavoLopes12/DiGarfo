@@ -30,6 +30,8 @@ import com.example.digarfo.model.Usuario;
 
 import java.io.File;
 
+import okhttp3.ResponseBody;
+
 public class Cadastro extends AppCompatActivity {
     EditText name;
     EditText email;
@@ -129,6 +131,9 @@ public class Cadastro extends AppCompatActivity {
                 descricao.setText(null);
                 Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(outraTela);
+            }
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
             }
             @Override
             public void onFailure(Throwable t) {

@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -114,9 +115,15 @@ public class UsuarioController {
 	}
 	//DELETE usuario usuario por id(email)
 	@DeleteMapping("/{email}")
-	public void  deletaUsuario(@PathVariable String email) {
-		usuarioRepository.deleteById(email);
-		 
+	public ResponseEntity<String> deletaUsuario(@PathVariable String email) {
+		try {
+			usuarioRepository.deleteById(email);
+			System.out.println("Usuario deletado");
+	        return ResponseEntity.ok("Usuario deletado com sucesso"); // Retorna status 200 com mensagem
+		}catch(Exception e) {
+			System.out.println("Erro ao deletar usuario: " + e.getMessage());
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao deletar receita"); // Retorna status 500 em caso de erro
+		}
 	}
 
 	/*

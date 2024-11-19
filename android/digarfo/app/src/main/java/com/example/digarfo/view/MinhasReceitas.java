@@ -25,6 +25,8 @@ import com.example.digarfo.model.Receita;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 public class MinhasReceitas extends AppCompatActivity {
     String emailUSUARIO;
     RecyclerView recycler_view;
@@ -63,6 +65,9 @@ public class MinhasReceitas extends AppCompatActivity {
             public void onSuccess(Receita receita) {
 
             }
+
+            @Override
+            public void onSuccess(ResponseBody responseBody) {}
 
             @Override
             public void onSuccessList(List<Receita> receitas) {

@@ -3,6 +3,8 @@ package com.digarfo.digarfo.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -70,8 +72,6 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		public Iterable<Receita> buscarReceitaPorCateoria(@PathVariable String categoria) {
 			return receitaRepository.findByCategoria(categoria);
 		}
-	 
-		
 		//CREATE nova receita
 		@PostMapping
 		public Receita adicionarReceita(@RequestBody Receita receita){
@@ -85,9 +85,15 @@ import com.digarfo.digarfo.Repository.ReceitaRepository;
 		}
 		//DELETE receita por id
 		@DeleteMapping("/{id_receita}")
-		public void deletaReceita(@PathVariable Long id_receita) {
-			receitaRepository.deleteById(id_receita);
-			System.out.println("Receita deletada");
+		public ResponseEntity<String> deletaReceita(@PathVariable Long id_receita) {
+		    try {
+		        receitaRepository.deleteById(id_receita);
+		        System.out.println("Receita deletada");
+		        return ResponseEntity.ok("Receita deletada com sucesso"); // Retorna status 200 com mensagem
+		    } catch (Exception e) {
+		        System.out.println("Erro ao deletar receita: " + e.getMessage());
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao deletar receita"); // Retorna status 500 em caso de erro
+		    }
 		}
 
 }

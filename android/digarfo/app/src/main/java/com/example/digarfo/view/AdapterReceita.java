@@ -16,6 +16,8 @@ import com.example.digarfo.model.Usuario;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 public class AdapterReceita extends RecyclerView.Adapter<AdapterReceita.MyViewHolder> {
     private List<Receita> lista_receita;
     public AdapterReceita(List<Receita> lista_receita){
@@ -50,6 +52,8 @@ public class AdapterReceita extends RecyclerView.Adapter<AdapterReceita.MyViewHo
                     holder.nome_autor_receita.setText("Autor desconhecido");
                 }
             }
+            @Override
+            public void onSuccess(ResponseBody responseBody){}
             @Override
             public void onFailure(Throwable t) {
                 if (holder.getAdapterPosition() == position) {

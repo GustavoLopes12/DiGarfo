@@ -22,8 +22,11 @@ public class Receita {
     private String modo_prep;
     @SerializedName("img_receita")
     private String img_receita;
-    @SerializedName("aprovacao")
-    private boolean aprovacao;
+    @SerializedName("aprovada")
+    private boolean aprovada;
+
+    @SerializedName("motivo_desaprovacao")
+    private String motivo_desaprovacao;
 
     @SerializedName("usuario")
     private Usuario usuario;
@@ -33,7 +36,7 @@ public class Receita {
     }
 
     //construtor 2 (sem id)
-    public Receita( String nome_receita, String custo, String categoria, String dificuldade, String tempo_prep, String ingredientes, String modo_prep, Usuario usuario) {
+    public Receita( String nome_receita, String custo, String categoria, String dificuldade, String tempo_prep, String ingredientes, String modo_prep, boolean aprovada,String motivo_desaprovacao, Usuario usuario) {
         this.nome_receita = nome_receita;
         this.custo = custo;
         this.categoria = categoria;
@@ -42,16 +45,14 @@ public class Receita {
         this.ingredientes = ingredientes;
         this.modo_prep = modo_prep;
         this.img_receita = null;
-        this.aprovacao = false;
+        this.aprovada = aprovada;
+        this.motivo_desaprovacao = motivo_desaprovacao;
         this.usuario = usuario;
     }
     //getters e setters
     public Usuario getUsuario() {
         return usuario;
     }
-
-
-
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -109,10 +110,32 @@ public class Receita {
     public void setImg_receita(String img_receita) {
         this.img_receita = img_receita;
     }
-    public boolean isAprovacao() {
-        return aprovacao;
+    public boolean getAprovada() {
+        return aprovada;
     }
-    public void setAprovacao(boolean aprovacao) {
-        this.aprovacao = aprovacao;
+    public void setAprovada(boolean aprovada) {
+        this.aprovada = aprovada;
+    }
+    public String getMotivo_desaprovacao() {
+        return motivo_desaprovacao;
+    }
+    public void setMotivo_desaprovacao(String motivo_desaprovacao) {
+        this.motivo_desaprovacao = motivo_desaprovacao;
+    }
+    @Override
+    public String toString() {
+        return "Receita{" +
+                "id_receita=" + id_receita +
+                ", nome_receita='" + nome_receita + '\'' +
+                ", custo='" + custo + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", dificuldade='" + dificuldade + '\'' +
+                ", tempo_prep='" + tempo_prep + '\'' +
+                ", ingredientes='" + ingredientes + '\'' +
+                ", modo_prep='" + modo_prep + '\'' +
+                ", img_receita='" + img_receita + '\'' +
+                ", aprovada=" + aprovada +
+                ", usuario=" + usuario +
+                '}';
     }
 }

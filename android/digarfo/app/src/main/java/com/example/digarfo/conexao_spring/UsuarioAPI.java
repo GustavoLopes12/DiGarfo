@@ -5,6 +5,7 @@ import com.example.digarfo.model.Usuario;
 import java.io.File;
 
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -30,5 +31,5 @@ public interface UsuarioAPI {
     Call<Usuario> attUsuario(@Path("email") String email, @Body Usuario usuario);
 
     @DELETE("/usuario/{email}")
-    Call<Usuario> deletUsuario(@Path("email") String email);
+    Call<ResponseBody> deletUsuario(@Path("email") String email);
 }

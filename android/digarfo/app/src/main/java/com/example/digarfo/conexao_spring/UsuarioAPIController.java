@@ -8,6 +8,7 @@ import java.util.List;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,6 +24,7 @@ public class UsuarioAPIController {
     //interface de response callback
     public interface ResponseCallback {
         void onSuccess(Usuario usuario);
+        void onSuccess(ResponseBody responseBody);
         void onFailure(Throwable t);
     }
     public UsuarioAPIController(RetrofitClient retrofitClient) { //construtor
@@ -119,15 +121,15 @@ public class UsuarioAPIController {
 
     //DELETAR USUARIO
     public void deletar(String email, UsuarioAPIController.ResponseCallback responseCallback){
-        Call<Usuario> call = this.usuarioAPI.deletUsuario(email);
-        call.enqueue(new Callback<Usuario>() {
+        Call<ResponseBody> call = this.usuarioAPI.deletUsuario(email);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 responseCallback.onSuccess(response.body());
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 responseCallback.onFailure(new Exception("nao foi possivel deletar o usuario"));
             }
         });

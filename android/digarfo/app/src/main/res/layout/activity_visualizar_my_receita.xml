@@ -8,23 +8,21 @@
     tools:context=".view.Visualizar_My_Receita">
 
 
-
     <ScrollView
         android:id="@+id/scrollView2222222222222222"
-        android:layout_width="410dp"
-        android:layout_height="613dp"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218">
+        app:layout_constraintVertical_bias="0.32999998">
 
         <LinearLayout
             android:id="@+id/linearLayouttttttttttttttttt"
-            android:layout_width="394dp"
-            android:layout_height="625dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -176,6 +174,60 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.619" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FF9292"
+                android:backgroundTint="#FF9292"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/adlam_display"
+                    android:text="Status de aprovação: "
+                    android:textSize="20sp"></TextView>
+
+                <TextView
+                    android:id="@+id/aprovacao_rcttt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="..."
+                    android:textSize="20sp"></TextView>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/motivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="..."></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="93dp"
+                    android:onClick="botao_excluir"
+                    android:text="Excluir" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:onClick="botao_atualizar"
+                    android:text="Editar" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
@@ -196,7 +248,7 @@
             android:layout_width="52dp"
             android:layout_height="55dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="55dp"
+            android:layout_marginLeft="45dp"
             android:onClick="botaohome"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

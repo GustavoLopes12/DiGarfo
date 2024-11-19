@@ -2,6 +2,8 @@ package com.example.digarfo.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,9 +23,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.digarfo.R;
+import com.example.digarfo.conexao_spring.ReceitaAPIController;
 import com.example.digarfo.conexao_spring.RetrofitClient;
 import com.example.digarfo.conexao_spring.UsuarioAPIController;
+import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
+
+import java.util.List;
+
+import okhttp3.ResponseBody;
 
 public class editarperfil extends AppCompatActivity {
     EditText senha; //input
@@ -88,6 +96,10 @@ public class editarperfil extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccess(ResponseBody responseBody) {
+                }
+
+                @Override
                 public void onFailure(Throwable t) {
                     AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
                     alerta.setCancelable(false);
@@ -120,7 +132,6 @@ public class editarperfil extends AppCompatActivity {
             }
         }
     }
-
     //BOTAO SAIR CONTA
     public void sairdaconta(View view){
         Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
@@ -128,42 +139,68 @@ public class editarperfil extends AppCompatActivity {
         startActivity(outraTela);
         finish();
     }
-
     //BOTAO DELETAR USUARIO
     public void deletaruser(View view){
+        // Criação do diálogo de confirmação de exclusão
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirmação de Exclusão");
+        builder.setMessage("Deseja confirmar a exclusão do seu perfil?");
 
-            //cliente retrofit
-            RetrofitClient retrofitClient = new RetrofitClient();
-            //api controller
-            UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
-            usuarioAPIController.deletar(emailUSUARIO, new UsuarioAPIController.ResponseCallback() {
-                @Override
-                public void onSuccess(Usuario usuario) { //rever parametros
-                    //por fim
-                    Toast.makeText(editarperfil.this, "Usuário deletado!!", Toast.LENGTH_SHORT).show();
+        // Botão "Sim" para confirmar a exclusão
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Exibe uma barra de progresso para dar feedback ao usuário
+                ProgressDialog progressDialog = new ProgressDialog(editarperfil.this);
+                progressDialog.setMessage("Excluindo usuario...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
 
-                    Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(outraTela);
-                    finish();
-                }
+                // Inicia o processo de exclusão
+                RetrofitClient retrofitClient = new RetrofitClient();
+                UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
 
-                @Override
-                public void onFailure(Throwable t) {
-                    Log.d("Erro", "Erro: " +t);
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Erro ao excluir conta");
-                    alerta.setMessage("Houve um erro ao tentar excluir sua conta. Tente novamente.");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
-                }
-            });
+                usuarioAPIController.deletar(emailUSUARIO, new UsuarioAPIController.ResponseCallback() {
+                    @Override
+                    public void onSuccess(ResponseBody responseBody) {
+                        // Fecha o ProgressDialog
+                        progressDialog.dismiss();
 
+                        // Confirmação visual e redirecionamento após exclusão
+                        Toast.makeText(editarperfil.this, "Seu perfil foi deletado com sucesso.", Toast.LENGTH_SHORT).show();
 
+                        // Redireciona para a tela de "Minhas Receitas"
+                        Intent outraTela = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(outraTela);
+                        finish();
+                    }
+
+                    @Override
+                    public void onSuccess(Usuario usuario) {
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        // Fecha o ProgressDialog e mostra uma mensagem de erro
+                        progressDialog.dismiss();
+                        Log.d("DeletarReceita", "Falha em deletar usuario: " + t.getMessage());
+                        Toast.makeText(editarperfil.this, "Falha ao deletar o usuario. Tente novamente mais tarde!!!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        // Botão "Voltar" para cancelar a ação
+        builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss(); // Apenas fecha o diálogo
+            }
+        });
+
+        // Criar e exibir o diálogo de confirmação
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
-    //--endpoint deleta user do email guardado ate essa pag
-    //FIM-BOTAO DELETAR USUARIO
-
     //voltar home
     public void botaohome(View view){
         Intent outraTela = new Intent(getApplicationContext(), home.class);
@@ -198,6 +235,10 @@ public class editarperfil extends AppCompatActivity {
                 senha.setText(usuario.getSenha());
                 descricao.setText(usuario.getDescricao());
                 banidoUSER = usuario.isBanido();
+            }
+
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
             }
 
             @Override
@@ -242,6 +283,9 @@ public class editarperfil extends AppCompatActivity {
                 descricao.setText(null);
                 senha.setText(null);
                 atualizar_dados();
+            }
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
             }
 
             @Override

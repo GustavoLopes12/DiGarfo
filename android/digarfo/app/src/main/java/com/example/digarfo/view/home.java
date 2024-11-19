@@ -23,6 +23,8 @@ import com.example.digarfo.model.Usuario;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 public class home extends AppCompatActivity {
     String emailUSUARIO;
     EditText valorPesquisa;
@@ -95,6 +97,9 @@ public class home extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccess(ResponseBody responseBody) {}
+
+                @Override
                 public void onSuccessList(List<Receita> receitas) {
 
                 }
@@ -121,6 +126,9 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Usuario usuario) {
                     tv_autor_receita_bd.setText("Por: " + usuario.getNome_usuario());
+                }
+                @Override
+                public void onSuccess(ResponseBody responseBody) {
                 }
                 @Override
                 public void onFailure(Throwable t) {
@@ -152,6 +160,9 @@ public class home extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccess(ResponseBody responseBody) {}
+
+                @Override
                 public void onFailure(Throwable t) {
                     AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
                     alerta.setCancelable(false);
@@ -172,6 +183,9 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Usuario usuario) {
                     tv_autor_receita_bd_dois.setText("Por: " + usuario.getNome_usuario());
+                }
+                @Override
+                public void onSuccess(ResponseBody responseBody) {
                 }
                 @Override
                 public void onFailure(Throwable t) {
@@ -203,6 +217,9 @@ public class home extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccess(ResponseBody responseBody) {}
+
+                @Override
                 public void onFailure(Throwable t) {
                     AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
                     alerta.setCancelable(false);
@@ -223,6 +240,9 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Usuario usuario) {
                     tv_autor_receita_bd_tres.setText("Por: " + usuario.getNome_usuario());
+                }
+                @Override
+                public void onSuccess(ResponseBody responseBody) {
                 }
                 @Override
                 public void onFailure(Throwable t) {
@@ -254,6 +274,9 @@ public class home extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccess(ResponseBody responseBody) {}
+
+                @Override
                 public void onFailure(Throwable t) {
                     AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
                     alerta.setCancelable(false);
@@ -274,6 +297,9 @@ public class home extends AppCompatActivity {
                 @Override
                 public void onSuccess(Usuario usuario) {
                     tv_autor_receita_bd_quatro.setText("Por: " + usuario.getNome_usuario());
+                }
+                @Override
+                public void onSuccess(ResponseBody responseBody) {
                 }
                 @Override
                 public void onFailure(Throwable t) {
@@ -405,12 +431,6 @@ public class home extends AppCompatActivity {
         startActivity(outraTela);
         finish();
     }
-
-
-
-
-
-
     //ir para perfil se logado senão não
     public void irparaperfil(View view){
         if(emailUSUARIO != null){
@@ -444,7 +464,7 @@ public class home extends AppCompatActivity {
             startActivity(outraTela);
             finish();
         }else{
-            Toast.makeText(this, "Faça login para escrever receitas :)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Faça login para ver suas receitas :)", Toast.LENGTH_SHORT).show();
         }
     }
     /*public void irparafavoritos(View view){
