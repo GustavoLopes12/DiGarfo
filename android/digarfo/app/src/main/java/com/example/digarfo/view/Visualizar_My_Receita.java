@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
     TextView modo_prep;
     TextView aprovada;
     TextView motivo;
+    ImageView exibicao_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
             return insets;
         });
         //elementos
+        exibicao_img = findViewById(R.id.imagemmmmmmm); //para exibir img
         nome_receita = findViewById(R.id.nome_RECEITA);
         //autor_receita = findViewById(R.id.autor_nameeeee);
         categoria = findViewById(R.id.CATEGORIA);
@@ -82,6 +85,9 @@ public class Visualizar_My_Receita extends AppCompatActivity {
         receitaAPIController.getReceita(id_receita, new ReceitaAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Receita receita) {
+                //ibagem exibir
+
+                //resto das paradas
                 id_rct_two = receita.getId_receita().toString();
                 nome_receita.setText(receita.getNome_receita());
                 categoria.setText(receita.getCategoria());
