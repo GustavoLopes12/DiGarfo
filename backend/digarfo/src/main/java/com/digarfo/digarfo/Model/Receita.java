@@ -61,6 +61,21 @@ public class Receita implements Serializable{
 	public Receita() {
 		//default
 	}
+	public Receita(String nome_receita, String custo, String categoria, String dificuldade,
+			String tempo_prep, String ingredientes, String modo_prep, boolean aprovada, String motivo_desaprovacao, Usuario usuario, Adm adm) {
+			this.nome_receita = nome_receita;
+			this.custo = custo;
+			this.categoria = categoria;
+			this.dificuldade = dificuldade;
+			this.tempo_prep = tempo_prep;
+			this.ingredientes = ingredientes;
+			this.modo_prep = modo_prep;
+			this.img_receita = null;
+			this.aprovada = aprovada;
+			this.motivo_desaprovacao = null;
+			this.usuario = usuario;
+			this.adm = adm;
+		}
 	public Receita(Long id_receita, String nome_receita, String custo, String categoria, String dificuldade,
 		String tempo_prep, String ingredientes, String modo_prep, String img_receita, boolean aprovada, String motivo_desaprovacao, Usuario usuario, Adm adm) {
 		this.id_receita = id_receita;
