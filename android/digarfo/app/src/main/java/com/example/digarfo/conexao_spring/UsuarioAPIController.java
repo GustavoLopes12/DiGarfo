@@ -1,9 +1,12 @@
 package com.example.digarfo.conexao_spring;
 
+import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -104,7 +107,7 @@ public class UsuarioAPIController {
         });
     }
     //atualizar usuario
-    public void atualizar(Usuario usuario, String email, UsuarioAPIController.ResponseCallback responseCallback){
+    /*public void atualizar(Usuario usuario, String email, UsuarioAPIController.ResponseCallback responseCallback){
         Call<Usuario> call = this.usuarioAPI.attUsuario(email,usuario);
         call.enqueue(new Callback<Usuario>() {
             @Override
@@ -117,8 +120,55 @@ public class UsuarioAPIController {
                 responseCallback.onFailure(new Exception("nao foi possivel atualizar o usuario"));
             }
         });
+    }*/
+    //pegar imagem de usuario
+    //pegar img receita
+    public void buscarImagem(String email, UsuarioAPIController.ResponseCallback responseCallback){
+        Call<ResponseBody> call = this.usuarioAPI.getImagemUsuario(email);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccess(response.body());
+                } else {
+                    responseCallback.onFailure(new Exception("Erro ao buscar imagem: " + response.message()));
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseCallback.onFailure(t);
+            }
+        });
     }
+    //att usuario com imagem
+    public void atualizar(String email, Usuario usuario, File file, UsuarioAPIController.ResponseCallback responseCallback){
+        // Mapear os atributos da receita para form-data
+        Map<String, RequestBody> usuarioPartes = new HashMap<>();
+        usuarioPartes.put("nome_usuario", RequestBody.create(MediaType.parse("text/plain"), usuario.getNome_usuario()));
+        usuarioPartes.put("descricao", RequestBody.create(MediaType.parse("text/plain"), usuario.getDescricao()));
+        usuarioPartes.put("img_user", RequestBody.create(MediaType.parse("text/plain"), String.valueOf(usuario.getImg_user())));
+        usuarioPartes.put("senha", RequestBody.create(MediaType.parse("text/plain"), usuario.getSenha()));
+        usuarioPartes.put("email", RequestBody.create(MediaType.parse("text/plain"), usuario.getSenha()));
+        // Arquivo da imagem
+        MultipartBody.Part filePart = null;
+        if (file != null) {
+            RequestBody fileRequestBody = RequestBody.create(MediaType.parse("image/*"), file);
+            filePart = MultipartBody.Part.createFormData("file", file.getName(), fileRequestBody);
+        }
+        //chamada retrofit
+        Call<Usuario> call = this.usuarioAPI.atualizarUsuarioComImagem(email, usuarioPartes, filePart);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                responseCallback.onSuccess(response.body());
+            }
 
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Erro ao atualizar Usuario"));
+            }
+        });
+    }
     //DELETAR USUARIO
     public void deletar(String email, UsuarioAPIController.ResponseCallback responseCallback){
         Call<ResponseBody> call = this.usuarioAPI.deletUsuario(email);

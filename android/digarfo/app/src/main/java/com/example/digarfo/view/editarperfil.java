@@ -1,10 +1,17 @@
 package com.example.digarfo.view;
 
+import static android.text.TextUtils.isEmpty;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -29,6 +36,11 @@ import com.example.digarfo.conexao_spring.UsuarioAPIController;
 import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -40,12 +52,12 @@ public class editarperfil extends AppCompatActivity {
     String emailUSUARIO;//para editar esse usuario
     //para pegar a img da galeria
     ImageView img;
-    boolean banidoUSER;
     Uri imageUri;
 
     //para ocultar ou desocultar a senha
     ImageView olho;
     boolean visible = false;
+    String name_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,35 +92,8 @@ public class editarperfil extends AppCompatActivity {
         //pegando email de usuario que deverá ser atualizado
         String emailGuardado = getIntent().getStringExtra("Email");
         emailUSUARIO = emailGuardado;
-        //pego usuario do email
 
-            //cliente retrofit
-            RetrofitClient retrofitClient = new RetrofitClient();
-            //api controller
-            UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
-            usuarioAPIController.getUsuario(emailUSUARIO, new UsuarioAPIController.ResponseCallback() {
-                @Override
-                public void onSuccess(Usuario usuario) {
-                    nome.setText(usuario.getNome_usuario());
-                    senha.setText(usuario.getSenha());
-                    descricao.setText(usuario.getDescricao());
-                    banidoUSER = usuario.isBanido();
-                }
-
-                @Override
-                public void onSuccess(ResponseBody responseBody) {
-                }
-
-                @Override
-                public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("Tente editar seu usuario mais tarde!!!");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
-                }
-            });
+        atualizar_dados();
 
         //abrindo galeria
         img = findViewById(R.id.img);
@@ -130,6 +115,51 @@ public class editarperfil extends AppCompatActivity {
                 imageUri = data.getData(); // Armazena a URI da imagem selecionada
                img.setImageURI(imageUri);
             }
+        }
+    }
+    //pegando paradas da foto
+    private String obterNomeArquivo(Uri uri) {
+        String resultado = null;
+        if (uri.getScheme().equals("content")) {
+            try (Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
+                if (cursor != null && cursor.moveToFirst()) {
+                    resultado = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME));
+                }
+            }
+        }
+        if (resultado == null) {
+            resultado = uri.getLastPathSegment();
+        }
+        return resultado;
+    }
+    private File copiarArquivoParaCache(Uri uri) {
+        try {
+            // Obter o nome do arquivo a partir da URI
+            String nomeArquivo = obterNomeArquivo(uri);
+            if (nomeArquivo == null) {
+                throw new IllegalStateException("Não foi possível obter o nome do arquivo.");
+            }
+
+            // Criar um arquivo temporário no cache
+            File arquivoCache = new File(getCacheDir(), nomeArquivo);
+
+            // Abrir os fluxos de entrada e saída
+            try (InputStream inputStream = getContentResolver().openInputStream(uri);
+                 OutputStream outputStream = new FileOutputStream(arquivoCache)) {
+
+                // Copiar os dados
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = inputStream.read(buffer)) > 0) {
+                    outputStream.write(buffer, 0, length);
+                }
+            }
+
+            return arquivoCache; // Retorna o arquivo no cache
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Erro ao processar a imagem: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            return null; // Retorna null em caso de erro
         }
     }
     //BOTAO SAIR CONTA
@@ -215,15 +245,41 @@ public class editarperfil extends AppCompatActivity {
             startActivity(outraTela);
             finish();
     }
-    //ir p favoritos se logado
-    /*public void irparafavoritos(View view){
-            Intent outraTela = new Intent(getApplicationContext(), favoritoslogado.class);
-            outraTela.putExtra("Email", emailUSUARIO);
-            startActivity(outraTela);
-            finish();
-    }*/
+    //aparecer imagem
+    public void pegar_img(String email){
+        RetrofitClient retrofitClient = new RetrofitClient();
+        UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
+        usuarioAPIController.buscarImagem(email, new UsuarioAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+
+            }
+
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
+                try {
+                    // Converta a resposta para Bitmap
+                    InputStream inputStream = responseBody.byteStream();
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    if(bitmap != null){
+                        // Exiba o Bitmap em uma ImageView
+                        img.setImageBitmap(bitmap);
+                    }
+                } catch (Exception e) {
+                    Log.e("Erro", "Erro ao processar imagem: " + e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("Erro", "Falha ao buscar imagem: " + t.getMessage());
+            }
+        });
+    }
     //atualizar dados
     public void atualizar_dados(){
+        //pego usuario do email
+
         //cliente retrofit
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
@@ -234,7 +290,10 @@ public class editarperfil extends AppCompatActivity {
                 nome.setText(usuario.getNome_usuario());
                 senha.setText(usuario.getSenha());
                 descricao.setText(usuario.getDescricao());
-                banidoUSER = usuario.isBanido();
+                //fazendo img aparecer
+                pegar_img(usuario.getEmail());
+                //passando nome da img para uma variavel
+                name_img = usuario.getImg_user();
             }
 
             @Override
@@ -246,14 +305,98 @@ public class editarperfil extends AppCompatActivity {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
                 alerta.setCancelable(false);
                 alerta.setTitle("Algo de errado não está certo...");
-                alerta.setMessage("erro ao buscar dados de perfil");
+                alerta.setMessage("Tente editar seu usuario mais tarde!!!");
                 alerta.setNegativeButton("Ok",null);
                 alerta.create().show();
             }
         });
     }
     //atualizar (SALVAR) usuario
-    public void salvar(View view){
+    public void salvar(View view) {
+        // Pegando os valores dos campos de texto
+        String descricaoString = descricao.getText().toString().trim();
+        String senhaString = senha.getText().toString().trim();
+        String nomeString = nome.getText().toString().trim();
+        // Verificando se o usuário selecionou uma nova imagem
+        File imageFile = null;
+        if (imageUri != null) {
+            imageFile = copiarArquivoParaCache(imageUri); // Copiar nova imagem para cache
+        } else {
+            // Verifica se o ImageView possui uma imagem existente no caso a q veio do banco
+            Drawable drawable = img.getDrawable();
+            if (drawable != null && drawable instanceof BitmapDrawable) {
+                Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+                if (bitmap != null) {
+                    imageFile = bitmapParaArquivo(bitmap, name_img); // Nome temporário
+                }
+            }
+        }
+        // Validação dos campos obrigatórios
+        if (isEmpty(descricaoString) || isEmpty(senhaString) || isEmpty(nomeString)) {
+            Toast.makeText(this, "Preencha todos os campos obrigatórios.", Toast.LENGTH_SHORT).show();
+            return; // Interrompe a execução do método
+        }
+
+        // Validação da imagem obrigatória
+        if (imageFile == null) {
+            Toast.makeText(this, "Você precisa selecionar ou manter uma imagem válida.", Toast.LENGTH_SHORT).show();
+            return; // Interrompe a execução do método
+        }
+
+        // Criando o objeto do usuário
+        Usuario usuario = new Usuario();
+        usuario.setDescricao(descricaoString);
+        usuario.setNome_usuario(nomeString);
+        usuario.setEmail(emailUSUARIO);
+        usuario.setImg_user(null); // Será definido no backend
+        usuario.setSenha(senhaString);
+
+        // Cliente Retrofit
+        RetrofitClient retrofitClient = new RetrofitClient();
+        UsuarioAPIController usuarioAPIController = new UsuarioAPIController(retrofitClient);
+
+        // Atualizar usuário
+        usuarioAPIController.atualizar(emailUSUARIO, usuario, imageFile, new UsuarioAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(editarperfil.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Mudança Realizada");
+                alerta.setMessage("Seu perfil foi alterado com sucesso");
+                alerta.setNegativeButton("Ok", null);
+                alerta.create().show();
+                atualizar_dados();
+            }
+
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
+                // Não utilizado
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                androidx.appcompat.app.AlertDialog.Builder alerta = new androidx.appcompat.app.AlertDialog.Builder(editarperfil.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Erro de Conexão");
+                alerta.setMessage("Não foi possível alterar seu perfil. Tente novamente.\n" + t.toString());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+                atualizar_dados();
+            }
+        });
+    }
+
+    private File bitmapParaArquivo(Bitmap bitmap, String nomeArquivo) {
+        File arquivo = new File(getCacheDir(), nomeArquivo);
+        try (FileOutputStream fos = new FileOutputStream(arquivo)) {
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos); // Ajuste o formato conforme necessário
+            fos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arquivo;
+    }
+   /* public void salvar(View view){
         //para texto
         String descricaoString = descricao.getText().toString();
         String senhaString = senha.getText().toString();
@@ -302,7 +445,7 @@ public class editarperfil extends AppCompatActivity {
                 atualizar_dados();
             }
         });
-    }
+    }*/
     public void verMinhasReceitas(View view){
         Intent outraTela = new Intent(getApplicationContext(), MinhasReceitas.class);
         outraTela.putExtra("Email", emailUSUARIO);

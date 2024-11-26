@@ -14,9 +14,6 @@ public interface UsuarioRepository extends CrudRepository<Usuario, String>{
 	@Query("SELECT u FROM Usuario u WHERE u.email = :email AND u.senha = :senha")
 	Usuario findByEmailAndSenha(@Param("email") String email, @Param("senha") String senha);
 	
-	@Query("SELECT u FROM Usuario u WHERE u.banido = true")
-	Usuario findByBanido(@Param("banido") boolean banido);
-	
 	//buscar usuario pela receita dele
 	@Query("SELECT r.usuario FROM Receita r WHERE r.id_receita = :idReceita AND r.aprovada = true")//coloquei o true
 	Usuario findUsuarioByReceitaId(@Param("idReceita") Long idReceita);

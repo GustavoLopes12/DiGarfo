@@ -31,6 +31,9 @@ public class Receita {
     @SerializedName("usuario")
     private Usuario usuario;
 
+    @SerializedName("adm")
+    private Adm adm;
+
     public Receita() {
         //default
     }
@@ -48,8 +51,16 @@ public class Receita {
         this.aprovada = aprovada;
         this.motivo_desaprovacao = motivo_desaprovacao;
         this.usuario = usuario;
+        this.adm = null;
     }
     //getters e setters
+    public Adm getAdm() {
+        return adm;
+    }
+
+    public void setAdm(Adm adm) {
+        this.adm = adm;
+    }
     public Usuario getUsuario() {
         return usuario;
     }

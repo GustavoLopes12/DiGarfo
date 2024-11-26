@@ -7,8 +7,6 @@ public class Usuario {
     private String email;
     @SerializedName("nome_usuario")
     private String nome_usuario;
-    @SerializedName("banido")
-    private boolean banido;
     @SerializedName("img_user")
     private String img_user;
     @SerializedName("senha")
@@ -25,7 +23,6 @@ public class Usuario {
         this.nome_usuario = nome_usuario;
         this.senha = senha;
         this.descricao = descricao;
-        this.banido = false;
         this.img_user = null;
     }
     public Usuario(String email, String nome_usuario, String senha, String descricao, boolean banido) {//construtor para cadastro
@@ -33,7 +30,6 @@ public class Usuario {
         this.nome_usuario = nome_usuario;
         this.senha = senha;
         this.descricao = descricao;
-        this.banido = banido;
         this.img_user = null;
     }
     public Usuario(String email){
@@ -57,14 +53,6 @@ public class Usuario {
 
     public void setNome_usuario(String nome_usuario) {
         this.nome_usuario = nome_usuario;
-    }
-
-    public boolean isBanido() {
-        return banido;
-    }
-
-    public void setBanido(boolean banido) {
-        this.banido = banido;
     }
 
     public String getImg_user() {
@@ -96,7 +84,6 @@ public class Usuario {
         return "Usuario{" +
                 "email='" + email + '\'' +
                 ", nome_usuario='" + nome_usuario + '\'' +
-                ", banido=" + banido +
                 ", img_user='" + img_user + '\'' +
                 ", senha='" + senha + '\'' +
                 ", descricao='" + descricao + '\'' +

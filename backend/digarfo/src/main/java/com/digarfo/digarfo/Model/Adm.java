@@ -18,11 +18,6 @@ public class Adm implements Serializable {
 	private String email;
 	@Column(nullable=false)
 	private String senha;
-	
-	//RELACIONAMENTO 1 PRA N COM USUARIO ADM BANI USUARIO
-	@OneToMany(mappedBy = "adm", fetch=FetchType.EAGER)
-	private List<Usuario> usuarios_banidos;
-	
 	//Relacionamento 1 pra n com receita ADM AVALIA RECEITA
 	@OneToMany(mappedBy = "adm", fetch=FetchType.EAGER)
 	private List<Receita> receitas_avaliadas;
@@ -47,12 +42,6 @@ public class Adm implements Serializable {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	public List<Usuario> getUsuarios_banidos() {
-		return usuarios_banidos;
-	}
-	public void setUsuarios_banidos(List<Usuario> usuarios_banidos) {
-		this.usuarios_banidos = usuarios_banidos;
 	}
 	public List<Receita> getReceitas_avaliadas() {
 		return receitas_avaliadas;
