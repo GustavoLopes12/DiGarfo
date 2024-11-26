@@ -16,7 +16,8 @@ public class Usuario {
     @SerializedName("descricao")
     private String descricao;
 
-    public Usuario() {
+    public Usuario() { //no DIGARFO está em uso, aqui nao!
+
         //default
     }
 

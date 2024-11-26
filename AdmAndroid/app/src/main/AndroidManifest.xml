@@ -16,15 +16,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AdmDiGarfo"
         tools:targetApi="31">
+
+        <!-- Declaração da Activity ver_receita -->
+        <activity
+            android:name=".view.ver_receita"
+            android:exported="false" />
+
+        <!-- Declaração de receitas_avaliar -->
         <activity
             android:name=".view.receitas_avaliar"
             android:exported="false" />
+
+        <!-- Declaração de MainActivity -->
         <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

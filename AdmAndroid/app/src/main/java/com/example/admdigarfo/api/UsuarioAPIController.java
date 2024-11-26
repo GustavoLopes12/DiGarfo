@@ -11,7 +11,7 @@ public class UsuarioAPIController {
 
     //atributos
     private RetrofitClient retrofitClient;
-    public static UsuarioAPIController.ResponseCallback ResponseCallback;
+    public static UsuarioAPIController.ResponseCallback ResponseCallback;//*no DIGARFO está em uso, aqui nao!
     //private String status;
     private Usuario usuario;
     private UsuarioAPI usuarioAPI;

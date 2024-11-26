@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,11 +25,14 @@ import com.example.admdigarfo.model.Receita;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 public class receitas_avaliar extends AppCompatActivity {
     //classe do recyclerview
 
     RecyclerView recycler_view;
     List<Receita> lista_receitas = new ArrayList<>();
+    String emailUSUARIO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,9 @@ public class receitas_avaliar extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        //quem tá logado?
+        String emailGuardado = getIntent().getStringExtra("Email");
+        emailUSUARIO = emailGuardado;
         //acesso ao recycler view
         recycler_view = findViewById(R.id.rcts_naoaprov);
         //configurando recycler view
@@ -58,9 +64,14 @@ public class receitas_avaliar extends AppCompatActivity {
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
         ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-        receitaAPIController.getReceitasNaoApdv( new ReceitaAPIController.ResponseCallback() {
+        receitaAPIController.getReceitasNaoApdv(new ReceitaAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Receita receita) {
+
+            }
+
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
 
             }
 
@@ -87,16 +98,24 @@ public class receitas_avaliar extends AppCompatActivity {
     }
 
     //função onclick ir p receita clicada
-    public void ver_receita(View view){
+    public void funcver_receita(View view){
         //mandar id da receita junto
-        TextView id = view.findViewById(R.id.id_rct);
-        String idStg = id.getText().toString();
+        //TextView id = view.findViewById(R.id.id_rct);
+        //String idStg = id.getText().toString();
         //lets go the other interface(recipe visualization)
-        Intent outraTela = new Intent(getApplicationContext(), receitavisualizacao.class);
+        Intent outraTela = new Intent(getApplicationContext(), ver_receita.class);
+       // outraTela.putExtra("Email", emailUSUARIO);
+        //outraTela.putExtra("id_rct", idStg);
+        startActivity(outraTela);
+        finish();
+       /*
+        Intent outraTela = new Intent(getApplicationContext(), ver_receita.class);
         //outraTela.putExtra("Email", emailUSUARIO);
         outraTela.putExtra("id_rct", idStg);
         startActivity(outraTela);
         finish();
+
+        */
     }
 
 

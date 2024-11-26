@@ -4,13 +4,14 @@ import com.example.admdigarfo.model.Receita;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ReceitaAPIController {
     private RetrofitClient retrofitClient;
-    public static ReceitaAPIController.ResponseCallback ResponseCallback;
+    public static ReceitaAPIController.ResponseCallback ResponseCallback;//-NO DIGARFO ESTÁ EM USO!
     private Receita receita;
 
     private ReceitaAPI receitaAPI;
@@ -18,6 +19,9 @@ public class ReceitaAPIController {
     //interface de response callback
     public interface ResponseCallback {
         void onSuccess(Receita receita);
+
+        void onSuccess(ResponseBody responseBody);//NO DIGARFO TA EM USO
+
         void onSuccessList(List<Receita> receitas);
         void onFailure(Throwable t);
     }

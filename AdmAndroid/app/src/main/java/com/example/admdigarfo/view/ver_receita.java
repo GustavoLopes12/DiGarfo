@@ -1,9 +1,7 @@
 package com.example.admdigarfo.view;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -26,7 +24,7 @@ import okhttp3.ResponseBody;
 public class ver_receita extends AppCompatActivity {
 
     String emailUSUARIO;
-    Long id_long;
+    Long id_long;//teste
 
     //coisas do layout
     TextView nome_autor;
@@ -50,7 +48,9 @@ public class ver_receita extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        //*MEXER P PEGAR NOM AUTOR(?)-precisa desse cdg?
+        String emailGuardado = getIntent().getStringExtra("Email");
+        emailUSUARIO = emailGuardado;
         //pegar id da receita
         String id_guardado = getIntent().getStringExtra("id_rct");
         id_long = Long.parseLong(id_guardado);
@@ -84,10 +84,10 @@ public class ver_receita extends AppCompatActivity {
                 carregarAutor(receita.getId_receita());
             }
 
-            //@Override
-            //public void onSuccess(ResponseBody responseBody) {
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
 
-            //}
+            }
 
             @Override
             public void onSuccessList(List<Receita> receitas) {
