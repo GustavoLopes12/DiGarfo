@@ -1,19 +1,29 @@
 package com.example.digarfo.view;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -25,6 +35,11 @@ import com.example.digarfo.conexao_spring.RetrofitClient;
 import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -47,6 +62,12 @@ public class EditarReceita extends AppCompatActivity{
     RadioGroup radioGroupDificuldades;
 
     RadioGroup radioGroupCusto;
+
+    String name_img;
+
+    //img
+    ImageView img;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +119,111 @@ public class EditarReceita extends AppCompatActivity{
                 // Lógica para quando nenhum item está selecionado
             }
         });*/
+        //img
+        img = findViewById(R.id.imageView5);
+        img.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(Intent.createChooser(intent, "Escolha sua Imagem"), 1);
+            }
+        });
     }
+    //img
+    //pegar img da receita
+    public void carregarIMG(Long id){
+        RetrofitClient retrofitClient = new RetrofitClient();
+        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+        receitaAPIController.buscarImagem(id, new ReceitaAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
+                try {
+                    // Converta a resposta para Bitmap
+                    InputStream inputStream = responseBody.byteStream();
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    if(bitmap != null){
+                        // Exiba o Bitmap em uma ImageView
+                        img.setImageBitmap(bitmap);
+                    }
+                } catch (Exception e) {
+                    Log.e("Erro", "Erro ao processar imagem: " + e.getMessage());
+                }
+            }
+
+            @Override
+            public void onSuccess(Receita receita) {
+
+            }
+
+            @Override
+            public void onSuccessList(List<Receita> receitas) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("Erro", "Falha ao buscar imagem: " + t.getMessage());
+                Toast.makeText(EditarReceita.this, "Erro ao carregar imagem ou receita nao possui", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    //fazer foto aparecer no lugar da foto padrao
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == 1){
+                imageUri = data.getData(); // Armazena a URI da imagem selecionada
+                img.setImageURI(imageUri);
+            }
+        }
+    }
+    //pegando paradas da foto
+    private String obterNomeArquivo(Uri uri) {
+        String resultado = null;
+        if (uri.getScheme().equals("content")) {
+            try (Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
+                if (cursor != null && cursor.moveToFirst()) {
+                    resultado = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME));
+                }
+            }
+        }
+        if (resultado == null) {
+            resultado = uri.getLastPathSegment();
+        }
+        return resultado;
+    }
+    private File copiarArquivoParaCache(Uri uri) {
+        try {
+            // Obter o nome do arquivo a partir da URI
+            String nomeArquivo = obterNomeArquivo(uri);
+            if (nomeArquivo == null) {
+                throw new IllegalStateException("Não foi possível obter o nome do arquivo.");
+            }
+
+            // Criar um arquivo temporário no cache
+            File arquivoCache = new File(getCacheDir(), nomeArquivo);
+
+            // Abrir os fluxos de entrada e saída
+            try (InputStream inputStream = getContentResolver().openInputStream(uri);
+                 OutputStream outputStream = new FileOutputStream(arquivoCache)) {
+
+                // Copiar os dados
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = inputStream.read(buffer)) > 0) {
+                    outputStream.write(buffer, 0, length);
+                }
+            }
+
+            return arquivoCache; // Retorna o arquivo no cache
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Erro ao processar a imagem: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            return null; // Retorna null em caso de erro
+        }
+    }
+    //categoria
     private void atualizarSpinnerComCategoria() {
         String[] categorias = getResources().getStringArray(R.array.categorias);
 
@@ -179,6 +304,9 @@ public class EditarReceita extends AppCompatActivity{
                 //chamando
                 dificuldade(dificuldade);
                 custo(custo);
+                //carregando img
+                carregarIMG(receita.getId_receita());
+                name_img = receita.getImg_receita();
             }
 
             @Override
@@ -205,6 +333,88 @@ public class EditarReceita extends AppCompatActivity{
     }
     //botao editar receita
     public void editarReceita(View view){
+        //pegando os valores
+        String nome = titulo_receita_ed.getText().toString();
+        String tempo = tempo_receita_ed.getText().toString();
+        String ingredientes = ingredientes_receita_ed.getText().toString();
+        String modo_preparo = modo_de_preparo_ed.getText().toString();
+        String categoria_Stg = categoria;
+        //dificuldade
+        int idRadioDificul = radioGroupDificuldades.getCheckedRadioButtonId();
+        RadioButton dificulButtonSelecionado = findViewById(idRadioDificul);
+        String dificuldade = dificulButtonSelecionado.getText().toString();//usar essa variavel na api
+        //custo
+        int idRadioCusto = radioGroupCusto.getCheckedRadioButtonId();
+        RadioButton custoButtonSelecionado = findViewById(idRadioCusto);
+        String custo = custoButtonSelecionado.getText().toString();//usar essa variavel na api
+        // Verifica se o usuário selecionou uma nova imagem
+        File imageFile = null;
+        if (imageUri != null) {
+            imageFile = copiarArquivoParaCache(imageUri); // Copiar nova imagem para cache
+        } else {
+            // Verifica se o ImageView possui uma imagem existente
+            Drawable drawable = img.getDrawable();
+            if (drawable != null && drawable instanceof BitmapDrawable) {
+                Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+                if (bitmap != null) {
+                    imageFile = bitmapParaArquivo(bitmap, name_img); // Nome temporário
+                }
+            }
+        }
+        // Verificando se algum campo está nulo ou vazio
+        if (isEmpty(nome) || isEmpty(tempo) || isEmpty(ingredientes) || isEmpty(modo_preparo) || isEmpty(categoria_Stg) || isEmpty(dificuldade) || isEmpty(custo)) {
+            Toast.makeText(this, "Você possui campos em branco", Toast.LENGTH_SHORT).show();
+            return; // Interrompe a execução do método
+        }
+        // Validação da imagem obrigatória
+        if (imageFile == null) {
+            Toast.makeText(this, "Você precisa selecionar ou manter uma imagem válida.", Toast.LENGTH_SHORT).show();
+            return; // Interrompe a execução do método
+        }
+        // Consumir API
+        RetrofitClient retrofitClient = new RetrofitClient();
+        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+        // Criando receita que será enviada
+        Usuario usuario = new Usuario(emailUSUARIO);
+        Receita receita = new Receita(nome, custo, categoria_Stg, dificuldade, tempo, ingredientes, modo_preparo, false, null, usuario);
+        //enviando
+        receitaAPIController.attReceitaWithImage(id_long, receita, imageFile, new ReceitaAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
+
+            }
+
+            @Override
+            public void onSuccess(Receita receita) {
+                Toast.makeText(EditarReceita.this, "Sucesso ao editar receita", Toast.LENGTH_SHORT).show();
+                Log.d("EditarReceita", "Sucesso ao editar receita");
+                carregarRct(receita.getId_receita());
+            }
+
+            @Override
+            public void onSuccessList(List<Receita> receitas) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Toast.makeText(EditarReceita.this, "Falha ao editar receita", Toast.LENGTH_SHORT).show();
+                Log.d("EditarReceita", "Falha ao editar receita, erro: " + t);
+            }
+        });
+
+    }
+    private File bitmapParaArquivo(Bitmap bitmap, String nomeArquivo) {
+        File arquivo = new File(getCacheDir(), nomeArquivo);
+        try (FileOutputStream fos = new FileOutputStream(arquivo)) {
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos); // Ajuste o formato conforme necessário
+            fos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arquivo;
+    }
+   /* public void editarReceita(View view){
         //pegando os valores
         String nome = titulo_receita_ed.getText().toString();
         String tempo = tempo_receita_ed.getText().toString();
@@ -257,7 +467,7 @@ public class EditarReceita extends AppCompatActivity{
                 Log.d("EditarReceita", "Falha ao editar receita");
             }
         });
-    }
+    }*/
     //ver se nulo ou vazio
     private boolean isEmpty(String value) {
         return value == null || value.trim().isEmpty();

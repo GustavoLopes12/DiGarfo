@@ -2,9 +2,13 @@ package com.example.digarfo.view;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +25,7 @@ import com.example.digarfo.conexao_spring.UsuarioAPIController;
 import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
 
+import java.io.InputStream;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -44,6 +49,12 @@ public class home extends AppCompatActivity {
     TextView tv_autor_receita_bd_tres;
     TextView tv_autor_receita_bd_quatro;
 
+    //imgs
+    ImageView img1;
+    ImageView img2;
+    ImageView img3;
+    ImageView img4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +76,12 @@ public class home extends AppCompatActivity {
         tv_autor_receita_bd_dois = findViewById(R.id.autor_receita_dois);
         tv_autor_receita_bd_tres = findViewById(R.id.autor_receita_tres);
         tv_autor_receita_bd_quatro = findViewById(R.id.autor_receita_quatro);
+
+        //imgs
+        img1 = findViewById(R.id.id_home_img_one);
+        img2 = findViewById(R.id.id_home_img_two);
+        img3 = findViewById(R.id.id_home_img_tree);
+        img4 = findViewById(R.id.id_home_img_four);
 
 
 
@@ -94,6 +111,7 @@ public class home extends AppCompatActivity {
                 public void onSuccess(Receita receita) {
                     tv_receita_bd.setText(receita.getNome_receita());
                     idrct1 = receita.getId_receita().toString();
+                    carregarIMG(receita.getId_receita(), img1);
                 }
 
                 @Override
@@ -152,6 +170,7 @@ public class home extends AppCompatActivity {
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_dois.setText(receita.getNome_receita());
                     idrct2 = receita.getId_receita().toString();
+                    carregarIMG(receita.getId_receita(), img2);
                 }
 
                 @Override
@@ -209,6 +228,7 @@ public class home extends AppCompatActivity {
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_tres.setText(receita.getNome_receita());
                     idrct3 = receita.getId_receita().toString();
+                    carregarIMG(receita.getId_receita(), img3);
                 }
 
                 @Override
@@ -266,6 +286,7 @@ public class home extends AppCompatActivity {
                 public void onSuccess(Receita receita) {
                     tv_receita_bd_quatro.setText(receita.getNome_receita());
                     idrct4 = receita.getId_receita().toString();
+                    carregarIMG(receita.getId_receita(), img4);
                 }
 
                 @Override
@@ -321,6 +342,50 @@ public class home extends AppCompatActivity {
         }
 
     }
+
+    //pegar img da receita
+    public void carregarIMG(Long id, ImageView img) {
+        // Define um fundo temporário (opcional) enquanto carrega
+        img.setImageResource(R.drawable.placeholder); // Um drawable de carregamento ou fundo padrão
+
+        RetrofitClient retrofitClient = new RetrofitClient();
+        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+
+        receitaAPIController.buscarImagem(id, new ReceitaAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
+                try {
+                    // Converte a resposta para Bitmap
+                    InputStream inputStream = responseBody.byteStream();
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    if (bitmap != null) {
+                        // Exibe o Bitmap e substitui o fundo
+                        img.setImageBitmap(bitmap);
+                    } else {
+                        // Caso o Bitmap seja nulo, mantenha o placeholder
+                        img.setImageResource(R.drawable.error_image); // Opcional: um drawable para erro
+                    }
+                } catch (Exception e) {
+                    Log.e("Erro", "Erro ao processar imagem: " + e.getMessage());
+                    img.setImageResource(R.drawable.error_image); // Opcional: drawable para erros
+                }
+            }
+
+            @Override
+            public void onSuccess(Receita receita) {}
+
+            @Override
+            public void onSuccessList(List<Receita> receitas) {}
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("Erro", "Falha ao buscar imagem: " + t.getMessage());
+                Toast.makeText(home.this, "Erro ao carregar imagem", Toast.LENGTH_SHORT).show();
+                img.setImageResource(R.drawable.error_image); // Opcional: drawable para erro
+            }
+        });
+    }
+
 
 
     //-----------------------------------------------------

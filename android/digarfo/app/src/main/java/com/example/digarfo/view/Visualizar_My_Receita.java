@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +27,7 @@ import com.example.digarfo.model.Receita;
 import com.example.digarfo.model.Usuario;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -37,6 +40,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
     TextView nome_receita;
    // TextView autor_receita;
     TextView categoria;
+    TextView dif;
     TextView tempo;
     TextView custo;
     TextView ingredientes;
@@ -56,6 +60,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
             return insets;
         });
         //elementos
+        dif = findViewById(R.id.dif);
         exibicao_img = findViewById(R.id.imagemmmmmmm); //para exibir img
         nome_receita = findViewById(R.id.nome_RECEITA);
         //autor_receita = findViewById(R.id.autor_nameeeee);
@@ -94,6 +99,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
                 custo.setText(receita.getCusto());
                 tempo.setText(receita.getTempo_prep());
                 ingredientes.setText(receita.getIngredientes());
+                dif.setText(receita.getDificuldade());
                 modo_prep.setText(receita.getModo_prep());
                 Log.d("StatusAprovacao", "Valor de aprovacao: " + receita.getAprovada());//teste para ver o valor se aprovado ou n no log cat
                 Log.d("Receitaaa", "Receita: " + receita.toString());//teste para ver a receita
@@ -108,6 +114,7 @@ public class Visualizar_My_Receita extends AppCompatActivity {
                         motivo.setText("Motivo de reijeição: " + receita.getMotivo_desaprovacao());
                     }
                 }
+                carregarIMG(receita.getId_receita());
                 /*carregarAutor(receita.getId_receita());*/
             }
 
@@ -135,6 +142,44 @@ public class Visualizar_My_Receita extends AppCompatActivity {
             }
         });
     }
+    //pegar img da receita
+    public void carregarIMG(Long id){
+        RetrofitClient retrofitClient = new RetrofitClient();
+        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+        receitaAPIController.buscarImagem(id, new ReceitaAPIController.ResponseCallback() {
+            @Override
+            public void onSuccess(ResponseBody responseBody) {
+                try {
+                    // Converta a resposta para Bitmap
+                    InputStream inputStream = responseBody.byteStream();
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    if(bitmap != null){
+                        // Exiba o Bitmap em uma ImageView
+                        exibicao_img.setImageBitmap(bitmap);
+                    }
+                } catch (Exception e) {
+                    Log.e("Erro", "Erro ao processar imagem: " + e.getMessage());
+                }
+            }
+
+            @Override
+            public void onSuccess(Receita receita) {
+
+            }
+
+            @Override
+            public void onSuccessList(List<Receita> receitas) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("Erro", "Falha ao buscar imagem: " + t.getMessage());
+                Toast.makeText(Visualizar_My_Receita.this, "Erro ao carregar imagem ou receita não possui imagem", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     public void botao_excluir(View view) {
         // Criação do diálogo de confirmação de exclusão
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

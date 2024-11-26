@@ -149,14 +149,59 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 			return receitaRepository.save(receita);
 		}
 		//UPDATE receita por id com imagem
-		/*@PutMapping("/receitaImage/{id_receita}")
+		@PutMapping(value = "/receitaImage/{id_receita}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 		public Receita atualizaReceitaWithimage(@PathVariable Long id_receita, 
 												@ModelAttribute Receita receita, 
 												@RequestParam("file") MultipartFile arquivo) {
-			//colocando img na receita
 			
+			//colocando id da receita a ser atualizada no seu nv corpo
+			receita.setId_receita(id_receita);
+			//pegando a receita antes de atualizar e vendo se ela ja possui imagem
+			Optional<Receita> rct_antiga = receitaRepository.findById(id_receita);
+			try {
+				//verificacao se ja tem imagem para trocar imagem ou add
+				if(rct_antiga.get().getImg_receita() != null) {
+					
+					// Caminho completo da imagem antiga
+		            String imagemAntiga = caminhoimg + rct_antiga.get().getImg_receita();
+
+		            // Exclua a imagem antiga do diretório
+		            File fileAntigo = new File(imagemAntiga);
+		            if (fileAntigo.exists()) {
+		                fileAntigo.delete();
+		            }
+					//trocar o nome da imagem no banco e gravar a imagem na pasta
+		            
+		            if(arquivo != null) {
+						byte[] bytes = arquivo.getBytes();
+						Path caminho = Paths.get(caminhoimg + String.valueOf(receita.getId_receita() + arquivo.getOriginalFilename()));
+						Files.write(caminho, bytes);
+						if(arquivo.getOriginalFilename().equalsIgnoreCase(String.valueOf(receita.getId_receita() + arquivo.getOriginalFilename()))) {
+							receita.setImg_receita(arquivo.getOriginalFilename());
+						}else {
+							receita.setImg_receita(String.valueOf(receita.getId_receita() + arquivo.getOriginalFilename()));
+						}
+					} else {
+						receita.setImg_receita(null);
+					}
+					
+				}else {//senao
+						//verificacao para add imagem 
+						if(arquivo != null) {
+							byte[] bytes = arquivo.getBytes();
+							Path caminho = Paths.get(caminhoimg + String.valueOf(receita.getId_receita() + arquivo.getOriginalFilename()));
+							Files.write(caminho, bytes);
+							receita.setImg_receita(String.valueOf(receita.getId_receita() + arquivo.getOriginalFilename()));
+						} else {
+							receita.setImg_receita(null);
+						}
+				}
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+			return receitaRepository.save(receita);
 			
-		}*/
+		}
 		//DELETE receita por id
 		@DeleteMapping("/{id_receita}")
 		public ResponseEntity<String> deletaReceita(@PathVariable Long id_receita) {

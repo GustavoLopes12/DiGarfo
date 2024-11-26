@@ -240,66 +240,67 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
     }
     //enviar rct
     public void enviar_rct(View view) {
-        //pegando valores para criação
-        String tituloString = titulo.getText().toString();
-        String tempoString = tempo.getText().toString();
-        String ingredientesString = ingredientes.getText().toString();
-        String modo_prepString = modo_prep.getText().toString();
-        String categ_spinnerString = categ_spinner.getSelectedItem().toString();
-        //RADIOGROUP CUSTO----------------------------
-        int idRadioCusto = radioGroup_custo.getCheckedRadioButtonId();  // pegando ID do radiobutton
-        RadioButton custoButtonSelecionado = findViewById(idRadioCusto);  // usando o ID p achar radiobutton
-        String radioGroup_custoString = custoButtonSelecionado.getText().toString();  // convertendo p string
-        //RADIOGROUP DIFICULDADE----------------------------
-        int idRadioDificul = radioGroup_dificul.getCheckedRadioButtonId();
-        RadioButton dificulButtonSelecionado = findViewById(idRadioDificul);
-        String radioGroup_dificulString = dificulButtonSelecionado.getText().toString();
-        //pegando file de imagem
-        // Processar imagem
-        File imageFile = null;
-        if (imageUri != null) {
-            imageFile = copiarArquivoParaCache(imageUri); // Copiar para cache
-        }
-        //cliente retrofit
-        RetrofitClient retrofitClient = new RetrofitClient();
-        //api controller
-        ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
-        //cadastro com img nuovo
-        Usuario user = new Usuario(emailUSUARIO);
-        Receita receita = new Receita(tituloString, radioGroup_custoString, categ_spinnerString, radioGroup_dificulString, tempoString, ingredientesString, modo_prepString, false, null, user);
-        receitaAPIController.criarReceitaComImagem(receita, imageFile, new ReceitaAPIController.ResponseCallback() {
-            @Override
-            public void onSuccess(ResponseBody responseBody) {
-
+        if(imageUri != null){
+            //pegando valores para criação
+            String tituloString = titulo.getText().toString();
+            String tempoString = tempo.getText().toString();
+            String ingredientesString = ingredientes.getText().toString();
+            String modo_prepString = modo_prep.getText().toString();
+            String categ_spinnerString = categ_spinner.getSelectedItem().toString();
+            //RADIOGROUP CUSTO----------------------------
+            int idRadioCusto = radioGroup_custo.getCheckedRadioButtonId();  // pegando ID do radiobutton
+            RadioButton custoButtonSelecionado = findViewById(idRadioCusto);  // usando o ID p achar radiobutton
+            String radioGroup_custoString = custoButtonSelecionado.getText().toString();  // convertendo p string
+            //RADIOGROUP DIFICULDADE----------------------------
+            int idRadioDificul = radioGroup_dificul.getCheckedRadioButtonId();
+            RadioButton dificulButtonSelecionado = findViewById(idRadioDificul);
+            String radioGroup_dificulString = dificulButtonSelecionado.getText().toString();
+            //pegando file de imagem
+            // Processar imagem
+            File imageFile = null;
+            if (imageUri != null) {
+                imageFile = copiarArquivoParaCache(imageUri); // Copiar para cache
             }
+            //cliente retrofit
+            RetrofitClient retrofitClient = new RetrofitClient();
+            //api controller
+            ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
+            //cadastro com img nuovo
+            Usuario user = new Usuario(emailUSUARIO);
+            Receita receita = new Receita(tituloString, radioGroup_custoString, categ_spinnerString, radioGroup_dificulString, tempoString, ingredientesString, modo_prepString, false, null, user);
+            receitaAPIController.criarReceitaComImagem(receita, imageFile, new ReceitaAPIController.ResponseCallback() {
+                @Override
+                public void onSuccess(ResponseBody responseBody) {
 
-            @Override
-            public void onSuccess(Receita receita) {
-                Log.d("Sucesso: ", "sucesso ao criar receita");
-                Toast.makeText(escreverreceita.this, "Receita criada com sucesso ", Toast.LENGTH_SHORT).show();
-                Intent outraTela = new Intent(getApplicationContext(), home.class);
-                outraTela.putExtra("Email", emailUSUARIO);
-                startActivity(outraTela);
-            }
+                }
 
-            @Override
-            public void onSuccessList(List<Receita> receitas) {
+                @Override
+                public void onSuccess(Receita receita) {
+                    Log.d("Sucesso: ", "sucesso ao criar receita");
+                    Toast.makeText(escreverreceita.this, "Receita criada com sucesso ", Toast.LENGTH_SHORT).show();
+                    Intent outraTela = new Intent(getApplicationContext(), home.class);
+                    outraTela.putExtra("Email", emailUSUARIO);
+                    startActivity(outraTela);
+                }
 
-            }
+                @Override
+                public void onSuccessList(List<Receita> receitas) {
 
-            @Override
-            public void onFailure(Throwable t) {
-                Log.d("Erro", "erro ao criar receita: " + t);
-                androidx.appcompat.app.AlertDialog.Builder alerta = new androidx.appcompat.app.AlertDialog.Builder(escreverreceita.this);
-                alerta.setCancelable(false);
-                alerta.setTitle("Conexão Falhou, não é possivel criar uma receita, tente novamente mais tarde");
-                alerta.setMessage(t.toString());
-                alerta.setNegativeButton("Voltar",null);
-                alerta.create().show();
-            }
-        });
+                }
 
-        //cadastro sem imagem vecchio
+                @Override
+                public void onFailure(Throwable t) {
+                    Log.d("Erro", "erro ao criar receita: " + t);
+                    androidx.appcompat.app.AlertDialog.Builder alerta = new androidx.appcompat.app.AlertDialog.Builder(escreverreceita.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Conexão Falhou, não é possivel criar uma receita, tente novamente mais tarde");
+                    alerta.setMessage(t.toString());
+                    alerta.setNegativeButton("Voltar",null);
+                    alerta.create().show();
+                }
+            });
+
+            //cadastro sem imagem vecchio
         /*receitaAPIController.enviarReceita(tituloString, radioGroup_custoString, categ_spinnerString, radioGroup_dificulString, tempoString, ingredientesString, modo_prepString,false,null, emailUSUARIO, new ReceitaAPIController.ResponseCallback() {
             @Override
             public void onSuccess(Receita receita) {
@@ -340,6 +341,9 @@ public class escreverreceita extends AppCompatActivity implements AdapterView.On
                 alerta.create().show();
             }
         });*/
+        }else{
+            Toast.makeText(escreverreceita.this, "Insira uma imagem", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

@@ -47,6 +47,62 @@ public class ReceitaAPIController {
     public String getMessage() {
         return status;
     }
+
+    //pegar img receita
+    public void buscarImagem(Long id, ReceitaAPIController.ResponseCallback responseCallback){
+        Call<ResponseBody> call = this.receitaAPI.getImagemReceita(id);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccess(response.body());
+                } else {
+                    responseCallback.onFailure(new Exception("Erro ao buscar imagem: " + response.message()));
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+    //atualizar receita com imagem
+    public void attReceitaWithImage(Long id, Receita receita, File file, ReceitaAPIController.ResponseCallback responseCallback){
+        // Mapear os atributos da receita para form-data
+        Map<String, RequestBody> receitaPartes = new HashMap<>();
+        receitaPartes.put("nome_receita", RequestBody.create(MediaType.parse("text/plain"), receita.getNome_receita()));
+        receitaPartes.put("categoria", RequestBody.create(MediaType.parse("text/plain"), receita.getCategoria()));
+        receitaPartes.put("custo", RequestBody.create(MediaType.parse("text/plain"), receita.getCusto()));
+        receitaPartes.put("dificuldade", RequestBody.create(MediaType.parse("text/plain"), receita.getDificuldade()));
+        receitaPartes.put("tempo_prep", RequestBody.create(MediaType.parse("text/plain"), receita.getTempo_prep()));
+        receitaPartes.put("ingredientes", RequestBody.create(MediaType.parse("text/plain"), receita.getIngredientes()));
+        receitaPartes.put("modo_prep", RequestBody.create(MediaType.parse("text/plain"), receita.getModo_prep()));
+        receitaPartes.put("aprovada", RequestBody.create(MediaType.parse("text/plain"), String.valueOf(receita.getAprovada())));
+        receitaPartes.put("img_receita", RequestBody.create(MediaType.parse("text/plain"), String.valueOf(receita.getImg_receita())));
+        receitaPartes.put("usuario.email", RequestBody.create(MediaType.parse("text/plain"), receita.getUsuario().getEmail()));
+        receitaPartes.put("adm", RequestBody.create(MediaType.parse("text/plain"), String.valueOf(receita.getAdm())));
+
+        // Arquivo da imagem
+        MultipartBody.Part filePart = null;
+        if (file != null) {
+            RequestBody fileRequestBody = RequestBody.create(MediaType.parse("image/*"), file);
+            filePart = MultipartBody.Part.createFormData("file", file.getName(), fileRequestBody);
+        }
+        //chamada retrofit
+        Call<Receita> call = this.receitaAPI.atualizarReceitaComImagem(id, receitaPartes, filePart);
+        call.enqueue(new Callback<Receita>() {
+            @Override
+            public void onResponse(Call<Receita> call, Response<Receita> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Receita> call, Throwable t) {
+                responseCallback.onFailure(new Exception("Não foi possivel atualizar a receita"));
+            }
+        });
+    }
+
     //inserir receitas
     public void enviarReceita(String nome_receita, String custo_selecionado, String categoria, String dific_selecionada,String tempo_prep, String ingredientes, String modo_prep, boolean aprovada, String motivo_desaprovacao, String id_autor, ReceitaAPIController.ResponseCallback responseCallback){
         Usuario usuario = new Usuario(id_autor);

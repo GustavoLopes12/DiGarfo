@@ -35,11 +35,25 @@ public interface ReceitaAPI {
             @PartMap Map<String, RequestBody> receitaPartes,
             @Part MultipartBody.Part arquivo
     );
+    //put com imagem da receita
+    @Multipart
+    @PUT("/receita/receitaImage/{id_receita}")
+    Call<Receita> atualizarReceitaComImagem(
+            @Path("id_receita")Long id_receita,
+            @PartMap Map<String, RequestBody> receitaPartes,
+            @Part MultipartBody.Part arquivo
+    );
+
     @GET("/receita")
     Call <List<Receita>> all_receitas();
 
     @GET("/receita/{id}")//pegar receita por id
     Call<Receita> getReceita(@Path("id") Long id);
+
+    //pegar img de uma receita
+    @GET("/receita/buscarImagem/{id_receita}")
+    Call<ResponseBody> getImagemReceita(@Path("id_receita") Long idReceita);
+
     @GET("/receita/receitaIDtrue/{id}")//pegar receita aprovada por id
     Call<Receita> getReceitaAprovID(@Path("id") Long id);
 

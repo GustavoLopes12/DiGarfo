@@ -608,10 +608,11 @@
                             android:onClick="rct_view_one">
 
                             <ImageView
+                                android:id="@+id/id_home_img_one"
+                                android:scaleType="fitXY"
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@android:drawable/ic_menu_gallery"
                                 android:onClick="rct_view_one"></ImageView>
 
                             <TextView
@@ -642,10 +643,11 @@
                             android:onClick="rct_view_two">
 
                             <ImageView
+                                android:id="@+id/id_home_img_two"
+                                android:scaleType="fitXY"
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@android:drawable/ic_menu_gallery"
                                 android:onClick="rct_view_two"></ImageView>
 
                             <TextView
@@ -675,10 +677,11 @@
                             android:onClick="rct_view_tree">
 
                             <ImageView
+                                android:id="@+id/id_home_img_tree"
                                 android:layout_width="match_parent"
+                                android:scaleType="fitXY"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@android:drawable/ic_menu_gallery"
                                 android:onClick="rct_view_tree"></ImageView>
 
                             <TextView
@@ -709,10 +712,11 @@
                             android:onClick="rct_view_four">
 
                             <ImageView
+                                android:id="@+id/id_home_img_four"
+                                android:scaleType="fitXY"
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center_horizontal"
-                                android:background="@android:drawable/ic_menu_gallery"
                                 android:onClick="rct_view_four"></ImageView>
 
                             <TextView

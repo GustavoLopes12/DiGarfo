@@ -37,10 +37,6 @@ public class Cadastro extends AppCompatActivity {
     EditText email;
     EditText senha;
     EditText descricao;
-
-    //ImageView img;
-    //Uri imageUri; //guardar uri da imagem de perfil
-
     //para ocultar ou desocultar a senha
     ImageView olho;
     boolean visible = false;
@@ -75,39 +71,7 @@ public class Cadastro extends AppCompatActivity {
                 visible = !visible;
             }
         });
-        //pegando img pela galeria
-        //img.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-       //         startActivityForResult(Intent.createChooser(intent, "Escolha sua Imagem"), 1);
-        //    }
-       // });
     }
-    //negocio para pegar imagem na galeria
-    //@Override
-    //protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-    //    super.onActivityResult(requestCode, resultCode, data);
-    //    if(resultCode == Activity.RESULT_OK){
-    //        if(requestCode == 1){
-    //            imageUri = data.getData(); // Armazena a URI da imagem selecionada
-     //           img.setImageURI(imageUri);
-    //        }
-    //    }
-    //}//
-    // Método para obter o caminho do arquivo a partir da URI
-    ////private String getRealPathFromURI(Uri uri) {
-    //    String[] projection = { MediaStore.Images.Media.DATA };
-    //    Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
-   //     if (cursor != null) {
-   //         int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-     //       cursor.moveToFirst();
-     //       String path = cursor.getString(columnIndex);
-     //       cursor.close();
-      //      return path;
-     //   }
-     //   return null;
-    //}
     //cadastro
     public void cadastrar(View view){
         //pegando valores para criação
