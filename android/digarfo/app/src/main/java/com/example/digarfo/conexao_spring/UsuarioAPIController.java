@@ -122,7 +122,6 @@ public class UsuarioAPIController {
         });
     }*/
     //pegar imagem de usuario
-    //pegar img receita
     public void buscarImagem(String email, UsuarioAPIController.ResponseCallback responseCallback){
         Call<ResponseBody> call = this.usuarioAPI.getImagemUsuario(email);
         call.enqueue(new Callback<ResponseBody>() {

@@ -14,6 +14,9 @@ public class Adm {
     public Adm(){
         //default
     }
+    public Adm(String email){
+        this.email = email;
+    }
     public Adm(String email, String senha){
         this.email = email;
         this.senha = senha;

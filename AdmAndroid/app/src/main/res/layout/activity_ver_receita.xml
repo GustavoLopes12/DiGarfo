@@ -53,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#000000"
+                    android:onClick="voltar"
                     app:srcCompat="@android:drawable/ic_menu_revert" />
 
                 <TextView
@@ -74,7 +75,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -84,19 +85,32 @@
                     android:layout_gravity="center"
                     app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-                <TextView
-                    android:id="@+id/autor_name"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:text="Nome do criador"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.246"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.404" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/autor_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nome do criador"
+                        android:textAlignment="textStart"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.246"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.404" />
+
+                    <TextView
+                        android:id="@+id/descricao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Descrição"
+                        android:textSize="16sp"></TextView>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -161,6 +175,25 @@
                     android:text="aaa"
                     android:textSize="20sp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dificuldade:  "
+                    android:textSize="20sp" ></TextView>
+                <TextView
+                    android:id="@+id/dificuldade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="aaa"
+                    android:textSize="20sp"></TextView>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView19"
@@ -219,6 +252,36 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.619" />
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="#D6A8A8"
+                android:text="Email ADM da ultima avaliação:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/emailAdm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="#D6A8A8"
+                android:text="Motivo desaprovação:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/motivacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -239,6 +302,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#00BA08"
+            android:onClick="confirmar"
             android:text="Confirmar" />
 
         <Button
@@ -247,6 +311,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#F31100"
+            android:onClick="negar"
             android:text="Negar" />
     </LinearLayout>
 

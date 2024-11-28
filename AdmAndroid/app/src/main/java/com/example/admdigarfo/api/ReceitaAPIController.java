@@ -63,4 +63,37 @@ public class ReceitaAPIController {
         });
     }
 
+    //pegar img receita
+    public void buscarImagem(Long id, ReceitaAPIController.ResponseCallback responseCallback){
+        Call<ResponseBody> call = this.receitaAPI.getImagemReceita(id);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccess(response.body());
+                } else {
+                    responseCallback.onFailure(new Exception("Erro ao buscar imagem: " + response.message()));
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
+    public void atualizarReceita(Receita receita, Long id, ReceitaAPIController.ResponseCallback responseCallback){
+        Call<Receita> call = this.receitaAPI.attReceita(id, receita);
+        call.enqueue(new Callback<Receita>() {
+            @Override
+            public void onResponse(Call<Receita> call, Response<Receita> response) {
+                responseCallback.onSuccess(response.body());
+            }
+            @Override
+            public void onFailure(Call<Receita> call, Throwable t) {
+                responseCallback.onFailure(new Exception("nao foi possivel atualizar a receita" + t));
+            }
+        });
+    }
+
 }

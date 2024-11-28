@@ -28,11 +28,9 @@ import java.util.List;
 import okhttp3.ResponseBody;
 
 public class receitas_avaliar extends AppCompatActivity {
-    //classe do recyclerview
-
     RecyclerView recycler_view;
     List<Receita> lista_receitas = new ArrayList<>();
-    String emailUSUARIO;
+    String emailADM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +44,9 @@ public class receitas_avaliar extends AppCompatActivity {
         });
         //quem tá logado?
         String emailGuardado = getIntent().getStringExtra("Email");
-        emailUSUARIO = emailGuardado;
+        emailADM = emailGuardado;
         //acesso ao recycler view
-        recycler_view = findViewById(R.id.rcts_naoaprov);
+        recycler_view = findViewById(R.id.recycler);
         //configurando recycler view
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recycler_view.setLayoutManager(layoutManager);
@@ -98,26 +96,13 @@ public class receitas_avaliar extends AppCompatActivity {
     }
 
     //função onclick ir p receita clicada
-    public void funcver_receita(View view){
-        //mandar id da receita junto
-        //TextView id = view.findViewById(R.id.id_rct);
-        //String idStg = id.getText().toString();
-        //lets go the other interface(recipe visualization)
+    /*public void funcver_receita(View view){
+        TextView id = findViewById(R.id.id_rct);
+        String id_rct = id.getText().toString();
         Intent outraTela = new Intent(getApplicationContext(), ver_receita.class);
-       // outraTela.putExtra("Email", emailUSUARIO);
-        //outraTela.putExtra("id_rct", idStg);
+        outraTela.putExtra("Email", emailADM);
+        outraTela.putExtra("id_rct", id_rct);
         startActivity(outraTela);
         finish();
-       /*
-        Intent outraTela = new Intent(getApplicationContext(), ver_receita.class);
-        //outraTela.putExtra("Email", emailUSUARIO);
-        outraTela.putExtra("id_rct", idStg);
-        startActivity(outraTela);
-        finish();
-
-        */
-    }
-
-
-
+    }*/
 }

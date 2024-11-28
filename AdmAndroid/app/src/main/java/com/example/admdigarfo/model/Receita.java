@@ -30,10 +30,47 @@ public class Receita {
         @SerializedName("usuario")
         private Usuario usuario;
 
+    public String getMotivo_desaprovacao() {
+        return motivo_desaprovacao;
+    }
+
+    public void setMotivo_desaprovacao(String motivo_desaprovacao) {
+        this.motivo_desaprovacao = motivo_desaprovacao;
+    }
+
+    public Adm getAdm() {
+        return adm;
+    }
+
+    public void setAdm(Adm adm) {
+        this.adm = adm;
+    }
+
+    @SerializedName("motivo_desaprovacao")
+    private String motivo_desaprovacao;
+
+    @SerializedName("adm")
+    private Adm adm;
+
         //no DIGARFO está em uso, aqui nao!
         public Receita() {
             //default
         }
+
+    public Receita(String img_receita, String nome_receita, String custo, String categoria, String dificuldade, String tempo_prep, String ingredientes, String modo_prep, boolean aprovacao, Usuario usuario, String motivo_desaprovacao, Adm adm) {
+        this.nome_receita = nome_receita;
+        this.img_receita = img_receita;
+        this.custo = custo;
+        this.categoria = categoria;
+        this.dificuldade = dificuldade;
+        this.tempo_prep = tempo_prep;
+        this.ingredientes = ingredientes;
+        this.modo_prep = modo_prep;
+        this.aprovacao = aprovacao;
+        this.motivo_desaprovacao = motivo_desaprovacao;
+        this.usuario = usuario;
+        this.adm = adm;
+    }
 
         //construtor 2 (sem id)
         //no DIGARFO está em uso, aqui nao!// NAO SEI SE TA CERTO
@@ -53,7 +90,7 @@ public class Receita {
         }
         */
         //construtor
-        public Receita(Long id_receita, String img_receita, String nome_receita, String custo, String categoria, String dificuldade, String tempo_prep, String ingredientes, String modo_prep, boolean aprovacao, Usuario usuario) {
+        public Receita(Long id_receita, String img_receita, String nome_receita, String custo, String categoria, String dificuldade, String tempo_prep, String ingredientes, String modo_prep, boolean aprovacao, Usuario usuario, String motivo_desaprovacao, Adm adm) {
             this.id_receita = id_receita;
             this.nome_receita = nome_receita;
             this.img_receita = img_receita;
@@ -64,8 +101,9 @@ public class Receita {
             this.ingredientes = ingredientes;
             this.modo_prep = modo_prep;
             this.aprovacao = aprovacao;
-            //this.motivo_desaprovacao = motivo_desaprovacao;
+            this.motivo_desaprovacao = motivo_desaprovacao;
             this.usuario = usuario;
+            this.adm = adm;
         }
         //getters e setters
         //TEM ALGUNS QUE ESTAO EM USO NO DIGARFO E AQUI NAO

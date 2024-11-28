@@ -77,7 +77,7 @@ public class UsuarioController {
 			return emptyUser;
 		}
 	}
-	//UPDATE receita por id com imagem
+	//UPDATE usuario por id com imagem
 	@PutMapping(value = "/UsuarioImage/{email}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public Usuario atualizaUsuarioWithimage(@PathVariable String email, 
 											@ModelAttribute Usuario usuario, 
@@ -142,6 +142,18 @@ public class UsuarioController {
 	    System.out.println("Usuario encontrado: " + usuario.getNome_usuario());
 	    return ResponseEntity.ok(usuario);
 	}
+	
+	//get por receita
+		@GetMapping("/receitaF/{idReceita}")
+		public ResponseEntity<Usuario> buscarUsuarioPorReceitaF(@PathVariable Long idReceita) {
+		    Usuario usuario = usuarioRepository.findUsuarioByReceitaIdF(idReceita);
+		    if (usuario == null) {
+		        System.out.println("Usuario não encontrado para a receita com ID: " + idReceita);
+		        return ResponseEntity.notFound().build();
+		    }
+		    System.out.println("Usuario encontrado: " + usuario.getNome_usuario());
+		    return ResponseEntity.ok(usuario);
+		}
 	
 	//GET por nome
 	@GetMapping("/{nome_usuario}")

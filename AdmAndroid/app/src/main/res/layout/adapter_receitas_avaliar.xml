@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#D37777"
-    android:onClick="funcver_receita"
     android:orientation="horizontal">
 
     <!--imageview futuro-->
@@ -13,6 +12,7 @@
         android:id="@+id/imageView8"
         android:layout_width="160dp"
         android:layout_height="match_parent"
+        android:scaleType="fitXY"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <LinearLayout
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
     </LinearLayout>
 

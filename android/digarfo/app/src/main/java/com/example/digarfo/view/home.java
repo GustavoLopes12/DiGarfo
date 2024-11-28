@@ -31,6 +31,7 @@ import java.util.List;
 import okhttp3.ResponseBody;
 
 public class home extends AppCompatActivity {
+    String texto = "Não encontrada a receita";
     String emailUSUARIO;
     EditText valorPesquisa;
     String valuePesquisa;
@@ -109,9 +110,14 @@ public class home extends AppCompatActivity {
 
                 @Override
                 public void onSuccess(Receita receita) {
-                    tv_receita_bd.setText(receita.getNome_receita());
-                    idrct1 = receita.getId_receita().toString();
-                    carregarIMG(receita.getId_receita(), img1);
+                    if(receita != null){
+                        tv_receita_bd.setText(receita.getNome_receita());
+                        idrct1 = receita.getId_receita().toString();
+                        carregarIMG(receita.getId_receita(), img1);
+                    }else{
+                        tv_receita_bd.setText(texto);
+                        idrct1 = "0";
+                    }
                 }
 
                 @Override
@@ -124,12 +130,7 @@ public class home extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("receita nao encontrada");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.e("Erro", "Falha ao buscar receita: " + t.getMessage());
                 }
             });
 
@@ -143,19 +144,18 @@ public class home extends AppCompatActivity {
             usuarioAPIController2.getUsuarioForReceita(id_receita_bd, new UsuarioAPIController.ResponseCallback() {
                 @Override
                 public void onSuccess(Usuario usuario) {
-                    tv_autor_receita_bd.setText("Por: " + usuario.getNome_usuario());
+                    if(usuario != null){
+                        tv_autor_receita_bd.setText("Por: " + usuario.getNome_usuario());
+                    }else{
+                        tv_autor_receita_bd.setText("Não encontrado o autor");
+                    }
                 }
                 @Override
                 public void onSuccess(ResponseBody responseBody) {
                 }
                 @Override
                 public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("autor receita nao encontrado");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.e("Erro", "Falha ao buscar autor da receita: " + t.getMessage());
                 }
             });
         } else if (id_receita_bd == 2L) {
@@ -168,9 +168,14 @@ public class home extends AppCompatActivity {
 
                 @Override
                 public void onSuccess(Receita receita) {
-                    tv_receita_bd_dois.setText(receita.getNome_receita());
-                    idrct2 = receita.getId_receita().toString();
-                    carregarIMG(receita.getId_receita(), img2);
+                    if(receita != null){
+                        tv_receita_bd_dois.setText(receita.getNome_receita());
+                        idrct2 = receita.getId_receita().toString();
+                        carregarIMG(receita.getId_receita(), img2);
+                    }else{
+                        tv_receita_bd_dois.setText(texto);
+                        idrct2 = "0";
+                    }
                 }
 
                 @Override
@@ -183,12 +188,7 @@ public class home extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("receita nao encontrada");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.e("Erro", "Falha ao buscar receita: " + t.getMessage());
                 }
             });
             //-PEGANDO AUTOR RECEITA
@@ -201,19 +201,18 @@ public class home extends AppCompatActivity {
             usuarioAPIController2.getUsuarioForReceita(id_receita_bd, new UsuarioAPIController.ResponseCallback() {
                 @Override
                 public void onSuccess(Usuario usuario) {
-                    tv_autor_receita_bd_dois.setText("Por: " + usuario.getNome_usuario());
+                    if(usuario != null){
+                        tv_autor_receita_bd_dois.setText("Por: " + usuario.getNome_usuario());
+                    }else{
+                        tv_autor_receita_bd_dois.setText("Não encontrado o autor");
+                    }
                 }
                 @Override
                 public void onSuccess(ResponseBody responseBody) {
                 }
                 @Override
                 public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("autor receita nao encontrado");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.e("Erro", "Falha ao buscar autor da receita: " + t.getMessage());
                 }
             });
         } else if (id_receita_bd == 3L) {
@@ -226,9 +225,14 @@ public class home extends AppCompatActivity {
 
                 @Override
                 public void onSuccess(Receita receita) {
-                    tv_receita_bd_tres.setText(receita.getNome_receita());
-                    idrct3 = receita.getId_receita().toString();
-                    carregarIMG(receita.getId_receita(), img3);
+                    if(receita != null) {
+                        tv_receita_bd_tres.setText(receita.getNome_receita());
+                        idrct3 = receita.getId_receita().toString();
+                        carregarIMG(receita.getId_receita(), img3);
+                    }else{
+                        tv_receita_bd_tres.setText(texto);
+                        idrct3 = "0";
+                    }
                 }
 
                 @Override
@@ -241,12 +245,7 @@ public class home extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("receita nao encontrada");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.e("Erro", "Falha ao buscar receita: " + t.getMessage());
                 }
             });
             //-PEGANDO AUTOR RECEITA
@@ -259,19 +258,18 @@ public class home extends AppCompatActivity {
             usuarioAPIController2.getUsuarioForReceita(id_receita_bd, new UsuarioAPIController.ResponseCallback() {
                 @Override
                 public void onSuccess(Usuario usuario) {
-                    tv_autor_receita_bd_tres.setText("Por: " + usuario.getNome_usuario());
+                    if(usuario != null) {
+                        tv_autor_receita_bd_tres.setText("Por: " + usuario.getNome_usuario());
+                    }else{
+                        tv_autor_receita_bd_tres.setText("Não encontrado o autor");
+                    }
                 }
                 @Override
                 public void onSuccess(ResponseBody responseBody) {
                 }
                 @Override
                 public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("autor receita nao encontrado");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.e("Erro", "Falha ao buscar autor: " + t.getMessage());
                 }
             });
         } else if (id_receita_bd == 4L) {
@@ -284,9 +282,14 @@ public class home extends AppCompatActivity {
 
                 @Override
                 public void onSuccess(Receita receita) {
-                    tv_receita_bd_quatro.setText(receita.getNome_receita());
-                    idrct4 = receita.getId_receita().toString();
-                    carregarIMG(receita.getId_receita(), img4);
+                    if(receita != null) {
+                        tv_receita_bd_quatro.setText(receita.getNome_receita());
+                        idrct4 = receita.getId_receita().toString();
+                        carregarIMG(receita.getId_receita(), img4);
+                    }else{
+                        tv_receita_bd_quatro.setText(texto);
+                        idrct4 = "0";
+                    }
                 }
 
                 @Override
@@ -299,12 +302,7 @@ public class home extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("receita nao encontrada");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.e("Erro", "Falha ao buscar receita: " + t.getMessage());
                 }
             });
             //-PEGANDO AUTOR RECEITA
@@ -317,19 +315,18 @@ public class home extends AppCompatActivity {
             usuarioAPIController2.getUsuarioForReceita(id_receita_bd, new UsuarioAPIController.ResponseCallback() {
                 @Override
                 public void onSuccess(Usuario usuario) {
-                    tv_autor_receita_bd_quatro.setText("Por: " + usuario.getNome_usuario());
+                    if(usuario != null) {
+                        tv_autor_receita_bd_quatro.setText("Por: " + usuario.getNome_usuario());
+                    }else{
+                        tv_autor_receita_bd_quatro.setText("Não encontrado o autor");
+                    }
                 }
                 @Override
                 public void onSuccess(ResponseBody responseBody) {
                 }
                 @Override
                 public void onFailure(Throwable t) {
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(home.this);
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Algo de errado não está certo...");
-                    alerta.setMessage("autor receita nao encontrado");
-                    alerta.setNegativeButton("Ok",null);
-                    alerta.create().show();
+                    Log.e("Erro", "Falha ao buscar autor da receita: " + t.getMessage());
                 }
             });
         }else{

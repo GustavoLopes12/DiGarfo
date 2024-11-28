@@ -44,11 +44,6 @@ public class MainActivity extends AppCompatActivity {
         //pegando valores
         String emailString = email.getText().toString();
         String senhaString = senha.getText().toString();
-
-        //pra ver se email e senha esta sendo pegos -ESTAO!!
-        //Toast.makeText(this, emailString + senhaString,  Toast.LENGTH_SHORT).show();
-
-
         //cliente
         RetrofitClient retrofitClient = new RetrofitClient();
         //api controller
@@ -69,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     String emailGuardado = email.getText().toString();//para guardar o email do adm
                     alerta.setTitle("Login feito com sucesso");
-                    alerta.setMessage("Login realizado com sucesso, desfrute o DiGarfo :)");
+                    alerta.setMessage("Login realizado com sucesso ADM");
                     alerta.setNegativeButton("Ok",null);
                     alerta.create().show();
                     email.setText(null);
@@ -93,19 +88,5 @@ public class MainActivity extends AppCompatActivity {
                 alerta.create().show();
             }
         });
-
-
     }
-
-    //teste
-    public void pagverreceita(View view){
-        Intent outraTela = new Intent(getApplicationContext(), ver_receita.class);
-        //outraTela.putExtra("Email", emailUSUARIO);
-        //outraTela.putExtra("id_rct", idStg);
-        startActivity(outraTela);
-        finish();
-    }
-
-
-
 }

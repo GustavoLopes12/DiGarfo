@@ -28,22 +28,6 @@ public class UsuarioAPIController {
         //this.status = "";
     }
 
-    //-pegar usuario por id(email)
-    public void getUsuario(String email, UsuarioAPIController.ResponseCallback responseCallback){
-        Call<Usuario> call = this.usuarioAPI.getUsuario(email);
-        call.enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                responseCallback.onSuccess(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                responseCallback.onFailure(new Exception("Não foi possivel pegar o usuario pelo email"));
-            }
-        });
-    }
-
     //-pegar usuario por receita
     public void getUsuarioForReceita(Long id_receita, UsuarioAPIController.ResponseCallback responseCallback){
         Call<Usuario> call = this.usuarioAPI.getUsuarioForReceita(id_receita);
@@ -59,5 +43,23 @@ public class UsuarioAPIController {
             }
         });
 
+    }
+    //pegar imagem de usuario
+    public void buscarImagem(String email, UsuarioAPIController.ResponseCallback responseCallback){
+        Call<ResponseBody> call = this.usuarioAPI.getImagemUsuario(email);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccess(response.body());
+                } else {
+                    responseCallback.onFailure(new Exception("Erro ao buscar imagem: " + response.message()));
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                responseCallback.onFailure(t);
+            }
+        });
     }
 }
