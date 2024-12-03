@@ -40,9 +40,24 @@ public class AdmAPIController {
             }
             @Override
             public void onFailure(Call<Adm> call, Throwable t) {
-                responseCallback.onFailure(new Exception("Não foi possivel fazer login"));
+                responseCallback.onFailure(new Exception("Não foi possivel fazer login" + t));
             }
         });
 
+    }
+
+    public void buscarAdm(String email, AdmAPIController.ResponseCallback responseCallback){
+        Call<Adm> call = this.admAPI.buscar(email);
+        call.enqueue(new Callback<Adm>() {
+            @Override
+            public void onResponse(Call<Adm> call, Response<Adm> response) {
+                responseCallback.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Adm> call, Throwable t) {
+            responseCallback.onFailure(new Exception("Não foi possivel achar o adm pelo id"));
+            }
+        });
     }
 }

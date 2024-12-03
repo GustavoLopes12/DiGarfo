@@ -78,7 +78,7 @@ public class receitas_avaliar extends AppCompatActivity {
                 lista_receitas.clear();
                 lista_receitas.addAll(receitas);
                 //adapter
-                Adapter_Receitas_Avaliar adapter_receitas_avaliar = new Adapter_Receitas_Avaliar(lista_receitas);
+                Adapter_Receitas_Avaliar adapter_receitas_avaliar = new Adapter_Receitas_Avaliar(lista_receitas, emailADM);
                 //recycla viewsssss
                 recycler_view.setAdapter(adapter_receitas_avaliar);
             }

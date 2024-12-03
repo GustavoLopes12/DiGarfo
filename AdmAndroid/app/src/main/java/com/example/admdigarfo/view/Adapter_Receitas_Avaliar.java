@@ -30,7 +30,7 @@ public class Adapter_Receitas_Avaliar extends RecyclerView.Adapter<Adapter_Recei
     private List<Receita> lista_receita_minhas;
     private String email;
 
-    public Adapter_Receitas_Avaliar(List<Receita> lista_receita_minhas){this.lista_receita_minhas = lista_receita_minhas;}
+    public Adapter_Receitas_Avaliar(List<Receita> lista_receita_minhas, String email){this.lista_receita_minhas = lista_receita_minhas; this.email = email;}
 
     @NonNull
     @Override
@@ -45,6 +45,7 @@ public class Adapter_Receitas_Avaliar extends RecyclerView.Adapter<Adapter_Recei
         Receita receita = lista_receita_minhas.get(position);
         holder.nome_receita.setText(receita.getNome_receita());
         holder.id_rct.setText(receita.getId_receita().toString());
+        String email2 = email;
         //id da receita
         Long id_rct = receita.getId_receita();
         //pegando a imagem da receita e colocando no holder
@@ -93,10 +94,8 @@ public class Adapter_Receitas_Avaliar extends RecyclerView.Adapter<Adapter_Recei
             public void onSuccess(Usuario usuario) {
                 if (usuario != null && holder.getAdapterPosition() == position) {
                     holder.nome_autor_receita.setText(usuario.getNome_usuario());
-                    email = usuario.getEmail();
                 } else {
                     holder.nome_autor_receita.setText("Autor desconhecido");
-                    email = null;
                 }
             }
             @Override
@@ -112,7 +111,7 @@ public class Adapter_Receitas_Avaliar extends RecyclerView.Adapter<Adapter_Recei
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ver_receita.class);
             intent.putExtra("id_rct", id_rct.toString());
-            intent.putExtra("Email", email);
+            intent.putExtra("Email", email2);
             v.getContext().startActivity(intent);
         });
     }

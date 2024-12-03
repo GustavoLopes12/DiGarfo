@@ -55,6 +55,7 @@ public class Receita implements Serializable{
 	//relacionamento n pra 1 com adm ADM AVALIA RECEITA
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_adm", nullable=true)
+	@JsonBackReference(value="adm_receita")
 	private Adm adm;
 	
 	//construtores

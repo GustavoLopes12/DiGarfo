@@ -2,6 +2,8 @@ package com.digarfo.digarfo.Model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -20,6 +22,7 @@ public class Adm implements Serializable {
 	private String senha;
 	//Relacionamento 1 pra n com receita ADM AVALIA RECEITA
 	@OneToMany(mappedBy = "adm", fetch=FetchType.EAGER)
+	@JsonManagedReference(value="adm_receita")
 	private List<Receita> receitas_avaliadas;
 	
 	//construtores

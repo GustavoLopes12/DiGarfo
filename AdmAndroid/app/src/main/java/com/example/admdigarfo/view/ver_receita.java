@@ -344,7 +344,7 @@ public class ver_receita extends AppCompatActivity {
                 Toast.makeText(this, "id: "  + id_long, Toast.LENGTH_SHORT).show();
                 //atualizando heheheh
                 // Consumir API
-                /*RetrofitClient retrofitClient = new RetrofitClient();
+                RetrofitClient retrofitClient = new RetrofitClient();
                 ReceitaAPIController receitaAPIController = new ReceitaAPIController(retrofitClient);
                 receitaAPIController.atualizarReceita(receita, id_long, new ReceitaAPIController.ResponseCallback() {
                     @Override
@@ -355,7 +355,7 @@ public class ver_receita extends AppCompatActivity {
                     @Override
                     public void onSuccess(Receita receita) {
                         Toast.makeText(ver_receita.this, "Receita Avaliada com Sucesso, agora ela está negada", Toast.LENGTH_SHORT).show();
-                        Log.d("ver_receita", "Sucesso ao avaliar receita, agora ela está negada" + receita.toString());
+                        Log.d("ver_receita", "Sucesso ao avaliar receita, agora ela está negada" /*+ receita.toString()*/);
                         Intent outraTela = new Intent(getApplicationContext(), receitas_avaliar.class);
                         outraTela.putExtra("Email", emailADM);
                         startActivity(outraTela);
@@ -371,7 +371,7 @@ public class ver_receita extends AppCompatActivity {
                     public void onFailure(Throwable t) {
                         Log.d("ver_receita", "Falha ao avaliar receita e tenta-la nega-lá!!!" + t);
                     }
-                });*/
+                });
             }
         });
     }

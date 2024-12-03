@@ -3,6 +3,7 @@ package com.example.admdigarfo.view;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 alerta.setTitle("Conexão Falhou, não é possivel realizar login");
                 alerta.setMessage(t.toString());
                 //alerta.setMessage(t.getMessage());
-
+                Log.d("MainActivity", "Falha ao fazer logina" + t);
                 alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
             }

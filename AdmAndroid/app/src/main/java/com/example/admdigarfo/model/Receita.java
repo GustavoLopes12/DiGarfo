@@ -72,23 +72,6 @@ public class Receita {
         this.adm = adm;
     }
 
-        //construtor 2 (sem id)
-        //no DIGARFO está em uso, aqui nao!// NAO SEI SE TA CERTO
-       /*
-        public Receita( String nome_receita, String custo, String categoria, String dificuldade, String tempo_prep, String ingredientes, String modo_prep, boolean aprovacao, Usuario usuario) {
-            this.nome_receita = nome_receita;
-            this.custo = custo;
-            this.categoria = categoria;
-            this.dificuldade = dificuldade;
-            this.tempo_prep = tempo_prep;
-            this.ingredientes = ingredientes;
-            this.modo_prep = modo_prep;
-            this.img_receita = null;
-            aprovacao = this.aprovacao;//parametro aprovacao recebe valor FALSE
-            //this.motivo_desaprovacao = motivo_desaprovacao; -é p por?
-            this.usuario = usuario;
-        }
-        */
         //construtor
         public Receita(Long id_receita, String img_receita, String nome_receita, String custo, String categoria, String dificuldade, String tempo_prep, String ingredientes, String modo_prep, boolean aprovacao, Usuario usuario, String motivo_desaprovacao, Adm adm) {
             this.id_receita = id_receita;
@@ -175,7 +158,7 @@ public class Receita {
         }
 
     @Override
-    public String toString() { //acrescentei porque no DIGARFO tem
+    public String toString() {
         return "Receita{" +
                 "id_receita=" + id_receita +
                 ", nome_receita='" + nome_receita + '\'' +
@@ -186,8 +169,10 @@ public class Receita {
                 ", ingredientes='" + ingredientes + '\'' +
                 ", modo_prep='" + modo_prep + '\'' +
                 ", img_receita='" + img_receita + '\'' +
-                ", aprovada=" + aprovacao + //no do DIGARFO tava "aprovada"
+                ", aprovacao=" + aprovacao +
                 ", usuario=" + usuario +
+                ", motivo_desaprovacao='" + motivo_desaprovacao + '\'' +
+                ", adm=" + adm +
                 '}';
     }
 }
